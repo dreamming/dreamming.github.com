@@ -740,13 +740,22 @@
     notify: false,
     appId: 'tStju25Fg1w7Tho3fPracGLc-gzGzoHsz',
     appKey: '1KU6NT4suTdfu0OgsscqNdRQ',
-    placeholder: 'Just go go',
+    placeholder: '欢迎吐槽～',
     avatar: 'monsterid',
     meta: guest,
     pageSize: '10' || 10,
     visitor: false
   });
+var infoEle = document.querySelector('#comments .info');
+if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+  infoEle.childNodes.forEach(function(item) {
+    item.parentNode.removeChild(item);
+  });
+}
 </script>
+
+
+
 
 
 
