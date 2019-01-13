@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,JVM,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JVM到底怎么优化啊？优化什么？为啥要优化。。？ 堆内存分配与回收时机 大家都知道JVM中的堆内存是分代的结构，来看看堆内存的开辟与回收的细节 堆内存的分配 Eden区：对于新创建的对象，一般都会在此区域，新生对象不见得都会在此区域 Survivor区：Young区经过Minor GC，存活下的对象一般都此区，Young区存活的对象不见得都会在此区域 Old 区：经受住了多次Minor GC，Fu">
+<meta name="keywords" content="Java,JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM调优">
+<meta property="og:url" content="http://yoursite.com/2018/04/13/JVM调优/index.html">
+<meta property="og:site_name" content="8lovelife&#39;s life">
+<meta property="og:description" content="JVM到底怎么优化啊？优化什么？为啥要优化。。？ 堆内存分配与回收时机 大家都知道JVM中的堆内存是分代的结构，来看看堆内存的开辟与回收的细节 堆内存的分配 Eden区：对于新创建的对象，一般都会在此区域，新生对象不见得都会在此区域 Survivor区：Young区经过Minor GC，存活下的对象一般都此区，Young区存活的对象不见得都会在此区域 Old 区：经受住了多次Minor GC，Fu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-13T13:23:34.246Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM调优">
+<meta name="twitter:description" content="JVM到底怎么优化啊？优化什么？为啥要优化。。？ 堆内存分配与回收时机 大家都知道JVM中的堆内存是分代的结构，来看看堆内存的开辟与回收的细节 堆内存的分配 Eden区：对于新创建的对象，一般都会在此区域，新生对象不见得都会在此区域 Survivor区：Young区经过Minor GC，存活下的对象一般都此区，Young区存活的对象不见得都会在此区域 Old 区：经受住了多次Minor GC，Fu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/13/JVM调优/">
+
+
+
+
+
+  <title>JVM调优 | 8lovelife's life</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">8lovelife's life</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">M&M</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/13/JVM调优/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8lovelife's life">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM调优</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-13T23:29:08+08:00">
+                2018-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"> 本文总访问量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JVM到底怎么优化啊？优化什么？为啥要优化。。？</p>
+<h1 id="堆内存分配与回收时机"><a href="#堆内存分配与回收时机" class="headerlink" title="堆内存分配与回收时机"></a>堆内存分配与回收时机</h1><p> 大家都知道JVM中的<a href="http://whathowhy.com/2018/04/04/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" target="_blank" rel="noopener">堆内存是分代</a>的结构，来看看堆内存的开辟与回收的细节</p>
+<h2 id="堆内存的分配"><a href="#堆内存的分配" class="headerlink" title="堆内存的分配"></a>堆内存的分配</h2><ul>
+<li>Eden区：对于新创建的对象，<strong>一般</strong>都会在此区域，新生对象不见得都会在此区域</li>
+<li>Survivor区：Young区经过Minor GC，存活下的对象<strong>一般</strong>都此区，Young区存活的对象不见得都会在此区域</li>
+<li>Old 区：经受住了多次Minor GC，Full GC存活的对象，都在此区域</li>
+</ul>
+<h2 id="堆内存的回收"><a href="#堆内存的回收" class="headerlink" title="堆内存的回收"></a>堆内存的回收</h2><p> 堆内存在Minor GC 与 Full GC发生的时候回收，那么Minor GC 、Full GC 什么时候发生呢。。</p>
+<h3 id="Minor-GC"><a href="#Minor-GC" class="headerlink" title="Minor GC"></a>Minor GC</h3><p> Minor GC发生在Young区，当Eden区满时会触发Minor GC，新生代的对象一般存活的时间很短，Minor GC会很频繁，由于是复制算法所以执行时间较快</p>
+<h3 id="Full-GC-Major-GC"><a href="#Full-GC-Major-GC" class="headerlink" title="Full GC /Major GC"></a>Full GC /Major GC</h3><p> Major GC 亦指 Full GC ，Full GC会对整个堆区进行内存回收。Full GC发生在以下情况</p>
+<ol>
+<li>Old区空间不足会触发Full GC</li>
+<li>Perm区满后会触发Full GC（设置CMS GC的情况除外）</li>
+<li>执行CMS GC的过程中有对象进入Old区，Old区不足会报 Concurrent Mode Failure 错误，并触发 Full GC</li>
+<li>Minor GC时检测之前晋升到Old区平均对象大小（这个平均晋升大小是靠不住的），<sup>1。</sup>若大于Old区剩余大小，则直接触发Full GC。 <sup>2。</sup>若小于Old区剩余大小，则查看HandlePromotionFailure是否开启，若开启则会触发Full GC</li>
+<li>System.gc()方法建议JVM进行Full GC，使用DisableExplicitGC可禁用Full GC的显示调用</li>
+</ol>
+<h1 id="JVM调优"><a href="#JVM调优" class="headerlink" title="JVM调优"></a>JVM调优</h1><h2 id="扩大年轻代堆空间"><a href="#扩大年轻代堆空间" class="headerlink" title="扩大年轻代堆空间"></a>扩大年轻代堆空间</h2><p> JVM尝试将新生对象放入Eden区，若Eden区空间不够则会将对象提前放入Old区。Minor GC的成本远低于Full GC ，因此可以将对象尽可能保留在年轻代</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">JVM 参数：-Xmx20M -Xms20M -XX:+PrintGCDetails</span><br><span class="line"></span><br><span class="line">    private static void OptimizeOne() &#123;</span><br><span class="line">        int M = 1024 * 1024;</span><br><span class="line">        byte[] b1 = new byte[2 * M]; // 2M</span><br><span class="line">        byte[] b2 = new byte[2 * M];</span><br><span class="line">        byte[] b3 = new byte[2 * M];</span><br><span class="line">        byte[] b4 = new byte[2 * M];</span><br><span class="line">        byte[] b5 = new byte[2 * M];</span><br><span class="line">        byte[] b7 = new byte[2 * M];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">GC Log：</span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 3890K-512K(6144K)] 3890K-2664K(19968K), 0.0033226 secs] [Times: user=0.01 sys=0.01, real=0.00 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 4772K-512K(6144K)] 6924K-6768K(19968K), 0.0057943 secs] [Times: user=0.01 sys=0.00, real=0.01 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 4733K-496K(6144K)] 10989K-10864K(19968K), 0.0050538 secs] [Times: user=0.01 sys=0.00, real=0.00 secs] </span><br><span class="line">[Full GC (Ergonomics) [PSYoungGen: 496K-0K(6144K)] [ParOldGen: 10368K-10747K(13824K)] 10864K-10747K(19968K), [Metaspace: 3061K-3061K(1056768K)], 0.0088463 secs] [Times: user=0.02 sys=0.01, real=0.01 secs] </span><br><span class="line">Heap</span><br><span class="line"> PSYoungGen      total 6144K, used 2209K [0x00000007bf980000, 0x00000007c0000000, 0x00000007c0000000)</span><br><span class="line">  eden space 5632K, 39% used [0x00000007bf980000,0x00000007bfba84c8,0x00000007bff00000)</span><br><span class="line">  from space 512K, 0% used [0x00000007bff00000,0x00000007bff00000,0x00000007bff80000)</span><br><span class="line">  to   space 512K, 0% used [0x00000007bff80000,0x00000007bff80000,0x00000007c0000000)</span><br><span class="line"> ParOldGen       total 13824K, used 10747K [0x00000007bec00000, 0x00000007bf980000, 0x00000007bf980000)</span><br><span class="line">  object space 13824K, 77% used [0x00000007bec00000,0x00000007bf67ef40,0x00000007bf980000)</span><br><span class="line"> Metaspace       used 3117K, capacity 4496K, committed 4864K, reserved 1056768K</span><br><span class="line">  class space    used 340K, capacity 388K, committed 512K, reserved 1048576K</span><br></pre></td></tr></table></figure>
+<p> 通过GC Log可以发现Young区的大小为6M ，适当调整年轻代大小</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">JVM 参数：-Xmx20M -Xms20M -Xmn10M -XX:+PrintGCDetails</span><br><span class="line"></span><br><span class="line">    private static void OptimizeOne() &#123;</span><br><span class="line">        int M = 1024 * 1024;</span><br><span class="line">        byte[] b1 = new byte[2 * M]; // 2M</span><br><span class="line">        byte[] b2 = new byte[2 * M];</span><br><span class="line">        byte[] b3 = new byte[2 * M];</span><br><span class="line">        byte[] b4 = new byte[2 * M];</span><br><span class="line">        byte[] b5 = new byte[2 * M];</span><br><span class="line">        byte[] b7 = new byte[2 * M];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">GC Log:</span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 6153K-608K(9216K)] 6153K-4704K(19456K), 0.0059569 secs] [Times: user=0.01 sys=0.01, real=0.00 secs] </span><br><span class="line">[GC (Allocation Failure) --[PSYoungGen: 6991K-6991K(9216K)] 11087K-15191K(19456K), 0.0058702 secs] [Times: user=0.01 sys=0.00, real=0.01 secs] </span><br><span class="line">[Full GC (Ergonomics) [PSYoungGen: 6991K-2560K(9216K)] [ParOldGen: 8200K-8192K(10240K)] 15191K-10752K(19456K), [Metaspace: 3159K-3159K(1056768K)], 0.0070982 secs] [Times: user=0.02 sys=0.00, real=0.01 secs] </span><br><span class="line">Heap</span><br><span class="line"> PSYoungGen      total 9216K, used 4995K [0x00000007bf600000, 0x00000007c0000000, 0x00000007c0000000)</span><br><span class="line">  eden space 8192K, 60% used [0x00000007bf600000,0x00000007bfae0c10,0x00000007bfe00000)</span><br><span class="line">  from space 1024K, 0% used [0x00000007bfe00000,0x00000007bfe00000,0x00000007bff00000)</span><br><span class="line">  to   space 1024K, 0% used [0x00000007bff00000,0x00000007bff00000,0x00000007c0000000)</span><br><span class="line"> ParOldGen       total 10240K, used 8192K [0x00000007bec00000, 0x00000007bf600000, 0x00000007bf600000)</span><br><span class="line">  object space 10240K, 80% used [0x00000007bec00000,0x00000007bf400168,0x00000007bf600000)</span><br><span class="line"> Metaspace       used 3187K, capacity 4496K, committed 4864K, reserved 1056768K</span><br><span class="line">  class space    used 347K, capacity 388K, committed 512K, reserved 1048576K</span><br></pre></td></tr></table></figure>
+<h2 id="年轻代不留大对象"><a href="#年轻代不留大对象" class="headerlink" title="年轻代不留大对象"></a>年轻代不留大对象</h2><p> JVM将新生的对象放入Yong区，若对象一出生就超级大，针对后续新产生的对象可能会导致Young区小对象频繁的转入Old区</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">JVM 参数：-Xmx20M -Xms20M -Xmn10M -XX:+PrintGCDetails</span><br><span class="line"></span><br><span class="line">    private static void OptimizeTwo() &#123;</span><br><span class="line">        int M = 1024 * 1024;</span><br><span class="line">        byte[] b1 = new byte[3 * M]; // 3M</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">GC Log:</span><br><span class="line">Heap</span><br><span class="line"> PSYoungGen      total 6144K, used 4914K [0x00000007bf980000, 0x00000007c0000000, 0x00000007c0000000)</span><br><span class="line">  eden space 5632K, 87% used [0x00000007bf980000,0x00000007bfe4c8e8,0x00000007bff00000)</span><br><span class="line">  from space 512K, 0% used [0x00000007bff80000,0x00000007bff80000,0x00000007c0000000)</span><br><span class="line">  to   space 512K, 0% used [0x00000007bff00000,0x00000007bff00000,0x00000007bff80000)</span><br><span class="line"> ParOldGen       total 13824K, used 0K [0x00000007bec00000, 0x00000007bf980000, 0x00000007bf980000)</span><br><span class="line">  object space 13824K, 0% used [0x00000007bec00000,0x00000007bec00000,0x00000007bf980000)</span><br><span class="line"> Metaspace       used 3045K, capacity 4496K, committed 4864K, reserved 1056768K</span><br><span class="line">  class space    used 334K, capacity 388K, committed 512K, reserved 1048576K</span><br></pre></td></tr></table></figure>
+<p> 新生对象直接占据了Eden区的87%，将新生的大对象直接放入Old区，有利于提升GC效率，设置对象大小阀值-XX:PretenureSizeThreshold=3M (此设置对 +UseParallelGC 无效)</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">JVM 参数：-Xmx20M -Xms20M -Xmn10M -XX:+PrintGCDetails -XX:PretenureSizeThreshold=3M -XX:+UseParNewGC</span><br><span class="line"></span><br><span class="line">    private static void OptimizeTwo() &#123;</span><br><span class="line">        int M = 1024 * 1024;</span><br><span class="line">        byte[] b1 = new byte[3 * M]; // 3M</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">GC Log：</span><br><span class="line">Heap</span><br><span class="line"> par new generation   total 6144K, used 1947K [0x00000007bec00000, 0x00000007bf2a0000, 0x00000007bf2a0000)</span><br><span class="line">  eden space 5504K,  35% used [0x00000007bec00000, 0x00000007bede6e40, 0x00000007bf160000)</span><br><span class="line">  from space 640K,   0% used [0x00000007bf160000, 0x00000007bf160000, 0x00000007bf200000)</span><br><span class="line">  to   space 640K,   0% used [0x00000007bf200000, 0x00000007bf200000, 0x00000007bf2a0000)</span><br><span class="line"> tenured generation   total 13696K, used 3072K [0x00000007bf2a0000, 0x00000007c0000000, 0x00000007c0000000)</span><br><span class="line">   the space 13696K,  22% used [0x00000007bf2a0000, 0x00000007bf5a0010, 0x00000007bf5a0200, 0x00000007c0000000)</span><br><span class="line"> Metaspace       used 3045K, capacity 4496K, committed 4864K, reserved 1056768K</span><br><span class="line">  class space    used 334K, capacity 388K, committed 512K, reserved 1048576K</span><br></pre></td></tr></table></figure>
+<p> 可以发现3M的对象直接放入了Old区</p>
+<h2 id="对象的年龄"><a href="#对象的年龄" class="headerlink" title="对象的年龄"></a>对象的年龄</h2><p> 对象的年龄指经过Minor GC仍存活在Young区的次数，当对象超过指定的年龄后会被移动到Old区，年龄未超过设置的阀值一样可能会移动到Old区，当Survivor区中相同年龄大小的所有对象大小总和超过了Survivor区空间的一半（默认 -XX:TargetSurvivorRatio=50）则会被移动到Old区</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">JVM 参数：-Xmx20M -Xms20M -Xmn10M -XX:+PrintGCDetails</span><br><span class="line">    private static void OptimizeThree() &#123;</span><br><span class="line">        int M = 1024 * 1024;</span><br><span class="line">        byte[] b1 = new byte[2 * M]; // 2M</span><br><span class="line">        byte[] b2 = new byte[2 * M];</span><br><span class="line">        byte[] b4 = new byte[2 * M];</span><br><span class="line">        b4 = null;</span><br><span class="line">        byte[] b5 = new byte[2 * M];</span><br><span class="line">        byte[] b6 = new byte[2 * M];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">GC Log:</span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 3891K-496K(6144K)] 3891K-2640K(19968K), 0.0031407 secs] [Times: user=0.01 sys=0.01, real=0.00 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 4756K-496K(6144K)] 6900K-4712K(19968K), 0.0030381 secs] [Times: user=0.01 sys=0.00, real=0.00 secs] </span><br><span class="line">Heap</span><br><span class="line"> PSYoungGen      total 6144K, used 4775K [0x00000007bf980000, 0x00000007c0000000, 0x00000007c0000000)</span><br><span class="line">  eden space 5632K, 75% used [0x00000007bf980000,0x00000007bfdadd80,0x00000007bff00000)</span><br><span class="line">  from space 512K, 96% used [0x00000007bff80000,0x00000007bfffc010,0x00000007c0000000)</span><br><span class="line">  to   space 512K, 0% used [0x00000007bff00000,0x00000007bff00000,0x00000007bff80000)</span><br><span class="line"> ParOldGen       total 13824K, used 4216K [0x00000007bec00000, 0x00000007bf980000, 0x00000007bf980000)</span><br><span class="line">  object space 13824K, 30% used [0x00000007bec00000,0x00000007bf01e020,0x00000007bf980000)</span><br><span class="line"> Metaspace       used 3165K, capacity 4496K, committed 4864K, reserved 1056768K</span><br><span class="line">  class space    used 345K, capacity 388K, committed 512K, reserved 1048576K</span><br></pre></td></tr></table></figure>
+<p> 设置对象年龄阀值 MaxTenuringThreshold</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">JVM 参数：-Xmx20M -Xms20M -Xmn10M -XX:+PrintGCDetails -XX:MaxTenuringThreshold=1</span><br><span class="line">    private static void OptimizeThree() &#123;</span><br><span class="line">        int M = 1024 * 1024;</span><br><span class="line">        byte[] b1 = new byte[2 * M]; // 2M</span><br><span class="line">        byte[] b2 = new byte[2 * M];</span><br><span class="line">        byte[] b4 = new byte[2 * M];</span><br><span class="line">        b4 = null;</span><br><span class="line">        byte[] b5 = new byte[2 * M];</span><br><span class="line">        byte[] b6 = new byte[2 * M];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">GC Log:</span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 4123K-512K(6144K)] 4123K-2648K(19968K), 0.0033229 secs] [Times: user=0.01 sys=0.00, real=0.00 secs] </span><br><span class="line">[GC (Allocation Failure) [PSYoungGen: 4770K-32K(6144K)] 6906K-4692K(19968K), 0.0037061 secs] [Times: user=0.01 sys=0.00, real=0.00 secs] </span><br><span class="line">Heap</span><br><span class="line"> PSYoungGen      total 6144K, used 4309K [0x00000007bf980000, 0x00000007c0000000, 0x00000007c0000000)</span><br><span class="line">  eden space 5632K, 75% used [0x00000007bf980000,0x00000007bfdad6d0,0x00000007bff00000)</span><br><span class="line">  from space 512K, 6% used [0x00000007bff80000,0x00000007bff88000,0x00000007c0000000)</span><br><span class="line">  to   space 512K, 0% used [0x00000007bff00000,0x00000007bff00000,0x00000007bff80000)</span><br><span class="line"> ParOldGen       total 13824K, used 4660K [0x00000007bec00000, 0x00000007bf980000, 0x00000007bf980000)</span><br><span class="line">  object space 13824K, 33% used [0x00000007bec00000,0x00000007bf08d310,0x00000007bf980000)</span><br><span class="line"> Metaspace       used 3204K, capacity 4496K, committed 4864K, reserved 1056768K</span><br><span class="line">  class space    used 350K, capacity 388K, committed 512K, reserved 1048576K</span><br></pre></td></tr></table></figure>
+<p> 对比可以发现，进行在第二次GC时，设置了对象年龄=1的对象被移到了Old区</p>
+<h2 id="提高系统吞吐量"><a href="#提高系统吞吐量" class="headerlink" title="提高系统吞吐量"></a>提高系统吞吐量</h2><p> 减少GC执行的总时间，可以提升系统的吞吐量，可以使用关注吞吐量的ParallelGC</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java –Xmx3072m –Xms3072m –Xmn2G –Xss128k –XX:+UseParallelGC -XX:ParallelGCThreads=2 –XX:+UseParallelOldGC</span><br></pre></td></tr></table></figure>
+<h2 id="提高系统响应时间"><a href="#提高系统响应时间" class="headerlink" title="提高系统响应时间"></a>提高系统响应时间</h2><ol>
+<li>尽可能将新生对象留在Yong区来减少Full GC的次数，Minor GC的成本要小于Full GC</li>
+<li>使用关注响应时间的CMS GC</li>
+<li>稍大的Survivor空间、较高的目标存活率，可以使对象直接在Young区回收，而不必因空间不够进入Old区</li>
+<li>最大堆等于最小堆，避免堆内存的震荡从而降低系统性能，堆内存变小必然会带来更多的GC次数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java –Xmx3072m –Xms3072m –Xmn2G –Xss128k –XX:+UseParNewGC -XX:SurvivorRatio=8 -XX:TargetSurvivorRatio=90 –XX:+UseConcMarkSweepGC –XX:MaxTenuringThreshold=31 -XX:ParallelGCThreads=2</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/11/排序-归并排序/" rel="next" title="排序-归并排序">
+                <i class="fa fa-chevron-left"></i> 排序-归并排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/16/JVM监控/" rel="prev" title="JVM监控">
+                JVM监控 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png" alt="Mark">
+            
+              <p class="site-author-name" itemprop="name">Mark</p>
+              <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#堆内存分配与回收时机"><span class="nav-number">1.</span> <span class="nav-text">堆内存分配与回收时机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#堆内存的分配"><span class="nav-number">1.1.</span> <span class="nav-text">堆内存的分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆内存的回收"><span class="nav-number">1.2.</span> <span class="nav-text">堆内存的回收</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Minor-GC"><span class="nav-number">1.2.1.</span> <span class="nav-text">Minor GC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Full-GC-Major-GC"><span class="nav-number">1.2.2.</span> <span class="nav-text">Full GC /Major GC</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM调优"><span class="nav-number">2.</span> <span class="nav-text">JVM调优</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#扩大年轻代堆空间"><span class="nav-number">2.1.</span> <span class="nav-text">扩大年轻代堆空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#年轻代不留大对象"><span class="nav-number">2.2.</span> <span class="nav-text">年轻代不留大对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的年龄"><span class="nav-number">2.3.</span> <span class="nav-text">对象的年龄</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提高系统吞吐量"><span class="nav-number">2.4.</span> <span class="nav-text">提高系统吞吐量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提高系统响应时间"><span class="nav-number">2.5.</span> <span class="nav-text">提高系统响应时间</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark</span>
+
+  
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"> 本站访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"> 本站总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
