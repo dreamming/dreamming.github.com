@@ -100,7 +100,7 @@
 
 
 
-  <meta name="keywords" content="JVM,Java,">
+  <meta name="keywords" content="Java,JVM,">
 
 
 
@@ -112,7 +112,7 @@
 
 
 <meta name="description" content="在Java开发的过程中，程序的执行需要计算机内存空间，Java并没有语法与内存创建、释放有直接联系，JVM负责管理内存的申请与释放，对于Java语言来说，显示的内存申请通常有两种：静态内存分配与动态内存分配 静态内存的分配与回收  静态内存分配：Java类或方法中的原始类型数据和对象的引用都是静态分配的内存，当Java编译器执行编译后就已经确定了静态内存的大小，在程序被加载后会分配静态内存且在程序">
-<meta name="keywords" content="JVM,Java">
+<meta name="keywords" content="Java,JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM内存回收">
 <meta property="og:url" content="http://yoursite.com/2018/04/05/JVM内存回收/index.html">
@@ -132,7 +132,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -177,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -515,9 +515,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
-          
             <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
           
         </div>
       
@@ -744,6 +744,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
