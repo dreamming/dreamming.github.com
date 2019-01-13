@@ -2,29 +2,105 @@
 
 
 
-
-
-
-
-
-
-
-
-
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
-  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -35,55 +111,33 @@
 
 
 
+<meta name="description" content="Stay Hungry, Stay Foolish.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="8lovelife&#39;s life">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="8lovelife&#39;s life">
+<meta property="og:description" content="Stay Hungry, Stay Foolish.">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="8lovelife&#39;s life">
+<meta name="twitter:description" content="Stay Hungry, Stay Foolish.">
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=6.7.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -95,36 +149,12 @@
 </script>
 
 
-  
-
-
-
-
-  <meta name="description" content="Stay Hungry, Stay Foolish.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="8lovelife&#39;s life">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="8lovelife&#39;s life">
-<meta property="og:description" content="Stay Hungry, Stay Foolish.">
-<meta property="og:locale" content="zh-CN">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="8lovelife&#39;s life">
-<meta name="twitter:description" content="Stay Hungry, Stay Foolish.">
-
-
-
-
-
 
   <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
-<script id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
+
 
   <title>8lovelife's life</title>
   
@@ -136,51 +166,22 @@
 
 
 
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left 
+  <div class="container sidebar-position-right 
   page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
+  <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
@@ -190,16 +191,13 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
       
         <p class="site-subtitle">M&M</p>
       
-    
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -207,97 +205,66 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
-    
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
         
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
-
-  </li>
         
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
-
-  </li>
         
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
       
-    
 
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
-  </li>
-
-      
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
         </li>
       
     </ul>
-  
-
-  
-    
-
   
 
   
@@ -326,20 +293,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -352,8 +311,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -363,7 +320,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="Stay Hungry, Stay Foolish.">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
     </span>
 
@@ -378,20 +335,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/04/16/JVM监控/" class="post-title-link" itemprop="url">JVM监控</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/04/16/JVM监控/" itemprop="url">JVM监控</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -399,30 +347,25 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-16 16:18:55" itemprop="dateCreated datePublished" datetime="2018-04-16T16:18:55+08:00">2018-04-16</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-16T16:18:55+08:00">
+                2018-04-16
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-13 23:37:38" itemprop="dateModified" datetime="2019-01-13T23:37:38+08:00">2019-01-13</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:37:38+08:00">
+                2019-01-13
+              </time>
             
           </span>
 
@@ -438,7 +381,11 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
 
                 
                 
@@ -448,6 +395,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/16/JVM监控/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/16/JVM监控/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -481,29 +437,21 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">Mac:dmz-inward- mac$ jmap -heap 1016 （JDK1.8）</span><br><span class="line">Attaching to process ID 1016, please wait...</span><br><span class="line">Debugger attached successfully.</span><br><span class="line">Server compiler detected.</span><br><span class="line">JVM version is 25.40-b25</span><br><span class="line"></span><br><span class="line">using thread-local object allocation.</span><br><span class="line">Parallel GC with 4 thread(s)</span><br><span class="line"></span><br><span class="line">Heap Configuration:</span><br><span class="line">   MinHeapFreeRatio         = 0</span><br><span class="line">   MaxHeapFreeRatio         = 100</span><br><span class="line">   MaxHeapSize              = 1073741824 (1024.0MB)</span><br><span class="line">   NewSize                  = 22020096 (21.0MB)</span><br><span class="line">   MaxNewSize               = 357564416 (341.0MB)</span><br><span class="line">   OldSize                  = 45088768 (43.0MB)</span><br><span class="line">   NewRatio                 = 2</span><br><span class="line">   SurvivorRatio            = 8</span><br><span class="line">   MetaspaceSize            = 21807104 (20.796875MB)</span><br><span class="line">   CompressedClassSpaceSize = 1073741824 (1024.0MB)</span><br><span class="line">   MaxMetaspaceSize         = 17592186044415 MB</span><br><span class="line">   G1HeapRegionSize         = 0 (0.0MB)</span><br><span class="line"></span><br><span class="line">Heap Usage:</span><br><span class="line">PS Young Generation</span><br><span class="line">Eden Space:</span><br><span class="line">   capacity = 16777216 (16.0MB)</span><br><span class="line">   used     = 11951560 (11.397895812988281MB)</span><br><span class="line">   free     = 4825656 (4.602104187011719MB)</span><br><span class="line">   71.23684883117676% used</span><br><span class="line">From Space:</span><br><span class="line">   capacity = 3145728 (3.0MB)</span><br><span class="line">   used     = 2879968 (2.746551513671875MB)</span><br><span class="line">   free     = 265760 (0.253448486328125MB)</span><br><span class="line">   91.55171712239583% used</span><br><span class="line">To Space:</span><br><span class="line">   capacity = 3145728 (3.0MB)</span><br><span class="line">   used     = 0 (0.0MB)</span><br><span class="line">   free     = 3145728 (3.0MB)</span><br><span class="line">   0.0% used</span><br><span class="line">PS Old Generation</span><br><span class="line">   capacity = 45088768 (43.0MB)</span><br><span class="line">   used     = 857520 (0.8177947998046875MB)</span><br><span class="line">   free     = 44231248 (42.18220520019531MB)</span><br><span class="line">   1.9018483716388082% used</span><br><span class="line"></span><br><span class="line">4674 interned Strings occupying 366808 bytes.</span><br></pre></td></tr></table></figure>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/04/16/JVM监控/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/16/JVM监控/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -536,8 +484,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -547,7 +493,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="Stay Hungry, Stay Foolish.">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
     </span>
 
@@ -562,20 +508,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/04/13/JVM调优/" class="post-title-link" itemprop="url">JVM调优</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/04/13/JVM调优/" itemprop="url">JVM调优</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -583,30 +520,25 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-13 23:29:08" itemprop="dateCreated datePublished" datetime="2018-04-13T23:29:08+08:00">2018-04-13</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-13T23:29:08+08:00">
+                2018-04-13
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-13 23:47:53" itemprop="dateModified" datetime="2019-01-13T23:47:53+08:00">2019-01-13</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:47:53+08:00">
+                2019-01-13
+              </time>
             
           </span>
 
@@ -622,7 +554,11 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
 
                 
                 
@@ -632,6 +568,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/13/JVM调优/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/13/JVM调优/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -676,29 +621,21 @@
 <li>System.gc()方法建议JVM进行Full GC，使用DisableExplicitGC可禁用Full GC的显示调用</li>
 </ol>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/04/13/JVM调优/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/13/JVM调优/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -731,8 +668,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -742,7 +677,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="Stay Hungry, Stay Foolish.">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
     </span>
 
@@ -757,20 +692,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/04/11/排序-归并排序/" class="post-title-link" itemprop="url">排序-归并排序</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/04/11/排序-归并排序/" itemprop="url">排序-归并排序</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -778,30 +704,25 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-11 17:20:17" itemprop="dateCreated datePublished" datetime="2018-04-11T17:20:17+08:00">2018-04-11</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T17:20:17+08:00">
+                2018-04-11
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-13 23:45:09" itemprop="dateModified" datetime="2019-01-13T23:45:09+08:00">2019-01-13</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:45:09+08:00">
+                2019-01-13
+              </time>
             
           </span>
 
@@ -817,7 +738,11 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
 
                 
                 
@@ -827,6 +752,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/11/排序-归并排序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/11/排序-归并排序/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -859,29 +793,21 @@
 </blockquote>
 <h2 id="归并排序（递归方式）"><a href="#归并排序（递归方式）" class="headerlink" title="归并排序（递归方式）"></a>归并排序（递归方式）</h2><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public void mergeSortByRecursive(int[] data) &#123;</span><br><span class="line">    long startTime = System.nanoTime();</span><br><span class="line">    mergeSortRecursive(0, data.length - 1, data, new int[data.length]);</span><br><span class="line">    System.out.println(&quot;MergeSortRecursive Time Cost : &quot; + (System.nanoTime() - startTime) * 0.000001 +&quot; ms&quot;);</span><br><span class="line">    checkSortedData(data,&quot;MergeSortRecursive&quot;);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">private void mergeSortRecursive(int lowIndex, int highIndex, int[] data, int[] temp) &#123;</span><br><span class="line">    if (lowIndex &gt;= highIndex) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    int mid = ((highIndex - lowIndex) &gt;&gt; 1) + lowIndex;</span><br><span class="line">    int startOne = lowIndex, endOne = mid, startTwo = mid + 1, endTwo = highIndex;</span><br><span class="line">    mergeSortRecursive(startOne, endOne, data, temp);</span><br><span class="line">    mergeSortRecursive(startTwo, endTwo, data, temp);</span><br><span class="line">    mergeData(lowIndex, mid, highIndex, data, temp);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">private void mergeData(int lowIndex, int middle, int highIndex, int[] data, int[] temp) &#123;</span><br><span class="line"></span><br><span class="line">    for (int i = lowIndex; i &lt;= highIndex; i++) &#123;</span><br><span class="line">        temp[i] = data[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int leftStart = lowIndex, rightStart = middle + 1;</span><br><span class="line">    int tempIndex = leftStart;</span><br><span class="line">    while (leftStart &lt;= middle &amp;&amp; rightStart &lt;= highIndex) &#123;</span><br><span class="line">        data[tempIndex++] = temp[leftStart] &lt; temp[rightStart] ? temp[leftStart++] : temp[rightStart++];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    while (leftStart &lt;= middle) &#123;</span><br><span class="line">        data[tempIndex++] = temp[leftStart++];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/04/11/排序-归并排序/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/11/排序-归并排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -914,8 +840,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -925,7 +849,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="Stay Hungry, Stay Foolish.">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
     </span>
 
@@ -940,20 +864,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/04/06/JVM-GC/" class="post-title-link" itemprop="url">JVM GC</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/04/06/JVM-GC/" itemprop="url">JVM GC</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -961,30 +876,25 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-06 23:59:33" itemprop="dateCreated datePublished" datetime="2018-04-06T23:59:33+08:00">2018-04-06</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T23:59:33+08:00">
+                2018-04-06
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-13 23:47:40" itemprop="dateModified" datetime="2019-01-13T23:47:40+08:00">2019-01-13</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:47:40+08:00">
+                2019-01-13
+              </time>
             
           </span>
 
@@ -1000,7 +910,11 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1010,6 +924,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/06/JVM-GC/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/06/JVM-GC/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1056,29 +979,21 @@
 <p>Serial Old GC 为老年代搜集器，使用“标记-整理”算法，此GC不能够主动配置。<sup>1.</sup>当CMS收集器发生错误的时候使用。<sup>2.</sup>配合其他GC使用</p>
 </blockquote>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/04/06/JVM-GC/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/06/JVM-GC/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1111,8 +1026,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1122,7 +1035,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="Stay Hungry, Stay Foolish.">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
     </span>
 
@@ -1137,20 +1050,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/04/05/JVM内存回收/" class="post-title-link" itemprop="url">JVM内存回收</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/04/05/JVM内存回收/" itemprop="url">JVM内存回收</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1158,30 +1062,25 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-05 23:09:48" itemprop="dateCreated datePublished" datetime="2018-04-05T23:09:48+08:00">2018-04-05</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-05T23:09:48+08:00">
+                2018-04-05
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-13 23:48:51" itemprop="dateModified" datetime="2019-01-13T23:48:51+08:00">2019-01-13</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:48:51+08:00">
+                2019-01-13
+              </time>
             
           </span>
 
@@ -1197,7 +1096,11 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1207,6 +1110,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/05/JVM内存回收/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/05/JVM内存回收/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1270,29 +1182,21 @@
 </ol>
 </blockquote>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/04/05/JVM内存回收/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/05/JVM内存回收/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1325,8 +1229,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1336,7 +1238,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="Stay Hungry, Stay Foolish.">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
     </span>
 
@@ -1351,20 +1253,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/04/04/JVM内存管理/" class="post-title-link" itemprop="url">JVM内存管理</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/04/04/JVM内存管理/" itemprop="url">JVM内存管理</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1372,30 +1265,25 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-04 01:52:02" itemprop="dateCreated datePublished" datetime="2018-04-04T01:52:02+08:00">2018-04-04</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T01:52:02+08:00">
+                2018-04-04
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-13 23:38:07" itemprop="dateModified" datetime="2019-01-13T23:38:07+08:00">2019-01-13</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:38:07+08:00">
+                2019-01-13
+              </time>
             
           </span>
 
@@ -1411,7 +1299,11 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1421,6 +1313,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/04/JVM内存管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/04/JVM内存管理/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1470,29 +1371,21 @@
 </blockquote>
 <p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/JMM.png" alt="image"><br>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/04/04/JVM内存管理/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/04/JVM内存管理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </p></div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1525,8 +1418,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1536,7 +1427,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="Stay Hungry, Stay Foolish.">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
     </span>
 
@@ -1551,20 +1442,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/03/31/Java-Char-编码/" class="post-title-link" itemprop="url">Java Char 编码</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/03/31/Java-Char-编码/" itemprop="url">Java Char 编码</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1572,30 +1454,25 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-31 13:51:31" itemprop="dateCreated datePublished" datetime="2018-03-31T13:51:31+08:00">2018-03-31</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-31T13:51:31+08:00">
+                2018-03-31
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-13 23:46:59" itemprop="dateModified" datetime="2019-01-13T23:46:59+08:00">2019-01-13</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:46:59+08:00">
+                2019-01-13
+              </time>
             
           </span>
 
@@ -1611,7 +1488,11 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1621,6 +1502,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/31/Java-Char-编码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/31/Java-Char-编码/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1665,29 +1555,21 @@
 <p><strong>Unicode</strong>的编码点<strong><em>以U+开始如U+0x0020的形式</em></strong>表示，能表示的编码点范围为0x0000 ~ 0x10FFFF。我们知道Java中的字符都是以Unicode的形式保存的，并且采用UTF-16的形式编码，所以说Java中的char占用16位即2个字节，16位所能存储的最大值为0xFFFF。<strong><em>那么对于U+10000~U+10FFFF部分的CodePoint（这一部分代表的字符被称为辅助字符supplementary character），Java中的UTF-16显然无法存储</em></strong></p>
 </blockquote>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/03/31/Java-Char-编码/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/31/Java-Char-编码/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1720,8 +1602,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1731,7 +1611,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="Stay Hungry, Stay Foolish.">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
     </span>
 
@@ -1746,20 +1626,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/03/31/Mary's Eyes/" class="post-title-link" itemprop="url">Mary's Eyes</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/03/31/Mary's Eyes/" itemprop="url">Mary's Eyes</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1767,30 +1638,25 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-31 00:10:05" itemprop="dateCreated datePublished" datetime="2018-03-31T00:10:05+08:00">2018-03-31</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-31T00:10:05+08:00">
+                2018-03-31
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-13 21:23:34" itemprop="dateModified" datetime="2019-01-13T21:23:34+08:00">2019-01-13</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T21:23:34+08:00">
+                2019-01-13
+              </time>
             
           </span>
 
@@ -1798,6 +1664,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/31/Mary's Eyes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/31/Mary's Eyes/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1833,18 +1708,12 @@
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1877,8 +1746,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1888,7 +1755,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="Stay Hungry, Stay Foolish.">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
     </span>
 
@@ -1903,20 +1770,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/03/30/Docker-Swarm-集群/" class="post-title-link" itemprop="url">Docker Swarm 集群</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/03/30/Docker-Swarm-集群/" itemprop="url">Docker Swarm 集群</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1924,30 +1782,25 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-30 01:25:26" itemprop="dateCreated datePublished" datetime="2018-03-30T01:25:26+08:00">2018-03-30</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T01:25:26+08:00">
+                2018-03-30
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-13 23:46:01" itemprop="dateModified" datetime="2019-01-13T23:46:01+08:00">2019-01-13</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:46:01+08:00">
+                2019-01-13
+              </time>
             
           </span>
 
@@ -1963,7 +1816,11 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1973,6 +1830,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/30/Docker-Swarm-集群/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/30/Docker-Swarm-集群/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -2024,29 +1890,21 @@
 </ol>
 </blockquote>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/03/30/Docker-Swarm-集群/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/Docker-Swarm-集群/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -2079,8 +1937,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -2090,7 +1946,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="Stay Hungry, Stay Foolish.">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
     </span>
 
@@ -2105,20 +1961,11 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/03/30/Docker容器中的数据管理/" class="post-title-link" itemprop="url">Docker容器中的数据管理</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/03/30/Docker容器中的数据管理/" itemprop="url">Docker容器中的数据管理</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -2126,30 +1973,25 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-30 01:21:57" itemprop="dateCreated datePublished" datetime="2018-03-30T01:21:57+08:00">2018-03-30</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T01:21:57+08:00">
+                2018-03-30
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-13 23:34:11" itemprop="dateModified" datetime="2019-01-13T23:34:11+08:00">2019-01-13</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:34:11+08:00">
+                2019-01-13
+              </time>
             
           </span>
 
@@ -2165,7 +2007,11 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
 
                 
                 
@@ -2175,6 +2021,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/30/Docker容器中的数据管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/30/Docker容器中的数据管理/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -2227,29 +2082,21 @@
 </ol>
 </blockquote>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/03/30/Docker容器中的数据管理/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/Docker容器中的数据管理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -2278,12 +2125,15 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
+          
+
+
           
 
         </div>
@@ -2306,7 +2156,7 @@
 
       
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -2316,97 +2166,57 @@
               <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish.</p>
           </div>
 
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">24</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
+          <nav class="site-state motion-element">
 
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-          
-
-          
             
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
+
+          
+
+          
+          
+
+          
+          
+
           
 
         </div>
-      </div>
+      </section>
 
       
 
@@ -2423,49 +2233,35 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Mark</span>
 
   
-
-  
 </div>
 
-
-
-
-
-
-
-
-
-<div class="powered-by">
-    <i class="fa fa-user-md"></i>
-    <span id="busuanzi_container_site_uv">
-      本站访问用户:<span id="busuanzi_value_site_uv"></span>
-    </span>
-<span class="post-meta-divider">|</span>
-<div class="powered-by">
-    <i class="fa fa-eye"></i>
-    <span id="busuanzi_container_site_uv">
-      本站访问总量:<span id="busuanzi_value_site_pv"></span>
-    </span>
-</div>
-</div>
 
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-
+    <span class="site-uv">
+      <i class="fa fa-user"> 本站访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
   
 
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"> 本站总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
   
 </div>
-
 
 
 
@@ -2482,21 +2278,16 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
-          <span id="scrollpercent"><span>0</span>%</span>
-        
       </div>
     
 
     
 
-    
-
-    
   </div>
 
   
 
-<script>
+<script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2510,11 +2301,7 @@
 
 
 
-
-
-
-
-
+  
 
 
 
@@ -2528,86 +2315,122 @@
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=6.7.0"></script>
-
-  <script src="/js/src/motion.js?v=6.7.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
 
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
 
   
   
 
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
 
-<script>
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail';
-  guest = guest.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'tStju25Fg1w7Tho3fPracGLc-gzGzoHsz',
-    appKey: '1KU6NT4suTdfu0OgsscqNdRQ',
-    placeholder: '欢迎吐槽～',
-    avatar: 'monsterid',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false
-  });
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'tStju25Fg1w7Tho3fPracGLc-gzGzoHsz',
+        appKey: '1KU6NT4suTdfu0OgsscqNdRQ',
+        placeholder: '欢迎吐槽～',
+        avatar:'monsterid',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
 var infoEle = document.querySelector('#comments .info');
 if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
   infoEle.childNodes.forEach(function(item) {
     item.parentNode.removeChild(item);
   });
 }
-</script>
 
-
-
-
-
+  </script>
 
 
 
   
 
-  <script>
+  <script type="text/javascript">
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -2656,8 +2479,6 @@ if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
-      
-
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -2691,9 +2512,8 @@ if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -2862,9 +2682,9 @@ if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -2938,25 +2758,6 @@ if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
   
 
   
-
-  
-
-  
-  
-  
-  <script src="/lib/needsharebutton/needsharebutton.js"></script>
-  <script>
-    
-    
-  </script>
-
-
-  
-
-  
-
-  
-
   
 
   
