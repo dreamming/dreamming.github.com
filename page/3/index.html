@@ -408,8 +408,7 @@
 
       
         
-          
-            <!-- # Docker Network -->
+          <!-- # Docker Network -->
 <p>简单记录下容器间的网络通信。</p>
 <h1 id="网络驱动"><a href="#网络驱动" class="headerlink" title="网络驱动"></a><strong><em>网络驱动</em></strong></h1><blockquote>
 <ol>
@@ -428,102 +427,13 @@
 </li>
 </ol>
 </blockquote>
-<h2 id="容器与外部的网络通信前提"><a href="#容器与外部的网络通信前提" class="headerlink" title="容器与外部的网络通信前提"></a><strong>容器与外部的网络通信前提</strong></h2><blockquote>
-<ol>
-<li>保证宿主机开启了ip_forward功能</li>
-<li>保证iptables的相关策略的设置，如地址伪装,NAT等</li>
-</ol>
-</blockquote>
-<h2 id="宿主机与容器的端口映射"><a href="#宿主机与容器的端口映射" class="headerlink" title="宿主机与容器的端口映射"></a><strong>宿主机与容器的端口映射</strong></h2><blockquote>
-<ol>
-<li><p><code>docker run -itd -P --name mongoService mongo</code>，-P表示：容器暴露的端口将会映射到宿主机中的随机端口号，随机范围见：/proc/sys/net/ipv4/ip_local_port_range</p>
-</li>
-<li><p>每当启动容器与外部网络的通信，docker都会建立响应的iptables规则。<code>iptables -L -n -t nat</code>查看规则</p>
-</li>
-</ol>
-</blockquote>
-<h1 id="容器间的网络通信"><a href="#容器间的网络通信" class="headerlink" title="容器间的网络通信"></a><strong><em>容器间的网络通信</em></strong></h1><blockquote>
-<p>容器间可以通过IP或容器名进行网络通信</p>
-</blockquote>
-<h2 id="使用自己创建的NETWORK"><a href="#使用自己创建的NETWORK" class="headerlink" title="使用自己创建的NETWORK"></a><strong>使用自己创建的NETWORK</strong></h2><blockquote>
-<ol>
-<li><p>创建my_bridge网络:  <code>docker network create -d bridge --subnet=10.0.0.0/24 my_bridge</code></p>
-</li>
-<li><p>运行使用my_bridge网络的容器  <code>docker run -itd --network=my_bridge --ip=10.0.0.254 --name db busybox</code></p>
-</li>
-</ol>
-</blockquote>
-<h2 id="不同NETWORK间的容器通信"><a href="#不同NETWORK间的容器通信" class="headerlink" title="不同NETWORK间的容器通信"></a><strong>不同NETWORK间的容器通信</strong></h2><blockquote>
-<ol>
-<li><code>docker run -itd --name=web busybox</code>,使用默认的bridge network</li>
-<li>将当前容器加入到需要与之通信的网络  <code>docker network connect my_bridge web</code></li>
-<li>网络结构</li>
-</ol>
-</blockquote>
-<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerNetWork.png" alt="这里写图片描述"></p>
-<h1 id="容器DNS"><a href="#容器DNS" class="headerlink" title="容器DNS"></a><strong><em>容器DNS</em></strong></h1><blockquote>
-<p>容器间如何通过别名进行网络通信？</p>
-</blockquote>
-<h2 id="默认bridge网络"><a href="#默认bridge网络" class="headerlink" title="默认bridge网络"></a><strong>默认bridge网络</strong></h2><blockquote>
-<pre><code>-- 创建测试容器
-docker run -itd --name c1 busybox
-docker run -itd --name c2 busybox
-</code></pre></blockquote>
-<blockquote>
-<pre><code>-- 进入容器c1内部
-docker attach c1
-/ # ping c2
-ping: bad address &apos;c2&apos;
-
--- 创建容器时指定link容器
-docker run -itd  --link c2:c2_alias --name c3 busybox
-
--- 进入容器c3内部
-docker attach c3
-/ # ping -w1 c2
-PING c2 (172.17.0.4): 56 data bytes
-64 bytes from 172.17.0.4: seq=0 ttl=64 time=0.083 ms
-/ # ping -w1 c2_alias
-PING c2_alias (172.17.0.4): 56 data bytes
-64 bytes from 172.17.0.4: seq=0 ttl=64 time=0.096 ms
-/ # cat /etc/hosts #（容器别名相互耦合）
-127.0.0.1    localhost
-::1    localhost ip6-localhost ip6-loopback
-fe00::0    ip6-localnet
-ff00::0    ip6-mcastprefix
-ff02::1    ip6-allnodes
-ff02::2    ip6-allrouters
-172.17.0.4    c2_alias 7e4850ad6320 c2  #通信原因
-172.17.0.6    fe51353cb1e3
-
--- 进入容器c2内部
-docker attach c2
-/ # ping c3
-ping: bad address &apos;c3&apos;
-</code></pre></blockquote>
-<h2 id="用户创建的bridge网络"><a href="#用户创建的bridge网络" class="headerlink" title="用户创建的bridge网络"></a><strong>用户创建的bridge网络</strong></h2><blockquote>
-<pre><code>-- 创建测试容器
-docker run -itd --name c4 --net=my_bridge busybox
-docker run -itd --name c5 --net=my_bridge busybox
-
--- 进入容器c4内部
-docker attach c4
-/ # ping -w1 c5  #（自动创建DNS服务）
-PING c5 (10.0.0.3): 56 data bytes
-64 bytes from 10.0.0.3: seq=0 ttl=64 time=0.066 ms
-</code></pre></blockquote>
-<h2 id="网络层可见别名"><a href="#网络层可见别名" class="headerlink" title="网络层可见别名"></a><strong>网络层可见别名</strong></h2><blockquote>
-<pre><code>-- 创建测试容器
-docker run -itd --name c7 --net=my_bridge --network-alias c7_net_alias busybox
--- 进入容器c4内部
-docker attach c4
-/ # ping -w1 c7_net_alias
-PING c7_net_alias (10.0.0.5): 56 data bytes
-64 bytes from 10.0.0.5: seq=0 ttl=64 time=0.205 ms
-</code></pre></blockquote>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.docker.com/engine/userguide/networking/" target="_blank" rel="noopener">Docker v17.09</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/Docker容器间的通信/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -662,8 +572,7 @@ PING c7_net_alias (10.0.0.5): 56 data bytes
 
       
         
-          
-            <!-- # Build Docker Image -->
+          <!-- # Build Docker Image -->
 <p>简单记录下如何构建<strong>docker image</strong></p>
 <h1 id="Docker-Build-Usage"><a href="#Docker-Build-Usage" class="headerlink" title="Docker Build Usage"></a>Docker Build Usage</h1><blockquote>
 <ol>
@@ -692,53 +601,13 @@ PING c7_net_alias (10.0.0.5): 56 data bytes
 <li><code>CMD command param1 param2</code> SHELLFORM</li>
 </ul>
 </blockquote>
-<h2 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h2><blockquote>
-<p> <code>ENTRYPOINT</code>能够使容器以可执行的形式运行，只有最后出现的<code>ENTRYPOINT</code>才会有效。使用<code>docker run --entrypoint</code>可以指定覆盖</p>
-</blockquote>
-<blockquote>
-<ul>
-<li><code>ENTRYPOINT [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;]</code> EXECFORM</li>
-<li><code>ENTRYPOINT command param1 param2</code> SHELLFORM,将不会使用CMD中的参数。这会成为/bin/sh -c的子命令，可执行命令不再是容器中的PID=1,这将导致容器无法无法接收Unix signals并且无法听从<code>docker stop &lt;container&gt;</code> SIGTERM，当stop 容器超时后，SIGKILL会被发出强制停止容器。使用 <code>exec</code>能够解决问题。</li>
-</ul>
-</blockquote>
-<h2 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h2><blockquote>
-<p><code>SHELL</code>用于更改SHELLFORM中默认使用的shell，如windows使用powershell,<code>SHELL [&quot;powershell&quot;, &quot;-command&quot;]</code>,多次SHELL指令将会覆盖之前的SHELL指令</p>
-</blockquote>
-<h2 id="CMD-／-ENTRYPOINT"><a href="#CMD-／-ENTRYPOINT" class="headerlink" title="CMD ／ ENTRYPOINT"></a>CMD ／ ENTRYPOINT</h2><p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerBuild.png" alt="这里写图片描述"></p>
-<h1 id="构建activemq-image"><a href="#构建activemq-image" class="headerlink" title="构建activemq image"></a>构建activemq image</h1><blockquote>
-<ul>
-<li><strong>Dockerfile</strong>：</li>
-</ul>
-</blockquote>
-<blockquote>
-<pre><code>`FROM openjdk:8-jre-alpine`     #Base Image OpenJDK8
-`ENV ACTIVEMQ_VERSION 5.14.5`      #环境变量
-`ENV ACTIVEMQ apache-activemq-$ACTIVEMQ_VERSION`
-`ENV ACTIVEMQ_TCP=61616 ACTIVEMQ_AMQP=5672 ACTIVEMQ_STOMP=61613 ACTIVEMQ_MQTT=1883 ACTIVEMQ_WS=61614 ACTIVEMQ_UI=8161`
-`ENV ACTIVEMQ_HOME /opt/activemq`
-`RUN set -x &amp;&amp; \`      #设置脚本执行跟踪
-`mkdir -p /opt &amp;&amp; \  `      #建立目录/opt
- `apk --update add --virtual build-dependencies curl &amp;&amp; \`     #添加curl命令到虚拟构建依赖组build-dependencies
- `curl -s -S https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz | tar xvz -C /opt &amp;&amp; \`         #下载activemq并解压到指定目录
- `ln -s /opt/$ACTIVEMQ $ACTIVEMQ_HOME &amp;&amp; \`      #建立软连接
- `addgroup -S activemq &amp;&amp; adduser -S -H -G activemq -h $ACTIVEMQ_HOME activemq &amp;&amp; \`       #添加用户&amp;用户组
- `chown -R activemq:activemq /opt/$ACTIVEMQ &amp;&amp; \    
- chown -h activemq:activemq $ACTIVEMQ_HOME &amp;&amp; \
- apk del build-dependencies &amp;&amp; \`       #删除虚拟构建依赖组
- `rm -rf /var/cache/apk/*`       #删除install缓存，缩小image size ,反斜杠换行（同一条命令执行减少结果提交，减少image layer）  
- `USER activemq`     #用户切换（之后命令所属用户
- `WORKDIR $ACTIVEMQ_HOME`
- `EXPOSE $ACTIVEMQ_TCP $ACTIVEMQ_AMQP $ACTIVEMQ_STOMP $ACTIVEMQ_MQTT $ACTIVEMQ_WS $ACTIVEMQ_UI` #暴露端口号
- `CMD [&quot;/bin/sh&quot;, &quot;-c&quot;, &quot;bin/activemq console&quot;]`     #容器启动后执行命令
-</code></pre></blockquote>
-<blockquote>
-<ul>
-<li>构建<br><code>docker build -t 8lovelife/activemq:1.0 .</code></li>
-</ul>
-</blockquote>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.docker.com/engine/reference/builder/#dockerignore-file" target="_blank" rel="noopener">Docker v17.6</a><br><a href="https://store.docker.com/community/images/rmohr/activemq" target="_blank" rel="noopener">activemq Dockerfile来源</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/使用Dockerfile构建Docker镜像/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -877,8 +746,7 @@ PING c7_net_alias (10.0.0.5): 56 data bytes
 
       
         
-          
-            <!-- # 使用Docker快速构建开发调试环境 -->
+          <!-- # 使用Docker快速构建开发调试环境 -->
 <p>简单记录下我在开发过程中,如何快速构建调试环境</p>
 <h1 id="RedisService"><a href="#RedisService" class="headerlink" title="RedisService"></a>RedisService</h1><blockquote>
 <ul>
@@ -900,58 +768,13 @@ redis-server /usr/local/etc/redis/redis.conf</code></li>
 -p 13306:3306 -e MYSQL\_ROOT\_PASSWORD=12345 -d mysql</code></li>
 </ul>
 </blockquote>
-<hr>
-<h1 id="MongoService"><a href="#MongoService" class="headerlink" title="MongoService"></a>MongoService</h1><blockquote>
-<ul>
-<li>下载Mongo image<br><code>docker pull mongo</code></li>
-<li>启动MongoDB<br><code>docker run -ti --restart=always --name mongoService -v /home/core/mongo/data:/data/db -p 27017:27017 -d mongo --auth</code></li>
-<li>登录Mongo,建立用户<br>1.<code>docker exec -it mongoService mongo admin;</code><br>2.<code>db.createUser({user:&#39;admin&#39;,pwd:&#39;admin&#39;,roles:[{role:&#39;root&#39;,db:&#39;admin&#39;}]});</code><br>3.<code>db.auth(&#39;admin&#39;,&#39;admin&#39;);</code></li>
-<li>创建collection dmz_inward下的普通用户:<br><code>use dmz_inward;
-db.createUser({user:&#39;dmz&#39;,pwd:&#39;dmz&#39;,roles: [{role:&#39;readWrite&#39;,db:&#39;dmz_inward&#39;}]});</code></li>
-</ul>
-</blockquote>
-<hr>
-<h1 id="NginxService"><a href="#NginxService" class="headerlink" title="NginxService"></a>NginxService</h1><blockquote>
-<ul>
-<li>下载Nginx image<br><code>docker pull nginx</code></li>
-<li>启动Nginx<br><code>docker run -it --restart=always --name nginxService -p 80:80
--v /home/core/yourResources: /usr/share/nginx/html:ro 
--v /logs:/var/log/nginx 
--v /home/core/conf/nginx/nginx.conf:ro -d nginx</code></li>
-</ul>
-</blockquote>
-<hr>
-<h1 id="RabbitmqService"><a href="#RabbitmqService" class="headerlink" title="RabbitmqService"></a>RabbitmqService</h1><blockquote>
-<ul>
-<li>下载rabbitmq:3-management<br><code>docker pull rabbitmq:3-management</code></li>
-<li>启动rabbitmq:3-management<br><code>docker run --restart=always --name rabbitmqService</code><br><code>--hostname fRabbit</code><br><code>-p 5672:5672 -p 15672:15672</code><br><code>-v /home/core/rabbitmq/data:/var/lib/rabbitmq/mnesia/rabbit@fRabbit</code><br><code>-v /home/core/rabbitmq/conf/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro</code><br><code>-d rabbitmq:3-management</code></li>
-<li>rabbitmq.config配置<br><code>[ { rabbit, [</code><pre><code> `{ loopback_users, [ ] },`
-` { tcp_listeners, [ 5672 ] },`  
- `{ default_user, &lt;&lt;&quot;dmz&quot;&gt;&gt; },`   #用户名
-` { default_pass, &lt;&lt;&quot;dmz&quot;&gt;&gt; },`  #密码
-` { ssl_listeners, [ ] },`
- `{ hipe_compile, false }`
-</code></pre><code>] },</code><br><code>{rabbitmq_management, [{listener, [{port, 15672}]}]} ].</code></li>
-<li>访问rabbitmq管理界面<br><code>http://ip:15672</code><br><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/RabbitManage.png" alt="这里写图片描述"></li>
-</ul>
-</blockquote>
-<hr>
-<h1 id="Portainer"><a href="#Portainer" class="headerlink" title="Portainer"></a>Portainer</h1><p>漂亮的docker容器管理界面</p>
-<blockquote>
-<ul>
-<li>下载portainer image<br><code>docker pull portainer/portainer</code></li>
-<li>启动Portainer<br><code>docker run -d --restart=always --name=portainer  
--p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer</code></li>
-<li>访问<br><code>http://ip:9000
-name:name
-pwd:pwd</code></li>
-</ul>
-</blockquote>
-<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Portainer.png" alt="这里写图片描述"></p>
-<h1 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h1><p><a href="http://whathowhy.com/2018/10/13/Kafka-On-Docker/" target="_blank" rel="noopener">Kafka</a></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/Docker快速构建开发测试环境/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1068,8 +891,7 @@ pwd:pwd</code></li>
 
       
         
-          
-            <!-- # Docker Plugin -->
+          <!-- # Docker Plugin -->
 <p>简单记录下我在<strong>IntelliJ IDEA</strong>中如何使用<strong>Docker</strong></p>
 <h1 id="Intellij-Idea-配置Docker"><a href="#Intellij-Idea-配置Docker" class="headerlink" title="Intellij Idea 配置Docker"></a>Intellij Idea 配置Docker</h1><blockquote>
 <p><strong>Docker</strong> ：Docker是目前比较流行的容器，帮你管理应用服务    —— <a href="https://www.docker.com/" target="_blank" rel="noopener">Docker官网</a></p>
@@ -1082,22 +904,13 @@ pwd:pwd</code></li>
 <p>将Docker登录证书拷贝到本地，准备连接</p>
 </blockquote>
 <p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerC.png" alt="这里写图片描述"></p>
-<h2 id="连接Docker"><a href="#连接Docker" class="headerlink" title="连接Docker"></a>连接Docker</h2><p> <strong>Intellij Idea 15.0</strong><br><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerL1.png" alt="这里写图片描述"><br><strong>Intellij Idea 2016</strong><br><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerL2.png" alt="这里写图片描述"></p>
-<h2 id="配置Docker-Registry"><a href="#配置Docker-Registry" class="headerlink" title="配置Docker Registry"></a>配置Docker Registry</h2><p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerR.png" alt="这里写图片描述"></p>
-<h1 id="Deploy-on-Docker"><a href="#Deploy-on-Docker" class="headerlink" title="Deploy on Docker"></a>Deploy on Docker</h1><h2 id="Run-Debug-Configurations"><a href="#Run-Debug-Configurations" class="headerlink" title="Run/Debug Configurations"></a>Run/Debug Configurations</h2><blockquote>
-<p>构建Docker镜像 Dockerfile（build image）<br><strong><em>Dockerfile:</em></strong><br>FROM tomcat<br>ADD HelloWorld.war /usr/local/tomcat/webapps </p>
-</blockquote>
-<blockquote>
-<p>Docker容器参数配置<br><strong><em>Container.json:</em></strong><br>{<br>  “HostConfig”: {<br>    “PortBindings”:{ “8080/tcp”: [{ “HostIp”: “0.0.0.0”, “HostPort”: “18080” }] }<br>  }<br>}</p>
-</blockquote>
-<p><strong>发布镜像</strong></p>
-<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerImage.png" alt="这里写图片描述"></p>
-<p><strong>加载容器配置JSON file</strong></p>
-<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerJson.png" alt="这里写图片描述"></p>
-<h3 id="Start-Docker"><a href="#Start-Docker" class="headerlink" title="Start Docker"></a>Start Docker</h3><p><strong>localhost:18080/HelloWorld</strong><br><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerStart.png" alt="这里写图片描述"></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a><br><a href="https://www.jetbrains.com/help/idea/2016.1/run-debug-configuration-docker-deployment.html" target="_blank" rel="noopener">IntelliJ IDEA</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/Docker-Plugin/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1254,7 +1067,7 @@ pwd:pwd</code></li>
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">

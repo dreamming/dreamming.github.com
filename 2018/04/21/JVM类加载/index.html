@@ -121,7 +121,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/JVM/ClassLife.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/JVM/Classloader.png">
-<meta property="og:updated_time" content="2019-01-13T13:23:34.244Z">
+<meta property="og:updated_time" content="2019-01-13T15:48:16.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM类加载">
 <meta name="twitter:description" content="回顾回顾JVM中的类加载 类的生命周期类的生命周期包括类的加载、链接、初始化、使用、销毁 类装入JVM将类装入JVM供使用的过程分为：类的加载、链接、初始化  显示装入：1。 调用类加载器中的loadClass方法 2。调用Class.forName方法 隐示装入：解析类中引用的其他类的时候，所引用的类未被加载时则被隐示装入  类的加载类的加载包括   将.class文件加载到JVM方法区中 在堆">
@@ -438,6 +438,7 @@
 <ul>
 <li>解析：将常量池中的符号引用替换为直接引用，解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符7类符号引用进行</li>
 </ul>
+<a id="more"></a>
 <h3 id="类的初始化"><a href="#类的初始化" class="headerlink" title="类的初始化"></a>类的初始化</h3><p>类的初始化是执行<code>&lt;clinit&gt;()</code>方法的过程</p>
 <ul>
 <li><code>&lt;clinit&gt;()</code> 由编译器按照代码书写的顺序将类中的 <strong>静态变量的赋值与静态代码块</strong> 合并到此方法中</li>
@@ -688,7 +689,7 @@
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">

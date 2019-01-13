@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerImageData.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerStoreData.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerVolume.png">
-<meta property="og:updated_time" content="2019-01-13T13:23:34.241Z">
+<meta property="og:updated_time" content="2019-01-13T15:34:11.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker容器中的数据管理">
 <meta name="twitter:description" content="简单记录下Docker容器的数据管理 Docker镜像的存储  Docker镜像是一层一层叠出来的，Dockerfile中的每一行指令都会产生一层,镜像中的数据对容器是只读的 dockerfile中的命令可以直接访问底层（lower layer）已经产生的数据，当发生数据文件的修改时则会将底层文件复制到当前layer进行处理 docker history 镜像ID展示镜像组成结构 存储结构图">
@@ -440,6 +440,7 @@
 <li><strong>Container layer</strong>中的数据应该尽量的少，减少镜像大小，storage driver的引入同样会带来性能的下降并且在容器停止后数据将会消失。应该使用volumes（宿主机文件系统可持久化）</li>
 </ol>
 </blockquote>
+<a id="more"></a>
 <h1 id="DATA-VOLUMES"><a href="#DATA-VOLUMES" class="headerlink" title="DATA VOLUMES"></a><strong><em>DATA VOLUMES</em></strong></h1><blockquote>
 <p> docker提供了三种类型的数据挂载：volume,bind mount,tmpfs mount，挂载的数据能够传递到容器内部，容器中的数据也会回传到挂在目录或文件中<br><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerVolume.png" alt="这里写图片描述"></p>
 </blockquote>
@@ -688,7 +689,7 @@
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">

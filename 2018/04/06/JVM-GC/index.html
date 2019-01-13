@@ -126,7 +126,7 @@
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Copying%3ACleanup.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/AfterC%3AC.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/GCCombine.png">
-<meta property="og:updated_time" content="2019-01-13T13:23:34.237Z">
+<meta property="og:updated_time" content="2019-01-13T15:47:40.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM GC">
 <meta name="twitter:description" content="垃圾回收器垃圾回收器是内存回收的具体实现，Java有四类垃圾回收器，分别是：   Serial Garbage Collector Parallel Garbage Collector CMS Garbage Collector G1 Garbage Collector    串行垃圾回收器 串行垃圾回收器是JVM Client模式下的默认GC，只使用一个单独的线程进行垃圾回收，垃圾回收时会冻结所">
@@ -438,6 +438,7 @@
 <h2 id="Serial-Old-GC"><a href="#Serial-Old-GC" class="headerlink" title="Serial Old GC"></a>Serial Old GC</h2><blockquote>
 <p>Serial Old GC 为老年代搜集器，使用“标记-整理”算法，此GC不能够主动配置。<sup>1.</sup>当CMS收集器发生错误的时候使用。<sup>2.</sup>配合其他GC使用</p>
 </blockquote>
+<a id="more"></a>
 <h1 id="并行垃圾回收器"><a href="#并行垃圾回收器" class="headerlink" title="并行垃圾回收器"></a>并行垃圾回收器</h1><blockquote>
 <p>Parallel GC 根据Minor GC 和 Full GC的不同分为三种，分别为：ParNewGC、ParallelGC，ParallelGC。并行垃圾回收器以多线程的方式进行回收</p>
 </blockquote>
@@ -738,7 +739,7 @@
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">

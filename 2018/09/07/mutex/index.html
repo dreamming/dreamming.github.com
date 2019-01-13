@@ -123,7 +123,7 @@
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/%E5%B9%B6%E5%8F%91/MulSync.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/%E5%B9%B6%E5%8F%91/FairnessLock.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/%E5%B9%B6%E5%8F%91/unFairnessLock.png">
-<meta property="og:updated_time" content="2019-01-13T13:23:34.237Z">
+<meta property="og:updated_time" content="2019-01-13T15:49:46.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mutex">
 <meta name="twitter:description" content="记录下多线程情况下，如何避免资源竞争带来的问题 资源竞争多线程在运行期间，若存在数据的共享，不同线程对资源的争抢会造成彼方线程的处理错乱。下面是两个线程将数值从零累加10次的例子（预计结果为10） 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455">
@@ -423,6 +423,7 @@
 <blockquote>
 <p>当线程或进程依赖某一资源（代码中的countResult），会发生资源竞争。使针对资源的操作互斥，能够解决资源竞争带来的结果不可预测</p>
 </blockquote>
+<a id="more"></a>
 <h1 id="关键字synchronized"><a href="#关键字synchronized" class="headerlink" title="关键字synchronized"></a>关键字synchronized</h1><p>Java中提供了Synchronize关键字来解决资源竞争问题</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">private synchronized void count() &#123;</span><br><span class="line"></span><br><span class="line">  try &#123;</span><br><span class="line">    Thread.sleep(10);</span><br><span class="line">  &#125; catch (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">  int temp = countResult;</span><br><span class="line">  countResult++;</span><br><span class="line">  System.out.println(Thread.currentThread().getName() + &quot; Count Before &quot; + temp + &quot;, Count After &quot;</span><br><span class="line">      + countResult);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 将资源依赖的代码方法上加上 synchronized 关键字，问题得到解决</span><br><span class="line"></span><br><span class="line">  T1 Count Before 0, Count After 1</span><br><span class="line">  T1 Count Before 1, Count After 2</span><br><span class="line">  T1 Count Before 2, Count After 3</span><br><span class="line">  T1 Count Before 3, Count After 4</span><br><span class="line">  T1 Count Before 4, Count After 5</span><br><span class="line">  T2 Count Before 5, Count After 6</span><br><span class="line">  T2 Count Before 6, Count After 7</span><br><span class="line">  T2 Count Before 7, Count After 8</span><br><span class="line">  T2 Count Before 8, Count After 9</span><br><span class="line">  T2 Count Before 9, Count After 10</span><br><span class="line">  The result of count is 10</span><br></pre></td></tr></table></figure>
 <p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/%E5%B9%B6%E5%8F%91/MulSync.png" alt="image"></p>
@@ -683,7 +684,7 @@
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">

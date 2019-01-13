@@ -119,7 +119,7 @@
 <meta property="og:site_name" content="8lovelife&#39;s life">
 <meta property="og:description" content="记录下自己对编码的理解和疑惑，什么是Unicode？UTF-8、UTF-16、ASCII又是什么？ 编码与解码 编码 ：信息从一种数据形式到另一种数据形式的转换过程。信息在计算机中的存储与传输是以二               进制的形式（010101）进行的，计算机中的存储单元为Byte，所以需要计算机处理的信息必须编码为Bytes。   解码：编码的逆向过程。计算机中为Bytes到字符信息的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T13:23:34.238Z">
+<meta property="og:updated_time" content="2019-01-13T15:46:59.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Char 编码">
 <meta name="twitter:description" content="记录下自己对编码的理解和疑惑，什么是Unicode？UTF-8、UTF-16、ASCII又是什么？ 编码与解码 编码 ：信息从一种数据形式到另一种数据形式的转换过程。信息在计算机中的存储与传输是以二               进制的形式（010101）进行的，计算机中的存储单元为Byte，所以需要计算机处理的信息必须编码为Bytes。   解码：编码的逆向过程。计算机中为Bytes到字符信息的">
@@ -428,6 +428,7 @@
 <h1 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h1><blockquote>
 <p><strong>Unicode</strong>的编码点<strong><em>以U+开始如U+0x0020的形式</em></strong>表示，能表示的编码点范围为0x0000 ~ 0x10FFFF。我们知道Java中的字符都是以Unicode的形式保存的，并且采用UTF-16的形式编码，所以说Java中的char占用16位即2个字节，16位所能存储的最大值为0xFFFF。<strong><em>那么对于U+10000~U+10FFFF部分的CodePoint（这一部分代表的字符被称为辅助字符supplementary character），Java中的UTF-16显然无法存储</em></strong></p>
 </blockquote>
+<a id="more"></a>
 <h2 id="UTF-8的编码规则"><a href="#UTF-8的编码规则" class="headerlink" title="UTF-8的编码规则"></a>UTF-8的编码规则</h2><table>
 <thead>
 <tr>
@@ -667,7 +668,7 @@
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">

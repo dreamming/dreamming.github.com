@@ -131,7 +131,7 @@
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Intellij%20Idea/GitReflog.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Intellij%20Idea/GitAnnotate.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Intellij%20Idea/AnnotateView.png">
-<meta property="og:updated_time" content="2019-01-13T13:23:34.241Z">
+<meta property="og:updated_time" content="2019-01-13T15:34:34.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IntelliJ IDEA With Git">
 <meta name="twitter:description" content="记录下Git如何与IntelliJ IDEA协作 环境准备 Git下载 IntelliJ IDEA下载 IntelliJ IDEA 的 License server 可以使用：http://8lovelife.com:1017  IntelliJ IDEA With Git 开发过程1. 初次获取远端代码 使用IntelliJ IDEA Terminal   12Mac:code mac$ git">
@@ -414,6 +414,7 @@
 <p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Intellij%20Idea/IdeTerminal.png" alt="image"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac:code mac$ git clone https://github.com/grpc/grpc-java.git</span><br><span class="line">Cloning into &apos;grpc-java&apos;...</span><br></pre></td></tr></table></figure>
 <h2 id="2-查看远端仓库分支"><a href="#2-查看远端仓库分支" class="headerlink" title="2. 查看远端仓库分支"></a>2. 查看远端仓库分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Mac:dmz-inward- mac$ git branch -av</span><br><span class="line">* master                 0388b70 some feture</span><br><span class="line">  remotes/origin/HEAD    -&gt; origin/master</span><br><span class="line">  remotes/origin/feature cd52891 some features</span><br><span class="line">  remotes/origin/master  0388b70 some feture</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="3-将指定的远端分支同步到本地（建议同远端名一致）"><a href="#3-将指定的远端分支同步到本地（建议同远端名一致）" class="headerlink" title="3. 将指定的远端分支同步到本地（建议同远端名一致）"></a>3. 将指定的远端分支同步到本地（建议同远端名一致）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mac:dmz-inward- mac$ git checkout -b feature origin/feature</span><br><span class="line">Branch &apos;feature&apos; set up to track remote branch &apos;feature&apos; from &apos;origin&apos;.</span><br><span class="line">Switched to a new branch &apos;feature&apos;</span><br></pre></td></tr></table></figure>
 <h2 id="4-查看本地当前所在分支-amp-关联的远端分支"><a href="#4-查看本地当前所在分支-amp-关联的远端分支" class="headerlink" title="4. 查看本地当前所在分支 &amp; 关联的远端分支"></a>4. 查看本地当前所在分支 &amp; 关联的远端分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Mac:dmz-inward- mac$ git branch  // 查看当前分支</span><br><span class="line">* feature</span><br><span class="line">  master</span><br><span class="line">  </span><br><span class="line">Mac:dmz-inward- mac$ git branch -avv  // 查看当前分支关联的远端分支</span><br><span class="line">* feature                bb87089 [origin/feature] Merge branch &apos;feature_test&apos; into feature</span><br><span class="line">  feature_test           dd90129 //</span><br><span class="line">  master                 0388b70 [origin/master] some feture</span><br><span class="line">  remotes/origin/HEAD    -&gt; origin/master</span><br><span class="line">  remotes/origin/feature bb87089 Merge branch &apos;feature_test&apos; into feature</span><br><span class="line">  remotes/origin/master  0388b70 some feture</span><br></pre></td></tr></table></figure>
 <ul>
@@ -677,7 +678,7 @@
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">
