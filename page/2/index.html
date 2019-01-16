@@ -316,6 +316,197 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/JVM类加载/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8lovelife's life">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/21/JVM类加载/" itemprop="url">JVM类加载</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T15:56:14+08:00">
+                2018-04-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:48:16+08:00">
+                2019-01-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/21/JVM类加载/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/21/JVM类加载/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>回顾回顾JVM中的类加载</p>
+<h1 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h1><p>类的生命周期包括类的加载、链接、初始化、使用、销毁<br><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/JVM/ClassLife.png" alt="image"></p>
+<h2 id="类装入JVM"><a href="#类装入JVM" class="headerlink" title="类装入JVM"></a>类装入JVM</h2><p>将类装入JVM供使用的过程分为：类的加载、链接、初始化</p>
+<ul>
+<li>显示装入：<sup>1。</sup> 调用类加载器中的loadClass方法 <sup>2。</sup>调用Class.forName方法</li>
+<li>隐示装入：解析类中引用的其他类的时候，所引用的类未被加载时则被隐示装入</li>
+</ul>
+<h3 id="类的加载"><a href="#类的加载" class="headerlink" title="类的加载"></a>类的加载</h3><p>类的加载包括 </p>
+<ol>
+<li>将.class文件加载到JVM方法区中</li>
+<li>在堆中生成Class对象，Class对象提供了访问方法区中类数据结构的接口<blockquote>
+<p><strong>这一阶段类对象仅有基本的内存结构，类对象中的方法、字段、引用都不做处理，此时的类还不能使用</strong></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="类的链接"><a href="#类的链接" class="headerlink" title="类的链接"></a>类的链接</h3><p>类的链接将内存中二进制数据转换到JVM运行数据区，链接包括验证、准备、解析</p>
+<ul>
+<li>验证：验证类的字节码是否合法</li>
+<li>准备：为类的静态变量分配内存并设置默认值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">final static int a = 10  准备阶段阶段 a 的默认值为 10</span><br><span class="line">static int b = 10  准备阶段 b 的默认值为 0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析：将常量池中的符号引用替换为直接引用，解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符7类符号引用进行</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/21/JVM类加载/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/16/JVM监控/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1929,198 +2120,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/Docker容器中的数据管理/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="8lovelife's life">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/30/Docker容器中的数据管理/" itemprop="url">Docker容器中的数据管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T01:21:57+08:00">
-                2018-03-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:34:11+08:00">
-                2019-01-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index">
-                    <span itemprop="name">Docker</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/30/Docker容器中的数据管理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/30/Docker容器中的数据管理/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <!-- # Docker Data -->
-<p>简单记录下Docker容器的数据管理</p>
-<h1 id="Docker镜像的存储"><a href="#Docker镜像的存储" class="headerlink" title="Docker镜像的存储"></a><strong><em>Docker镜像的存储</em></strong></h1><blockquote>
-<ol>
-<li>Docker镜像是一层一层叠出来的，Dockerfile中的每一行指令都会产生一层,镜像中的数据对容器是只读的</li>
-<li>dockerfile中的命令可以直接访问底层（lower layer）已经产生的数据，当发生数据文件的修改时则会将底层文件复制到当前layer进行处理</li>
-<li><code>docker history 镜像ID</code>展示镜像组成结构</li>
-<li>存储结构图 </li>
-</ol>
-</blockquote>
-<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerImageData.png" alt="这里写图片描述"></p>
-<blockquote>
-<ol start="5">
-<li>docker的<strong>storage driver</strong>负责处理每层数据处理与存储</li>
-</ol>
-</blockquote>
-<h1 id="Docker容器的存储"><a href="#Docker容器的存储" class="headerlink" title="Docker容器的存储"></a><strong><em>Docker容器的存储</em></strong></h1><blockquote>
-<ol>
-<li>Docker容器在镜像的基础之上又叠了一层（Container layer即Thin R／W层，每个容器都会有自己的Thin R／W层，镜像可以共享）</li>
-<li><code>docker ps -s</code>命令能够查看当前运行容器的大小</li>
-<li>当Container layer层发生数据文件的修改时则会将底层文件复制到当前layer进行处理即docker中的copy-on-write (CoW)策略，不同于虚拟机的本质。</li>
-<li>存储结构图<br><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerStoreData.png" alt="这里写图片描述"></li>
-<li><strong>Container layer</strong>中的数据应该尽量的少，减少镜像大小，storage driver的引入同样会带来性能的下降并且在容器停止后数据将会消失。应该使用volumes（宿主机文件系统可持久化）</li>
-</ol>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/30/Docker容器中的数据管理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2173,7 +2172,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2195,7 +2194,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
