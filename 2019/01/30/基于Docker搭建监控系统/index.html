@@ -100,7 +100,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Docker,运维,">
 
 
 
@@ -111,16 +111,25 @@
 
 
 
-<meta name="description" content="Stay Hungry, Stay Foolish.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="8lovelife&#39;s life">
-<meta property="og:url" content="http://yoursite.com/tags/线程安全/index.html">
+<meta name="description" content="记录如何基于Docker搭建监控系统 StatsDStatsD 用于统计和聚合系统的指标数据  StatsD client拥有多语言实现，用于将数据发送到StatsD Server StatsD daemon监听StatsD client 发送的数据并整合数据发送(默认每10s)到后端 监控后端 Graphite、influxDB  StatsD 协议StatsD采用简单的行协议，StatsD S">
+<meta name="keywords" content="Docker,运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Docker搭建监控系统">
+<meta property="og:url" content="http://yoursite.com/2019/01/30/基于Docker搭建监控系统/index.html">
 <meta property="og:site_name" content="8lovelife&#39;s life">
-<meta property="og:description" content="Stay Hungry, Stay Foolish.">
+<meta property="og:description" content="记录如何基于Docker搭建监控系统 StatsDStatsD 用于统计和聚合系统的指标数据  StatsD client拥有多语言实现，用于将数据发送到StatsD Server StatsD daemon监听StatsD client 发送的数据并整合数据发送(默认每10s)到后端 监控后端 Graphite、influxDB  StatsD 协议StatsD采用简单的行协议，StatsD S">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/graphite.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/grafana.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/grafana%20data%20config.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/grafana%20data%20config%202.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/Grafana%20Graph.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/Grafana%20Graph%202.png">
+<meta property="og:updated_time" content="2019-01-29T18:38:23.420Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="8lovelife&#39;s life">
-<meta name="twitter:description" content="Stay Hungry, Stay Foolish.">
+<meta name="twitter:title" content="基于Docker搭建监控系统">
+<meta name="twitter:description" content="记录如何基于Docker搭建监控系统 StatsDStatsD 用于统计和聚合系统的指标数据  StatsD client拥有多语言实现，用于将数据发送到StatsD Server StatsD daemon监听StatsD client 发送的数据并整合数据发送(默认每10s)到后端 监控后端 Graphite、influxDB  StatsD 协议StatsD采用简单的行协议，StatsD S">
+<meta name="twitter:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/graphite.png">
 
 
 
@@ -150,13 +159,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/线程安全/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/30/基于Docker搭建监控系统/">
 
 
 
 
 
-  <title>标签: 线程安全 | 8lovelife's life</title>
+  <title>基于Docker搭建监控系统 | 8lovelife's life</title>
   
 
 
@@ -175,7 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -301,52 +310,247 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>线程安全<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/30/基于Docker搭建监控系统/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8lovelife's life">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/05/15/volatile/" itemprop="url">
-              
-                <span itemprop="name">volatile</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">基于Docker搭建监控系统</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-05-15T16:02:14+08:00" content="2018-05-15">
-          05-15
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-30T11:58:39+08:00">
+                2019-01-30
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-30T02:38:23+08:00">
+                2019-01-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/30/基于Docker搭建监控系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/30/基于Docker搭建监控系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"> 本文总访问量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>记录如何基于Docker搭建监控系统</p>
+<h1 id="StatsD"><a href="#StatsD" class="headerlink" title="StatsD"></a>StatsD</h1><p>StatsD 用于统计和聚合系统的指标数据</p>
+<ol>
+<li>StatsD client<br>拥有多语言实现，用于将数据发送到StatsD Server</li>
+<li>StatsD daemon<br>监听StatsD client 发送的数据并整合数据发送(默认每10s)到后端</li>
+<li>监控后端 Graphite、influxDB</li>
+</ol>
+<h2 id="StatsD-协议"><a href="#StatsD-协议" class="headerlink" title="StatsD 协议"></a>StatsD 协议</h2><p>StatsD采用简单的行协议，StatsD Server默认采用UDP协议，可配置为 TCP协议</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bucket&gt;:&lt;value&gt;|&lt;type&gt;[|@sample_rate]</span><br><span class="line">* bucket: Metric 标识</span><br><span class="line">* value: Metric 数值</span><br><span class="line">* type: Metric 类型</span><br><span class="line">* sample_rate: 采样率</span><br></pre></td></tr></table></figure>
+<h2 id="StatsD-Metric-Types"><a href="#StatsD-Metric-Types" class="headerlink" title="StatsD Metric Types"></a>StatsD Metric Types</h2><ol>
+<li>Counting<br>计数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">people.number:10|c  -- people.number +10</span><br><span class="line">people.number:2|c  -- people.number 10+2 = 12</span><br><span class="line">people.number:-5|c  -- people.number 12-5 = 7</span><br><span class="line">people.number:10|c|@0.1  -- people.number 7+10/0.1=107</span><br><span class="line">flush 107</span><br><span class="line">current people.number 107</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Timing<br>记录操作耗时，StatsD 会计算出平均值、标准差、最大值、最小值</li>
+</ol>
+<a id="more"></a>
+<blockquote>
+<p>people.number.api.mean_$PCT<br>people.number.api.sum_$PCT<br>people.number.api.upper_$PCT</p>
+<ul>
+<li>PCT表示百分比阀值，可配置</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">people.number.api:10|ms</span><br><span class="line">people.number.api:101|ms</span><br><span class="line">people.number.api:20|ms</span><br><span class="line">people.number.api:15|ms</span><br><span class="line">people.number.api:11|ms</span><br><span class="line">flush前值列表为 [10,101,20,15,11]</span><br><span class="line"></span><br><span class="line">假设 PCT为80 则刷新上报的值为: </span><br><span class="line">1. 首先剔除10%的峰值：5*0.8 = 4 (四舍五入) ，保留4个值，剔除剩余峰值101。当前[10,20,15,11]</span><br><span class="line">2. 平均值: (10+20+15+11)/4  最大值: 20  最小值: 10</span><br><span class="line"></span><br><span class="line">current people.number.api 0</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Gauges<br>在flush后值不会被清零</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat.food.amount:10|g  -- cat.food.amount +10</span><br><span class="line">cat.food.amount:-2|g  -- cat.food.amount 10-2=8</span><br><span class="line">cat.food.amount:+5|g  -- cat.food.amount 8+5=13</span><br><span class="line">cat.food.amount:10|g  -- cat.food.amount 10</span><br><span class="line">flush 10  </span><br><span class="line">current cat.food.amount 10</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>Sets<br>统计不重复的值有多少个</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">active.people.id:2|g  -- active.people.id +1</span><br><span class="line">active.people.id:1|g  -- active.people.id 1+1 = 2</span><br><span class="line">active.people.id:1|g  -- active.people.id 2</span><br><span class="line">active.people.id:10|g  -- active.people.id 2+1 = 3</span><br><span class="line">flush 3  </span><br><span class="line">current active.people.id 0</span><br></pre></td></tr></table></figure>
+<h1 id="Graphite"><a href="#Graphite" class="headerlink" title="Graphite"></a>Graphite</h1><p>Graphite 由三部分构成</p>
+<ol>
+<li>carbon<br>监听时间序列数据</li>
+<li>whisper<br>存储时间序列数据</li>
+<li>graphite-web<br>展示时间序列数据</li>
+</ol>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/graphite.png" alt="image"></p>
+<h1 id="Graphite-amp-StatsD-安装"><a href="#Graphite-amp-StatsD-安装" class="headerlink" title="Graphite &amp; StatsD 安装"></a>Graphite &amp; StatsD 安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name graphite --restart=always -p 8080:80 -p 2003-2004:2003-2004 -p 2023-2024:2023-2024 -p 8125:8125/udp -p 8126:8126 -d graphiteapp/graphite-statsd</span><br></pre></td></tr></table></figure>
+<h2 id="访问Graphite"><a href="#访问Graphite" class="headerlink" title="访问Graphite"></a>访问Graphite</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://host:8080/dashboard</span><br><span class="line">默认用户密码为：root/root</span><br><span class="line">修改用户密码：http://host:8080/admin/auth/user/1/</span><br></pre></td></tr></table></figure>
+<h1 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h1><p>官方是这么说的：<br>No matter where your data is, or what kind of database it lives in, you can bring it together with Grafana. Beautifully</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/grafana.png" alt="image"></p>
+<h2 id="Grafana安装"><a href="#Grafana安装" class="headerlink" title="Grafana安装"></a>Grafana安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=grafana --restart=always -p 3000:3000 -d grafana/grafana</span><br></pre></td></tr></table></figure>
+<h2 id="访问Grafana"><a href="#访问Grafana" class="headerlink" title="访问Grafana"></a>访问Grafana</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://host:3000</span><br><span class="line">默认用户/密码：admin/admin</span><br></pre></td></tr></table></figure>
+<h2 id="配置数据源"><a href="#配置数据源" class="headerlink" title="配置数据源"></a>配置数据源</h2><p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/grafana%20data%20config.png" alt="image"></p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/grafana%20data%20config%202.png" alt="image"></p>
+<h1 id="Metrics数据模拟"><a href="#Metrics数据模拟" class="headerlink" title="Metrics数据模拟"></a>Metrics数据模拟</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">while true; do echo -n &quot;people.number:$((RANDOM % 100))|c&quot; | nc -w 1 -u 127.0.0.1 8125; done</span><br></pre></td></tr></table></figure>
+<h1 id="设置Grafana图表"><a href="#设置Grafana图表" class="headerlink" title="设置Grafana图表"></a>设置Grafana图表</h1><p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/Grafana%20Graph.png" alt="image"></p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Monitoring/Grafana%20Graph%202.png" alt="image"></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/运维/" rel="tag"># 运维</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/17/代码质量持续约束/" rel="next" title="代码质量持续约束">
+                <i class="fa fa-chevron-left"></i> 代码质量持续约束
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -354,6 +558,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -374,8 +585,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -437,6 +657,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#StatsD"><span class="nav-number">1.</span> <span class="nav-text">StatsD</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#StatsD-协议"><span class="nav-number">1.1.</span> <span class="nav-text">StatsD 协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StatsD-Metric-Types"><span class="nav-number">1.2.</span> <span class="nav-text">StatsD Metric Types</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Graphite"><span class="nav-number">2.</span> <span class="nav-text">Graphite</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Graphite-amp-StatsD-安装"><span class="nav-number">3.</span> <span class="nav-text">Graphite &amp; StatsD 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问Graphite"><span class="nav-number">3.1.</span> <span class="nav-text">访问Graphite</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Grafana"><span class="nav-number">4.</span> <span class="nav-text">Grafana</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Grafana安装"><span class="nav-number">4.1.</span> <span class="nav-text">Grafana安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问Grafana"><span class="nav-number">4.2.</span> <span class="nav-text">访问Grafana</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置数据源"><span class="nav-number">4.3.</span> <span class="nav-text">配置数据源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Metrics数据模拟"><span class="nav-number">5.</span> <span class="nav-text">Metrics数据模拟</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置Grafana图表"><span class="nav-number">6.</span> <span class="nav-text">设置Grafana图表</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -577,6 +813,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
