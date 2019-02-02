@@ -130,7 +130,7 @@
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/CICD/SonarQube%20Lanage.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/CICD/Java%20Plugin%20Install.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/CICD/Restart%20SonarQube.png">
-<meta property="og:updated_time" content="2019-01-29T17:56:33.040Z">
+<meta property="og:updated_time" content="2019-02-02T08:18:00.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码质量持续约束">
 <meta name="twitter:description" content="基于Docker的代码质量持续约束流程搭建为了提高团队整体的代码质量，有必要搭建一套持续的代码约束流程。本文记录基于Docker如何搭建自动化代码检测流程  创建网络方便组件间通过容器名通信 docker network create -d bridge --subnet=10.0.0.0/24 cicd_bridge GitLab开源的代码托管平台，集成了CI/CD 启动docker run -">
@@ -374,8 +374,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-30T01:56:33+08:00">
-                2019-01-30
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-02T16:18:00+08:00">
+                2019-02-02
               </time>
             
           </span>
@@ -464,6 +464,7 @@
 <h2 id="获取-Runner-Token"><a href="#获取-Runner-Token" class="headerlink" title="获取 Runner Token"></a>获取 Runner Token</h2><p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/CICD/GitLab%20Token.png" alt=""><br><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/CICD/GItLab%20G%20Token.png" alt=""></p>
 <h2 id="注册-Runner"><a href="#注册-Runner" class="headerlink" title="注册 Runner"></a>注册 Runner</h2><p><code>docker exec -it gitlab-runner_cicd gitlab-ci-multi-runner register</code></p>
 <p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/CICD/GitLab%20Runner%20Register.png" alt=""></p>
+<p><code>或者命令指定注册： docker exec -it  gitlab-runner_cicd gitlab-ci-multi-runner register   --non-interactive   --executor &quot;docker&quot;   --docker-image maven:3.5-jdk-8   --url &quot;http://gitlab_cicd&quot;   --registration-token &quot;NDcNdmx5jaQxka8Ua3sn&quot;   --description &quot;docker-runner&quot;   --tag-list &quot;whw&quot;   --run-untagged   --locked=&quot;false&quot; --docker-network-mode =cicd_bridge</code></p>
 <h2 id="配置注册信息"><a href="#配置注册信息" class="headerlink" title="配置注册信息"></a>配置注册信息</h2><p><code>vi ~/DockerVolumeCicd/gitlab-runner/conf/config.toml</code></p>
 <p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/CICD/GitLab%20Runner%20Config.png" alt=""></p>
 <h1 id="SonarQube"><a href="#SonarQube" class="headerlink" title="SonarQube"></a>SonarQube</h1><p>SonarQube是一个代码质量管理系统，支持多种语言分析，提供重复代码、编码标准、单元测试、代码覆盖率、代码复杂度、潜在Bug的报告分析</p>
