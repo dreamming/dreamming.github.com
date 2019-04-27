@@ -119,7 +119,7 @@
 <meta property="og:site_name" content="8lovelife&#39;s life">
 <meta property="og:description" content="WHATBean Validation 是一个java规范。可以通过注解的方式约束定义的对象模型或约束方法的入参和出参对象 Bean Validation 1.0Bean Validation 1.0（JSR303）是最早的一版java标准对象验证规范，是Java EE 6的一部分。认证的具体实现有：    名称 版本     Hibernate Validator 4.3.1.Final   A">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-27T15:10:00.649Z">
+<meta property="og:updated_time" content="2019-04-27T15:30:22.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bean Validation">
 <meta name="twitter:description" content="WHATBean Validation 是一个java规范。可以通过注解的方式约束定义的对象模型或约束方法的入参和出参对象 Bean Validation 1.0Bean Validation 1.0（JSR303）是最早的一版java标准对象验证规范，是Java EE 6的一部分。认证的具体实现有：    名称 版本     Hibernate Validator 4.3.1.Final   A">
@@ -362,7 +362,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-27T23:10:00+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-27T23:30:22+08:00">
                 2019-04-27
               </time>
             
@@ -504,8 +504,7 @@
 <li><strong>可以通过反射取得字段值（field的注解约束不需要实现getter方法也可以进行约束校验，1.0和1.1必须实现getter方法）</strong></li>
 <li><a href="https://beanvalidation.org/2.0/spec/#whatsnew-20" target="_blank" rel="noopener">more details</a></li>
 </ul>
-<h1 id="WHY"><a href="#WHY" class="headerlink" title="WHY"></a>WHY</h1><p>为什么要使用Bean Validation ? </p>
-<p><strong>验证参数 BEFORE</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Book book = new Book();</span><br><span class="line">if (book != null </span><br><span class="line">        &amp;&amp; book.getCategory() != null</span><br><span class="line">        &amp;&amp; book.getCategory().trim().length() != 0</span><br><span class="line">        &amp;&amp; book.getTitle() != null</span><br><span class="line">        &amp;&amp; book.getTitle().trim().length() != 0</span><br><span class="line">        &amp;&amp; book.getWriter() != null</span><br><span class="line">        &amp;&amp; book.getWriter().trim().length() != 0) &#123;</span><br><span class="line">    // TODO</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="WHY"><a href="#WHY" class="headerlink" title="WHY"></a>WHY</h1><p>为什么要使用Bean Validation ?<br><a id="more"></a><br><strong>验证参数 BEFORE</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Book book = new Book();</span><br><span class="line">if (book != null </span><br><span class="line">        &amp;&amp; book.getCategory() != null</span><br><span class="line">        &amp;&amp; book.getCategory().trim().length() != 0</span><br><span class="line">        &amp;&amp; book.getTitle() != null</span><br><span class="line">        &amp;&amp; book.getTitle().trim().length() != 0</span><br><span class="line">        &amp;&amp; book.getWriter() != null</span><br><span class="line">        &amp;&amp; book.getWriter().trim().length() != 0) &#123;</span><br><span class="line">    // TODO</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>验证参数 AFTER</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Book &#123;</span><br><span class="line"></span><br><span class="line">    @NotBlank</span><br><span class="line">    private String title;</span><br><span class="line">    @NotBlank</span><br><span class="line">    private String writer;</span><br><span class="line">    @NotBlank</span><br><span class="line">    private String category;</span><br><span class="line"></span><br><span class="line">    // setter/getter</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> validator.validate(new Book())</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>减少频繁、冗余的if判断</li>
