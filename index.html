@@ -316,6 +316,297 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/Bean-Validation/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8lovelife's life">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/27/Bean-Validation/" itemprop="url">Bean Validation</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-27T22:34:58+08:00">
+                2019-04-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-27T23:10:00+08:00">
+                2019-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JSR/" itemprop="url" rel="index">
+                    <span itemprop="name">JSR</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/27/Bean-Validation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/27/Bean-Validation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h1><p>Bean Validation 是一个java规范。可以通过注解的方式约束定义的对象模型或约束方法的入参和出参对象</p>
+<h2 id="Bean-Validation-1-0"><a href="#Bean-Validation-1-0" class="headerlink" title="Bean Validation 1.0"></a>Bean Validation 1.0</h2><p>Bean Validation 1.0（JSR303）是最早的一版java标准对象验证规范，是Java EE 6的一部分。认证的具体实现有：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hibernate Validator</td>
+<td>4.3.1.Final</td>
+</tr>
+<tr>
+<td>Apache BVal</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Bean-Validation-1-1"><a href="#Bean-Validation-1-1" class="headerlink" title="Bean Validation 1.1"></a>Bean Validation 1.1</h2><p>Bean Validation 1.1（JSR349）是Java EE 7的一部分。<br>认证的具体实现有：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hibernate Validator</td>
+<td>4.3.1.Final</td>
+</tr>
+<tr>
+<td>Apache BVal</td>
+<td>1.1.2</td>
+</tr>
+</tbody>
+</table>
+<p>较JSR303新增</p>
+<ul>
+<li>方法级别上的约束，包括入参、出参</li>
+<li>DI and CDI（JSR346） 集成</li>
+<li>支持组转换</li>
+<li>违反约束消息支持EL表达式(JSR341)</li>
+<li>集成其他规范，如验证 JAX-RS: Java API for RESTful Web Services</li>
+<li><a href="https://beanvalidation.org/1.1/changes/#dependency-injection" target="_blank" rel="noopener">more details</a> </li>
+</ul>
+<h2 id="Bean-Validation-2-0"><a href="#Bean-Validation-2-0" class="headerlink" title="Bean Validation 2.0"></a>Bean Validation 2.0</h2><p>Bean Validation 2.0（JSR380）是Java EE 8的一部分。<br>认证的具体实现有：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hibernate Validator</td>
+<td>6.0.1.Final</td>
+</tr>
+</tbody>
+</table>
+<p>较JSR380新增</p>
+<ul>
+<li>可针对容器中的元素进行约束</li>
+<li>支持data/time 的@Past、@Future约束</li>
+<li>新的内置约束注解，如：@Email, @NotEmpty, @NotBlank, @Positive, @PositiveOrZero, @Negative, @NegativeOrZero, @PastOrPresent and @FutureOrPresent</li>
+<li><strong>可以通过反射取得字段值（field的注解约束不需要实现getter方法也可以进行约束校验，1.0和1.1必须实现getter方法）</strong></li>
+<li><a href="https://beanvalidation.org/2.0/spec/#whatsnew-20" target="_blank" rel="noopener">more details</a></li>
+</ul>
+<h1 id="WHY"><a href="#WHY" class="headerlink" title="WHY"></a>WHY</h1><p>为什么要使用Bean Validation ? </p>
+<p><strong>验证参数 BEFORE</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Book book = new Book();</span><br><span class="line">if (book != null </span><br><span class="line">        &amp;&amp; book.getCategory() != null</span><br><span class="line">        &amp;&amp; book.getCategory().trim().length() != 0</span><br><span class="line">        &amp;&amp; book.getTitle() != null</span><br><span class="line">        &amp;&amp; book.getTitle().trim().length() != 0</span><br><span class="line">        &amp;&amp; book.getWriter() != null</span><br><span class="line">        &amp;&amp; book.getWriter().trim().length() != 0) &#123;</span><br><span class="line">    // TODO</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>验证参数 AFTER</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Book &#123;</span><br><span class="line"></span><br><span class="line">    @NotBlank</span><br><span class="line">    private String title;</span><br><span class="line">    @NotBlank</span><br><span class="line">    private String writer;</span><br><span class="line">    @NotBlank</span><br><span class="line">    private String category;</span><br><span class="line"></span><br><span class="line">    // setter/getter</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> validator.validate(new Book())</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>减少频繁、冗余的if判断</li>
+<li>Constrain once，validate everywhere</li>
+</ul>
+<h1 id="HOW"><a href="#HOW" class="headerlink" title="HOW"></a>HOW</h1><p>Bean Validation 怎么用？</p>
+<ul>
+<li>Requirements（选择 Hibernate Validator实现）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">MAVEN依赖：</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.hibernate&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;hibernate-validator&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;6.0.1.Final&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.glassfish&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;javax.el&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.0.1-b06&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>常用的注解约束解释</p>
+<h3 id="基本约束"><a href="#基本约束" class="headerlink" title="基本约束"></a>基本约束</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">public class BeanForValidate &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 元素： CharSequence</span><br><span class="line">     * 约束：不能为null, 至少包含一个非空字符</span><br><span class="line">     */</span><br><span class="line">    @NotBlank</span><br><span class="line">    private String blankStr = &quot;  &quot;;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 元素：CharSequence(length)、Collection(size)、Map(size)、Array(length)</span><br><span class="line">     * 约束：不能为null, 不能为空</span><br><span class="line">     */</span><br><span class="line">    @NotEmpty</span><br><span class="line">    private String emptyStr = &quot;  &quot;;</span><br><span class="line">    @NotEmpty</span><br><span class="line">    private List&lt;Integer&gt; emptyList;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 元素：BigDecimal、BigInteger、byte、short、int、long（包括原型的包装类）</span><br><span class="line">     * 约束：min &lt;= element &lt;=max , null 合法</span><br><span class="line">     */</span><br><span class="line">    @Min(value = 11)</span><br><span class="line">    @Max(value = 21)</span><br><span class="line">    // 11&lt;=size&lt;=21</span><br><span class="line">    private Integer minMaxInt = 10;</span><br><span class="line">    @Min(value = 21)</span><br><span class="line">    private BigDecimal minDecimal = new BigDecimal(&quot;20.9&quot;);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 元素：BigDecimal、BigInteger、CharSequence、byte、short、int、long（包括原型的包装类）</span><br><span class="line">     * 约束：element &gt;= DecimalMin, null 合法</span><br><span class="line">     */</span><br><span class="line">    @DecimalMin(value = &quot;100.2&quot;)</span><br><span class="line">    private String decimalMinDecimal = &quot;100.1&quot;;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 元素：CharSequence(length)、Collection(size)、Map(size)、Array(length)</span><br><span class="line">     * 约束：size(min) &lt;= element &gt;= size(max)，null 合法</span><br><span class="line">     */</span><br><span class="line">    @Size(min = 1, max = 3)</span><br><span class="line">    // 1&lt;=size&lt;=3</span><br><span class="line">    private String sizeStr = &quot;size&quot;;</span><br><span class="line">    @Size(min = 1)</span><br><span class="line">    @NotNull</span><br><span class="line">    private List&lt;String&gt; nullSizeList = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        nullSizeList.add(&quot;A&quot;);</span><br><span class="line">        nullSizeList.add(&quot;B&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 元素：BigDecimal、BigInteger、byte、short、int、long、float、double（包括原型的包装类）</span><br><span class="line">     * 约束：必须是正数, 0非法 ,null 合法</span><br><span class="line">     */</span><br><span class="line">    @Positive</span><br><span class="line">    private Integer positive = -1;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 元素：BigDecimal、BigInteger、CharSequence、byte、short、int、long（包括原型的包装类）</span><br><span class="line">     * 约束：element整数位数=integer , element小数位数=fraction ，null 合法</span><br><span class="line">     */</span><br><span class="line">    @Digits(integer = 3, fraction = 2)</span><br><span class="line">    // 只允许在3位整数和2位小数范围内</span><br><span class="line">    private String digits = &quot;99.212&quot;;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 元素：Date、Calendar、Instant、LocalDate、LocalDateTime、LocalTime、MonthDay、OffsetDateTime、</span><br><span class="line">     * OffsetTime、Year、YearMonth、ZonedDateTime、HijrahDate、JapaneseDate、MinguoDate、ThaiBuddhistDate</span><br><span class="line">     * 约束：时间是在未来，当前时间默认的是 JVM的时间，null 合法</span><br><span class="line">     */</span><br><span class="line">    @Future</span><br><span class="line">    private Date passTime;</span><br><span class="line">    &#123;</span><br><span class="line">        Calendar instance = Calendar.getInstance();</span><br><span class="line">        instance.add(Calendar.DAY_OF_YEAR, -1);</span><br><span class="line">        passTime = instance.getTime();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 元素：CharSequence</span><br><span class="line">     * 约束：是否符合正则表达式，null 合法</span><br><span class="line">     */</span><br><span class="line">    @Pattern(message = &quot;身份证账号格式错误&quot;, regexp = &quot;(^[1-9]\\d&#123;5&#125;(18|19|([23]\\d))\\d&#123;2&#125;((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d&#123;3&#125;[0-9Xx]$)|(^[1-9]\\d&#123;5&#125;\\d&#123;2&#125;((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d&#123;3&#125;$)/&quot;)</span><br><span class="line">    // 身份证号验证</span><br><span class="line">    private String idCard = &quot;92002199902137720&quot;;</span><br><span class="line">    @Email</span><br><span class="line">    @NotBlank</span><br><span class="line">    private String mail = &quot;12.12@com.com&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">校验：</span><br><span class="line"></span><br><span class="line">        BeanForValidate beanForValidate = new BeanForValidate();</span><br><span class="line">        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();</span><br><span class="line">        Set&lt;ConstraintViolation&lt;BeanForValidate&gt;&gt; result = validator.validate(beanForValidate);</span><br><span class="line">        List&lt;String&gt; message</span><br><span class="line">                = result.stream().map(v -&gt; v.getPropertyPath() + &quot; &quot; + v.getMessage() + &quot;: &quot; + v.getInvalidValue())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line">                               </span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line"></span><br><span class="line">positive must be greater than 0: -1</span><br><span class="line">minMaxInt 最小不能小于11: 10</span><br><span class="line">minDecimal 最小不能小于21: 20.9</span><br><span class="line">decimalMinDecimal 必须大于或等于100.2: 100.1</span><br><span class="line">idCard 身份证账号格式错误: 92002199902137720</span><br><span class="line">sizeStr 个数必须在1和3之间: size</span><br><span class="line">emptyList 不能为空: null</span><br><span class="line">passTime 需要是一个将来的时间: Fri Apr 19 18:06:18 CST 2019</span><br><span class="line">blankStr 不能为空:   </span><br><span class="line">digits 数字的值超出了允许范围(只允许在3位整数和2位小数范围内): 999.212</span><br></pre></td></tr></table></figure>
+<h3 id="嵌套约束"><a href="#嵌套约束" class="headerlink" title="嵌套约束"></a>嵌套约束</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">public class BeanGraphForValidate &#123;</span><br><span class="line"></span><br><span class="line">    @NotEmpty</span><br><span class="line">    private List&lt;@Valid BeanForValidate&gt; beanForValidates; // Bean Validation 2.0</span><br><span class="line"></span><br><span class="line">//    OR</span><br><span class="line"></span><br><span class="line">//    @NotEmpty</span><br><span class="line">//    @Valid  嵌套校验需要指定 @Valid注解</span><br><span class="line">//    private List&lt;BeanForValidate&gt; beanForValidatess;</span><br><span class="line"></span><br><span class="line">    @NotEmpty</span><br><span class="line">    private Map&lt;String, @Valid BeanForValidate&gt; beanForValidateMap; // Bean Validation 2.0</span><br><span class="line"></span><br><span class="line">//    OR</span><br><span class="line"></span><br><span class="line">//    @NotEmpty</span><br><span class="line">//    @Valid</span><br><span class="line">//    private Map&lt;String,BeanForValidate&gt; beanForValidateMapM;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        beanForValidates = new ArrayList&lt;&gt;();</span><br><span class="line">        BeanForValidate beanForValidate = new BeanForValidate();</span><br><span class="line">        beanForValidates.add(beanForValidate);</span><br><span class="line">        beanForValidateMap = new HashMap&lt;&gt;();</span><br><span class="line">        beanForValidateMap.put(&quot;map&quot;, beanForValidate);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">校验：</span><br><span class="line"></span><br><span class="line">        ValidatorFactory validatorFactory = Validation.byProvider(HibernateValidator.class)</span><br><span class="line">        .configure().failFast(false).buildValidatorFactory();</span><br><span class="line">        Validator validator = validatorFactory.getValidator();        </span><br><span class="line">        BeanGraphForValidate beanGraphForValidate = new BeanGraphForValidate();</span><br><span class="line">        Set&lt;ConstraintViolation&lt;BeanGraphForValidate&gt;&gt; result = validator.validate(beanGraphForValidate);</span><br><span class="line">        List&lt;String&gt; message</span><br><span class="line">                = result.stream().map(v -&gt; v.getPropertyPath() + &quot; &quot; + v.getMessage() + &quot;: &quot; + v.getInvalidValue())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">        for (String str : message) &#123;</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        &#125;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line"></span><br><span class="line">beanForValidateMap[map].emptyList 不能为空: null</span><br><span class="line">beanForValidates[0].sizeStr validated size size: size</span><br><span class="line">beanForValidateMap[map].blankStr 不能为空:   </span><br><span class="line">beanForValidateMap[map].property 不能为空: null</span><br><span class="line">beanForValidateMap[map].passTime 需要是一个将来的时间: Mon Apr 22 00:44:45 CST 2019</span><br><span class="line">beanForValidates[0].minDecimal the element is 20.9, but need element &lt; 21: 20.9</span><br><span class="line">beanForValidateMap[map].minMaxInt 最小不能小于11: 10</span><br><span class="line">beanForValidates[0].decimalMinDecimal 必须大于或等于100.2: 100.1</span><br><span class="line">beanForValidateMap[map].idCard 身份证账号格式错误: 92002199902137720</span><br><span class="line">beanForValidates[0].positive must be greater than 0: -1</span><br><span class="line">beanForValidateMap[map].digits 数字的值超出了允许范围(只允许在3位整数和2位小数范围内): 99.212</span><br><span class="line">beanForValidates[0].minMaxInt 最小不能小于11: 10</span><br><span class="line">beanForValidateMap[map].minDecimal the element is 20.9, but need element &lt; 21: 20.9</span><br><span class="line">beanForValidates[0].idCard 身份证账号格式错误: 92002199902137720</span><br><span class="line">beanForValidates[0].property 不能为空: null</span><br><span class="line">beanForValidates[0].passTime 需要是一个将来的时间: Mon Apr 22 00:44:45 CST 2019</span><br><span class="line">beanForValidateMap[map].sizeStr validated size size: size</span><br><span class="line">beanForValidates[0].blankStr 不能为空:   </span><br><span class="line">beanForValidates[0].digits 数字的值超出了允许范围(只允许在3位整数和2位小数范围内): 99.212</span><br><span class="line">beanForValidateMap[map].positive must be greater than 0: -1</span><br><span class="line">beanForValidateMap[map].decimalMinDecimal 必须大于或等于100.2: 100.1</span><br><span class="line">beanForValidates[0].emptyList 不能为空: null</span><br></pre></td></tr></table></figure>
+<h3 id="分组约束"><a href="#分组约束" class="headerlink" title="分组约束"></a>分组约束</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class BeanForGroupValidate &#123;</span><br><span class="line"></span><br><span class="line">    interface ListGroup &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    interface MapGroup &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @NotNull(groups = ListGroup.class, message = &quot;listGroup&quot;) // 用于指定需要校验的组</span><br><span class="line">    private List&lt;String&gt; list;</span><br><span class="line"></span><br><span class="line">    @NotNull(groups = MapGroup.class, message = &quot;mapGroup&quot;)</span><br><span class="line">    private Map&lt;String, String&gt; map;</span><br><span class="line"></span><br><span class="line">    @NotNull(message = &quot;belong defaultGroup&quot;) // 未指明分组则为缺省组 Default.class</span><br><span class="line">    private Map&lt;String, String&gt; defaultMap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">校验：</span><br><span class="line">validator.validate(beanGraphForValidate)</span><br><span class="line">结果：</span><br><span class="line">defaultMap belong to defaultGroup: null</span><br><span class="line"></span><br><span class="line">校验：validator.validate(beanGraphForValidate, BeanForGroupValidate.ListGroup.class)</span><br><span class="line">结果：</span><br><span class="line">list listGroup: null</span><br><span class="line"></span><br><span class="line">校验：</span><br><span class="line">validator.validate(beanGraphForValidate, BeanForGroupValidate.MapGroup.class)</span><br><span class="line">结果：</span><br><span class="line">map mapGroup: null</span><br></pre></td></tr></table></figure>
+<h3 id="方法参数约束"><a href="#方法参数约束" class="headerlink" title="方法参数约束"></a>方法参数约束</h3><ul>
+<li>入参</li>
+<li>出参</li>
+<li>构造器参数</li>
+<li>构造器返回<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">public class MethodValidate &#123;</span><br><span class="line"></span><br><span class="line">    @NotBlank</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    @NotNull</span><br><span class="line">    private Integer age;</span><br><span class="line"></span><br><span class="line">    @NotNull</span><br><span class="line">    public MethodValidate(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public MethodValidate(@NotNull Integer age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Size(min = 2, max = 2)</span><br><span class="line">    public List&lt;String&gt; getPeopleName() &#123;</span><br><span class="line">        List&lt;String&gt; peoples = new ArrayList&lt;&gt;();</span><br><span class="line">        peoples.add(name);</span><br><span class="line">        return peoples;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPeopleName(@NotBlank String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">校验：</span><br><span class="line"></span><br><span class="line">ValidatorFactory factory = Validation.buildDefaultValidatorFactory();</span><br><span class="line">        ExecutableValidator executableValidator = factory.getValidator().forExecutables();</span><br><span class="line"></span><br><span class="line">        MethodValidate methodValidate = new MethodValidate(&quot;Mary&quot;);</span><br><span class="line">        Method method = MethodValidate.class.getMethod( &quot;setPeopleName&quot;, String.class );</span><br><span class="line">        Object[] parameterValues = &#123; &quot;&quot; &#125;;</span><br><span class="line">        Set&lt;ConstraintViolation&lt;MethodValidate&gt;&gt; validateSetPeopleName = executableValidator.validateParameters(</span><br><span class="line">                methodValidate,</span><br><span class="line">                method,</span><br><span class="line">                parameterValues</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; messages</span><br><span class="line">                = validateSetPeopleName.stream().map(v -&gt; v.getPropertyPath() + &quot; &quot; + v.getMessage() + &quot;: &quot; + v.getInvalidValue())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line">        System.out.println(messages);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        method = MethodValidate.class.getMethod(&quot;getPeopleName&quot;);</span><br><span class="line">        List&lt;String&gt; peoples = new ArrayList&lt;&gt;();</span><br><span class="line">        peoples.add(&quot;Mary&quot;);</span><br><span class="line">        Set&lt;ConstraintViolation&lt;MethodValidate&gt;&gt; validateGetPeopleName = executableValidator.validateReturnValue(</span><br><span class="line">                methodValidate,</span><br><span class="line">                method,</span><br><span class="line">                peoples</span><br><span class="line">        );</span><br><span class="line">        messages</span><br><span class="line">                = validateGetPeopleName.stream().map(v -&gt; v.getPropertyPath() + &quot; &quot; + v.getMessage() + &quot;: &quot; + v.getInvalidValue())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line">        System.out.println(messages);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Constructor&lt;MethodValidate&gt; constructorParams = MethodValidate.class.getConstructor(Integer.class);</span><br><span class="line">        Object[] params = &#123;null&#125;;</span><br><span class="line">        Set&lt;ConstraintViolation&lt;MethodValidate&gt;&gt; validateConstructor = executableValidator.validateConstructorParameters(</span><br><span class="line">                constructorParams,</span><br><span class="line">                params</span><br><span class="line">        );</span><br><span class="line">        messages</span><br><span class="line">                = validateConstructor.stream().map(v -&gt; v.getPropertyPath() + &quot; &quot; + v.getMessage() + &quot;: &quot; + v.getInvalidValue())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line">        System.out.println(messages);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Constructor&lt;MethodValidate&gt; constructorReturn = MethodValidate.class.getConstructor(String.class);</span><br><span class="line">        MethodValidate createdBean = new MethodValidate(18);</span><br><span class="line">        Set&lt;ConstraintViolation&lt;MethodValidate&gt;&gt; validateConstructorReturn = executableValidator.validateConstructorReturnValue(</span><br><span class="line">                constructorReturn,</span><br><span class="line">                createdBean</span><br><span class="line">        );</span><br><span class="line">        messages</span><br><span class="line">                = validateConstructorReturn.stream().map(v -&gt; v.getPropertyPath() + &quot; &quot; + v.getMessage() + &quot;: &quot; + v.getInvalidValue())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line">        System.out.println(messages);</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line"></span><br><span class="line">[setPeopleName.arg0 不能为空: ]</span><br><span class="line">[getPeopleName.&lt;return value&gt; 个数必须在2和2之间: [Mary]]</span><br><span class="line">[MethodValidate.arg0 不能为null: null]</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h2><p>如何将Bean Validation集成到Spring MVC框架中？</p>
+<ul>
+<li>Requirements<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">MAVEN依赖：</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.hibernate&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;hibernate-validator&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;6.0.1.Final&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.glassfish&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;javax.el&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.0.1-b06&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class WebMvcConfiguration implements WebMvcConfigurer &#123;</span><br><span class="line">	@Bean</span><br><span class="line">	public Validator validator() &#123;</span><br><span class="line">		ValidatorFactory vf = Validation.byProvider(HibernateValidator.class)</span><br><span class="line">				.configure().failFast(true)</span><br><span class="line">				.buildValidatorFactory();</span><br><span class="line">		return vf.getValidator();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Controller方法参数校验"><a href="#Controller方法参数校验" class="headerlink" title="Controller方法参数校验"></a>Controller方法参数校验</h3><ul>
+<li><p>Requirements<br>Spring 容器中需要创建Bean：<strong>LocalValidatorFactoryBean</strong>，<strong>LocalValidatorFactoryBean</strong>包含Bean Validation的实现类（通过SPI加载Bean Validation的实现，本文使用hibernate-validator实现）</p>
+</li>
+<li><p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value = &quot;/beanValidation&quot;, method = RequestMethod.POST)</span><br><span class="line">public void testBeanValidation(@Valid BeanForValidate beanForValidate)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原理</p>
+<blockquote>
+<p>SpringMVC在创建<strong>RequestMappingHandlerAdapter</strong>时会将<strong>OptionalValidatorFactoryBean</strong>设置到<strong>WebBindingInitializer</strong>属性中，<strong>RequestResponseBodyMethodProcessor</strong>在解析参数的时候通过<strong>WebBindingInitializer</strong>将<strong>OptionalValidatorFactoryBean</strong>绑定到<strong>WebDataBinder</strong>中，<strong>WebDataBinder</strong>通过判断参数是否含有@Valid或@Validated来决定是否进行参数校验</p>
+</blockquote>
+</li>
+<li><p>异常<br><strong>MethodArgumentNotValidException</strong></p>
+</li>
+</ul>
+<h3 id="校验任意方法"><a href="#校验任意方法" class="headerlink" title="校验任意方法"></a>校验任意方法</h3><ul>
+<li><p>Requirements<br>Spring 容器中需要创建Bean：<strong>MethodValidationPostProcessor</strong></p>
+</li>
+<li><p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Validated</span><br><span class="line">public interface BeanValidationService &#123;</span><br><span class="line">    void testBeanValidation(@Valid BeanForValidate beanForValidate);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原理<br><strong>MethodValidationPostProcessor</strong>会对含有@Validated的类或接口做AOP增强</p>
+</li>
+<li>异常<br><strong>ConstraintViolationException</strong></li>
+</ul>
+<h3 id="Valid-VS-Validated"><a href="#Valid-VS-Validated" class="headerlink" title="@Valid VS @Validated"></a>@Valid VS @Validated</h3><ul>
+<li>@Valid<br>由validation-api定义，主要用于Bean的嵌套验证使用，也可用于判断Controller方法中的参数是否需要Bean Validation</li>
+<li>Validated<br>由Spring定义，用于判断Controller方法中的参数是否需要Bean Validation以及用于开启Bean Validation的方法增强的标志。@Validated能够指定validation groups</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/30/基于Docker搭建监控系统/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1834,180 +2125,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/15/volatile/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="8lovelife's life">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/15/volatile/" itemprop="url">volatile</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-15T16:02:14+08:00">
-                2018-05-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:49:08+08:00">
-                2019-01-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/05/15/volatile/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/15/volatile/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="线程间的通信"><a href="#线程间的通信" class="headerlink" title="线程间的通信"></a>线程间的通信</h1><p>线程间的通信方式有：共享内存和消息传递</p>
-<h2 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h2><p>多个线程通过读写内存中的共享对象来隐式的进行通信。如Java中的对象</p>
-<h2 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h2><p>线程间通过发送消息显示的进行通信。如Java中的wait()/notify()</p>
-<h1 id="线程间共享内存"><a href="#线程间共享内存" class="headerlink" title="线程间共享内存"></a>线程间共享内存</h1><p>线程间共享的对象都在主存中，每个线程都会有一块私有的本地内存称为栈，线程栈中存储了共享对象的副本</p>
-<h1 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h1><p>线程安全包括几个方面的内容：<sup>1。</sup><strong>原子性</strong>  <sup>2。</sup><strong>可见性</strong> <sup>3。</sup><strong>有序性</strong></p>
-<h2 id="原子性-执行控制-代码顺序"><a href="#原子性-执行控制-代码顺序" class="headerlink" title="原子性(执行控制-代码顺序)"></a>原子性(执行控制-代码顺序)</h2><p>原子性提供了多线程间代码指令的互斥访问。如:Synchronized、Lock</p>
-<h2 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h2><p>一个线程对共享内存数据的修改是否会立刻被其他线程感知到？多线程间的共享数据访问会由于缓存的不一致性导致数据错乱<br><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/JVM/Volatile_MultiThread.png" alt="image"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/15/volatile/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2060,7 +2177,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2071,7 +2188,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
