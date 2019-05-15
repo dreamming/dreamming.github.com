@@ -316,6 +316,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/31/Java-Char-编码/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8lovelife's life">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/31/Java-Char-编码/" itemprop="url">Java Char 编码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-31T13:51:31+08:00">
+                2018-03-31
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:46:59+08:00">
+                2019-01-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/31/Java-Char-编码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/31/Java-Char-编码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <!-- # 编码问题 -->
+<p>记录下自己对<strong>编码的理解和疑惑</strong>，什么是<strong>Unicode？UTF-8、UTF-16、ASCII</strong>又是什么？</p>
+<h1 id="编码与解码"><a href="#编码与解码" class="headerlink" title="编码与解码"></a>编码与解码</h1><blockquote>
+<p><strong>编码</strong> ：信息从一种数据形式到另一种数据形式的转换过程。信息在计算机中的存储与传输是以二               进制的形式（010101）进行的，计算机中的存储单元为Byte，所以需要计算机处理的信息必须编码为Bytes。</p>
+</blockquote>
+<blockquote>
+<p><strong>解码</strong>：编码的逆向过程。计算机中为Bytes到字符信息的转换。</p>
+</blockquote>
+<h2 id="为什么要编码"><a href="#为什么要编码" class="headerlink" title="为什么要编码"></a>为什么要编码</h2><blockquote>
+<p>计算机中的存储单元为Byte即<strong>8位的二进制</strong>形式，所能表达的字符范围为2<sup>8</sup> = 256种，现存的字符远远多于256种，所以单个字节不足以存够如此多的字符。不同字符的表达是多样性的，不同地区使用不同的语言表达（字符编码），不同的语言自然有不同的字典解释（字符解码）。如何解码呢？byte c1=97代表什么字符？int c2= 26790 又该如何翻译呢？</p>
+</blockquote>
+<h2 id="解码翻译"><a href="#解码翻译" class="headerlink" title="解码翻译"></a>解码翻译</h2><blockquote>
+<p><strong><em>ASCII、ISO-8859-1、GB2312、GBK、UTF-8、UTF-16</em></strong>编码表中记录了不同字符的不同表达方式。是否存在不同字符的统一表达方式呢？即所有字符存在同一张编码表中。Unicode编码集保存着全世界的字符的编码点（CodePoint)，可以存储足够多的字符表示。Unicode的编码形式又分为UTF-8，UTF-16，UTF-32分别表示8位，16位，32位存储。采用哪种编码需要在传输大小、编码效率等问题进行折中选择。UTF-8是可变长度的编码规则，一般会采用UTF-8进行编码，</p>
+</blockquote>
+<h1 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h1><blockquote>
+<p><strong>Unicode</strong>的编码点<strong><em>以U+开始如U+0x0020的形式</em></strong>表示，能表示的编码点范围为0x0000 ~ 0x10FFFF。我们知道Java中的字符都是以Unicode的形式保存的，并且采用UTF-16的形式编码，所以说Java中的char占用16位即2个字节，16位所能存储的最大值为0xFFFF。<strong><em>那么对于U+10000~U+10FFFF部分的CodePoint（这一部分代表的字符被称为辅助字符supplementary character），Java中的UTF-16显然无法存储</em></strong></p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/31/Java-Char-编码/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/31/Mary's Eyes/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1611,7 +1795,7 @@ redis-server /usr/local/etc/redis/redis.conf</code></li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1622,7 +1806,7 @@ redis-server /usr/local/etc/redis/redis.conf</code></li>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1633,7 +1817,7 @@ redis-server /usr/local/etc/redis/redis.conf</code></li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

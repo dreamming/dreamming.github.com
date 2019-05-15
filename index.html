@@ -316,6 +316,212 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/Spring中的-Scheduled/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8lovelife's life">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/16/Spring中的-Scheduled/" itemprop="url">Spring中的@Scheduled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-16T00:30:18+08:00">
+                2019-05-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-16T00:44:22+08:00">
+                2019-05-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/16/Spring中的-Scheduled/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/16/Spring中的-Scheduled/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h1><p>@Scheduled 由Spring定义，用于将方法设置为调度任务。如：方法每隔十秒钟被执行、方法在固定时间点被执行等</p>
+<ol>
+<li><p>@Scheduled(fixedDelay = 1000)<br>上一个任务结束到下一个任务开始的时间间隔为固定的1秒，任务的执行总是要先等到上一个任务的执行结束</p>
+</li>
+<li><p>@Scheduled(fixedRate = 1000)<br>每间隔1秒钟就会执行任务（如果任务执行的时间超过1秒，则下一个任务在上一个任务结束之后立即执行）</p>
+</li>
+<li><p>@Scheduled(fixedDelay = 1000, initialDelay = 2000)<br>第一次执行的任务将会延迟2秒钟后才会启动</p>
+</li>
+<li><p>@Scheduled(cron = “0 15 10 15 * ?”)<br>Cron表达式，每个月的15号上午10点15开始执行任务</p>
+</li>
+<li><p>在配置文件中配置任务调度的参数</p>
+<blockquote>
+<p>@Scheduled(fixedDelayString = “${fixedDelay.in.milliseconds}”)<br>@Scheduled(fixedRateString = “${fixedRate.in.milliseconds}”)<br>@Scheduled(cron = “${cron.expression}”)</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="WHY"><a href="#WHY" class="headerlink" title="WHY"></a>WHY</h1><p>@Scheduled使用方便，不需要自己去写复杂的任务调度。注解的方式非常灵活，只需要在方法上添加@Scheduled注解就能定义调度的任务，任何无参的方法都可以瞬间成为供调度的任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 关闭线程池中超过空闲时间的线程</span><br><span class="line"> * @param poolingConnectionManager</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@Bean</span><br><span class="line">public Runnable idleConnectionMonitor(final PoolingHttpClientConnectionManager poolingConnectionManager) &#123;</span><br><span class="line">    return new Runnable() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        @Scheduled(fixedDelay = 10000, initialDelay = 1000)</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if (poolingConnectionManager != null) &#123;</span><br><span class="line">                    log.info(&quot;run IdleConnectionMonitor - Closing expired and idle connections...&quot;);</span><br><span class="line">                    poolingConnectionManager.closeExpiredConnections();</span><br><span class="line">                    poolingConnectionManager.closeIdleConnections(properties.getCloseIdleConnectionWaitTimeSecs(), TimeUnit.SECONDS);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    log.info(&quot;run IdleConnectionMonitor - Http Client Connection manager is not initialised&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                log.error(&quot;run IdleConnectionMonitor - Exception occurred. msg=&#123;&#125;, e=&#123;&#125;&quot;, e.getMessage(), e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="HOW"><a href="#HOW" class="headerlink" title="HOW"></a>HOW</h1><p>Spring是如何实现如此简洁的任务调度定义的？怎么使用@Scheduled？</p>
+<ul>
+<li>Requirements</li>
+</ul>
+<ol>
+<li>Spring容器中需要创建 Bean: <strong>ScheduledAnnotationBeanPostProcessor</strong></li>
+<li>Spring容器中需要有<strong>TaskScheduler</strong>实现类的实例</li>
+<li>无参方法添加@<strong>Scheduled</strong>注解</li>
+</ol>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>扩展有两种方式</p>
+<ul>
+<li><p>实现SchedulingConfigurer接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">	// 优先级高</span><br><span class="line">    @Configuration</span><br><span class="line">	public class SchedulerConfig implements SchedulingConfigurer &#123;			</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) &#123;</span><br><span class="line">        taskRegistrar.setTaskScheduler(threadPoolTaskScheduler());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean(destroyMethod = &quot;shutdown&quot;)</span><br><span class="line">    public ThreadPoolTaskScheduler threadPoolTaskScheduler() &#123;</span><br><span class="line">        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();</span><br><span class="line">        scheduler.setThreadNamePrefix(&quot;poolmary&amp;mark&quot;);</span><br><span class="line">        scheduler.setPoolSize(50);</span><br><span class="line">        return scheduler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建TaskScheduler的实现Bean</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 相对实现SchedulingConfigurer接口的方式，优先级低</span><br><span class="line">   @Bean</span><br><span class="line">   public TaskScheduler taskScheduler() &#123;				</span><br><span class="line">       ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();</span><br><span class="line">       scheduler.setThreadNamePrefix(&quot;poolScheduler&quot;);</span><br><span class="line">       scheduler.setPoolSize(50);</span><br><span class="line">       return scheduler;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ol>
+<li><strong>ScheduledAnnotationBeanPostProcessor</strong>的<strong>postProcessAfterInitialization</strong>方法将@<strong>Scheduled</strong>的方法包装为指定的task添加到<strong>ScheduledTaskRegistrar</strong>中</li>
+<li><strong>ScheduledAnnotationBeanPostProcessor</strong>会监听Spring的容器初始化事件，在Spring容器初始化完成后进行<strong>TaskScheduler</strong>实现类实例的查找，若发现有<strong>SchedulingConfigurer</strong>的实现类实例，则跳过3</li>
+<li>查找<strong>TaskScheduler</strong>的实现类实例默认是通过类型查找，若有多个实现则会查找名字为”taskScheduler”的实现Bean，若没有找到则在 <strong>ScheduledTaskRegistrar</strong>调度任务的时候会创建一个<strong>newSingleThreadScheduledExecutor</strong>，将<strong>TaskScheduler</strong>的实现类实例设置到<strong>ScheduledTaskRegistrar</strong>属性中</li>
+<li><strong>ScheduledTaskRegistrar</strong>的<strong>scheduleTasks</strong>方法触发任务调度</li>
+<li>真正调度任务的类是<strong>TaskScheduler</strong>实现类中的<strong>ScheduledExecutorService</strong>，由<strong>J.U.C</strong>提供</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/Bean-Validation/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -363,8 +569,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-28T13:25:23+08:00">
-                2019-04-28
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-16T00:31:34+08:00">
+                2019-05-16
               </time>
             
           </span>
@@ -1916,163 +2122,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/21/IntelliJ IDEA With Git/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mark">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="8lovelife's life">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/21/IntelliJ IDEA With Git/" itemprop="url">IntelliJ IDEA With Git</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-21T12:03:58+08:00">
-                2018-05-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:34:34+08:00">
-                2019-01-13
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/05/21/IntelliJ IDEA With Git/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/21/IntelliJ IDEA With Git/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>记录下Git如何与IntelliJ IDEA协作</p>
-<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><ul>
-<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git下载</a></li>
-<li><a href="https://www.jetbrains.com/idea/download/#section=mac" target="_blank" rel="noopener">IntelliJ IDEA下载</a></li>
-<li>IntelliJ IDEA 的 License server 可以使用：<code>http://8lovelife.com:1017</code></li>
-</ul>
-<h1 id="IntelliJ-IDEA-With-Git-开发过程"><a href="#IntelliJ-IDEA-With-Git-开发过程" class="headerlink" title="IntelliJ IDEA With Git 开发过程"></a>IntelliJ IDEA With Git 开发过程</h1><h2 id="1-初次获取远端代码"><a href="#1-初次获取远端代码" class="headerlink" title="1. 初次获取远端代码"></a>1. 初次获取远端代码</h2><ul>
-<li>使用IntelliJ IDEA Terminal</li>
-</ul>
-<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Intellij%20Idea/IdeTerminal.png" alt="image"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mac:code mac$ git clone https://github.com/grpc/grpc-java.git</span><br><span class="line">Cloning into &apos;grpc-java&apos;...</span><br></pre></td></tr></table></figure>
-<h2 id="2-查看远端仓库分支"><a href="#2-查看远端仓库分支" class="headerlink" title="2. 查看远端仓库分支"></a>2. 查看远端仓库分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Mac:dmz-inward- mac$ git branch -av</span><br><span class="line">* master                 0388b70 some feture</span><br><span class="line">  remotes/origin/HEAD    -&gt; origin/master</span><br><span class="line">  remotes/origin/feature cd52891 some features</span><br><span class="line">  remotes/origin/master  0388b70 some feture</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/21/IntelliJ IDEA With Git/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2125,7 +2174,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2136,7 +2185,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2147,7 +2196,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
