@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2019/04/27/Bean-Validation/</loc>
+    <lastmod>2019-05-25</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2019/05/16/Spring%E4%B8%AD%E7%9A%84-Scheduled/</loc>
     <lastmod>2019-05-22</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2019/04/27/Bean-Validation/</loc>
-    <lastmod>2019-05-15</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2019/01/17/%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E6%8C%81%E7%BB%AD%E7%BA%A6%E6%9D%9F/</loc>
     <lastmod>2019-02-02</lastmod>
