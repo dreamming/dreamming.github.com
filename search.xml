@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Spring中的@Async]]></title>
+    <url>%2F2019%2F05%2F28%2FSpring%E4%B8%AD%E7%9A%84-Async%2F</url>
+    <content type="text"><![CDATA[WHAT@Async由Spring定义，在方法上添加此注解，方法的执行将会是异步的(在另一个线程中执行)，调用者不需要等待方法执行完成1234567@Target(&#123;ElementType.METHOD, ElementType.TYPE&#125;)@Retention(RetentionPolicy.RUNTIME)@Documentedpublic @interface Async &#123; // 用于指定异步执行的线程池名称 String value() default &quot;&quot;;&#125; WHY被@Async标记的方法都可以异步执行，注解的方式非常灵活，异步的线程资源可以集中管理 异步执行 AFTER123456789101112131415public void sayWorld() &#123; new Thread(() -&gt; &#123; try &#123; TimeUnit.SECONDS.sleep(30); System.out.println(&quot;world&quot;); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125;).start(); &#125;public void sayHello() &#123; sayWorld(); System.out.println(&quot;hello&quot;);&#125; 异步执行 BEFORE12345678910@Asyncpublic void sayWorld() throws InterruptedException &#123; TimeUnit.SECONDS.sleep(30); System.out.println(&quot;world&quot;);&#125;public void sayHello() &#123; sayWorld(); System.out.println(&quot;hello&quot;);&#125; HOW@Async如何使用？又是怎么运作的？ 事例1234567891011121314151617181920212223242526272829303132333435363738394041424344@Configuration@EnableAsyncpublic class AsyncConfigDemo implements AsyncConfigurer &#123; // 优先级低，相对于 @Async指定异步线程池 @Override public Executor getAsyncExecutor() &#123; ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor(); threadPoolTaskExecutor.setCorePoolSize(10); threadPoolTaskExecutor.setThreadNamePrefix(&quot;async-&quot;); threadPoolTaskExecutor.initialize(); return threadPoolTaskExecutor; &#125; @Override public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() &#123; return new SimpleAsyncUncaughtExceptionHandler(); &#125;&#125;@Servicepublic class AsyncDemo &#123; @Async(value = &quot;taskScheduler&quot;) // 优先级高 public void sayWorld() throws InterruptedException &#123; TimeUnit.SECONDS.sleep(3); System.out.println(&quot;world&quot;); &#125;&#125;// 使用 @Resource private AsyncDemo asyncDemo; @Test public void testSync() throws IOException &#123; try &#123; asyncDemo.sayWorld(); System.out.println(&quot;hello&quot;); System.in.read(); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; 原理 AsyncConfigDemo由ConfigurationClassParser进行解析，包括注解@EnableAsync上的AsyncConfigurationSelector类 AsyncConfigurationSelector根据@EnableAsync mode()选择代理方式实现，默认为ProxyAsyncConfiguration Configuration类ProxyAsyncConfiguration被创建并注入AsyncConfigurer扩展的executor、exceptionHandler，创建AsyncAnnotationBeanPostProcessor并通过setBeanFactory方法创建AsyncAnnotationAdvisor AsyncAnnotationAdvisor设置advice(AnnotationAsyncExecutionInterceptor，设置缺省获取线程池方法getDefaultExecutor，当未扩展AsyncConfigurer的实现则在执行异步的时候getDefaultExecutor会从Spring的上下文中查找TaskExecutor的实现类实例)。设置pointcut(@Async的注解类或方法或是自定义的异步注解) AnnotationAsyncExecutionInterceptor通过determineAsyncExecutor方法确认执行的Executor。getExecutorQualifier方法查找名为@Async指定的value值的Executor，若找到则执行，若无法确认Executor则调用getDefaultExecutor方法查询类型为TaskExecutor的类，若有多个实现则会查找名字为”taskExecutor”的实现Bean，最终都没有找到则创建SimpleAsyncTaskExecutor(每一个异步的方法任务都会创建一个新的线程)]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Spring中的@Scheduled]]></title>
     <url>%2F2019%2F05%2F16%2FSpring%E4%B8%AD%E7%9A%84-Scheduled%2F</url>
     <content type="text"><![CDATA[WHAT@Scheduled 由Spring定义，用于将方法设置为调度任务。如：方法每隔十秒钟被执行、方法在固定时间点被执行等 @Scheduled(fixedDelay = 1000)上一个任务结束到下一个任务开始的时间间隔为固定的1秒，任务的执行总是要先等到上一个任务的执行结束 @Scheduled(fixedRate = 1000)每间隔1秒钟就会执行任务（如果任务执行的时间超过1秒，则下一个任务在上一个任务结束之后立即执行） @Scheduled(fixedDelay = 1000, initialDelay = 2000)第一次执行的任务将会延迟2秒钟后才会启动 @Scheduled(cron = “0 15 10 15 * ?”)Cron表达式，每个月的15号上午10点15开始执行任务 在配置文件中配置任务调度的参数 @Scheduled(fixedDelayString = “${fixedDelay.in.milliseconds}”)@Scheduled(fixedRateString = “${fixedRate.in.milliseconds}”)@Scheduled(cron = “${cron.expression}”) WHY@Scheduled使用方便，不需要自己去写复杂的任务调度。注解的方式非常灵活，只需要在方法上添加@Scheduled注解就能定义调度的任务，任何无参的方法都可以瞬间成为供调度的任务 12345678910111213141516171819202122232425/** * 关闭线程池中超过空闲时间的线程 * @param poolingConnectionManager * @return */@Beanpublic Runnable idleConnectionMonitor(final PoolingHttpClientConnectionManager poolingConnectionManager) &#123; return new Runnable() &#123; @Override @Scheduled(fixedDelay = 10000, initialDelay = 1000) public void run() &#123; try &#123; if (poolingConnectionManager != null) &#123; log.info(&quot;run IdleConnectionMonitor - Closing expired and idle connections...&quot;); poolingConnectionManager.closeExpiredConnections(); poolingConnectionManager.closeIdleConnections(properties.getCloseIdleConnectionWaitTimeSecs(), TimeUnit.SECONDS); &#125; else &#123; log.info(&quot;run IdleConnectionMonitor - Http Client Connection manager is not initialised&quot;); &#125; &#125; catch (Exception e) &#123; log.error(&quot;run IdleConnectionMonitor - Exception occurred. msg=&#123;&#125;, e=&#123;&#125;&quot;, e.getMessage(), e); &#125; &#125; &#125;;&#125; HOWSpring是如何实现如此简洁的任务调度定义的？怎么使用@Scheduled？ Requirements Spring容器中需要创建 Bean: ScheduledAnnotationBeanPostProcessor Spring容器中需要有TaskScheduler实现类的实例 无参方法添加@Scheduled注解 扩展扩展有两种方式 实现SchedulingConfigurer接口 123456789101112131415161718 // 优先级高 @Configuration public class SchedulerConfig implements SchedulingConfigurer &#123; @Override public void configureTasks(ScheduledTaskRegistrar taskRegistrar) &#123; taskRegistrar.setTaskScheduler(threadPoolTaskScheduler()); &#125; @Bean(destroyMethod = &quot;shutdown&quot;) public ThreadPoolTaskScheduler threadPoolTaskScheduler() &#123; ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler(); scheduler.setThreadNamePrefix(&quot;poolmary&amp;mark&quot;); scheduler.setPoolSize(50); return scheduler; &#125;&#125; 创建TaskScheduler的实现Bean 12345678// 相对实现SchedulingConfigurer接口的方式，优先级低@Beanpublic TaskScheduler taskScheduler() &#123; ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler(); scheduler.setThreadNamePrefix(&quot;poolScheduler&quot;); scheduler.setPoolSize(50); return scheduler;&#125; 原理 ScheduledAnnotationBeanPostProcessor的postProcessAfterInitialization方法将@Scheduled的方法包装为指定的task添加到ScheduledTaskRegistrar中 ScheduledAnnotationBeanPostProcessor会监听Spring的容器初始化事件，在Spring容器初始化完成后进行TaskScheduler实现类实例的查找，若发现有SchedulingConfigurer的实现类实例，则跳过3 查找TaskScheduler的实现类实例默认是通过类型查找，若有多个实现则会查找名字为”taskScheduler”的实现Bean，若没有找到则在 ScheduledTaskRegistrar调度任务的时候会创建一个newSingleThreadScheduledExecutor，将TaskScheduler的实现类实例设置到ScheduledTaskRegistrar属性中 ScheduledTaskRegistrar的scheduleTasks方法触发任务调度 真正调度任务的类是TaskScheduler实现类中的ScheduledExecutorService，由J.U.C提供 事例123456789101112131415161718192021@Configuration@EnableSchedulingpublic class SchedulerConfigDemo &#123; private final static SimpleDateFormat sdf = new SimpleDateFormat(&quot;hh:mm:ss&quot;); private final static Logger log = LoggerFactory.getLogger(SchedulerConfigDemo.class); @Scheduled(fixedRate = 2000, initialDelay = 1000) public void testScheduler() &#123; log.info(&quot;start &#123;&#125;&quot;, sdf.format(new Date())); &#125; @Bean public TaskScheduler taskScheduler() &#123; ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler(); scheduler.setThreadNamePrefix(&quot;poolScheduler&quot;); scheduler.setPoolSize(10); return scheduler; &#125;&#125;]]></content>
@@ -155,8 +167,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -167,8 +179,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -179,8 +191,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -203,8 +215,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -215,8 +227,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -227,8 +239,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
