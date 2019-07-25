@@ -316,6 +316,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/05/JVM内存回收/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8lovelife's life">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/05/JVM内存回收/" itemprop="url">JVM内存回收</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-05T23:09:48+08:00">
+                2018-04-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:48:51+08:00">
+                2019-01-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/05/JVM内存回收/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/05/JVM内存回收/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在Java开发的过程中，程序的执行需要计算机内存空间，Java并没有语法与内存创建、释放有直接联系，JVM负责管理内存的申请与释放，对于Java语言来说，显示的内存申请通常有两种：静态内存分配与动态内存分配</p>
+<h1 id="静态内存的分配与回收"><a href="#静态内存的分配与回收" class="headerlink" title="静态内存的分配与回收"></a>静态内存的分配与回收</h1><blockquote>
+<ul>
+<li>静态内存分配：Java类或方法中的原始类型数据和对象的引用都是静态分配的内存，当Java编译器执行编译后就已经确定了静态内存的大小，在程序被加载后会分配静态内存且在程序运行期间内存大小不会再改变</li>
+<li>静态内存回收：程序执行结束后释放、方法执行结束后释放</li>
+</ul>
+</blockquote>
+<h1 id="动态内存的分配与回收"><a href="#动态内存的分配与回收" class="headerlink" title="动态内存的分配与回收"></a>动态内存的分配与回收</h1><blockquote>
+<ul>
+<li>动态内存分配：Java中的对象类型的数据创建是动态的内存分配，只有在程序执行的过程中才知道程序所需的内存大小</li>
+<li>动态内存分配：Java中的对象不再被使用的时候内存会被回收</li>
+</ul>
+</blockquote>
+<h1 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h1><blockquote>
+<ul>
+<li>什么样的对象应该被认为是垃圾需要回收？<strong>对象是否是垃圾对象取决于对象的引用类型与对象是否根路径可达</strong></li>
+<li>如何回收垃圾对象释放内存？由<strong>垃圾回收算法</strong>负责</li>
+</ul>
+</blockquote>
+<h2 id="垃圾对象"><a href="#垃圾对象" class="headerlink" title="垃圾对象"></a>垃圾对象</h2><blockquote>
+<ol>
+<li>对象与根节点之间的联系称为引用链，当对象与根节点之间不存在引用链时，此对象成为垃圾对象，根节点可以是以下元素</li>
+</ol>
+<ul>
+<li>在方法中局部变量区的对象引用</li>
+<li>在Java操作栈中的对象引用</li>
+<li>在常量池中的对象引用（如常量池中引用的的类名String在堆中</li>
+<li>在本地方法的对象引用</li>
+<li>类的Class对象（JVM加载Class时，会在堆中创建一个代表这个类的唯一数据类型的Class对象</li>
+</ul>
+<ol start="2">
+<li>若对象被软引用，当内存不足时，软引用对象为垃圾对象</li>
+<li>若对象被弱引用，则此对象为垃圾对象</li>
+<li>若对象被虚引用，则此对象为垃圾对象</li>
+</ol>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/05/JVM内存回收/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/JVM内存管理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1984,7 +2187,7 @@ redis-server /usr/local/etc/redis/redis.conf</code></li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

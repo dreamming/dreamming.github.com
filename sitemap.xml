@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/07/25/Spring%E4%B8%AD%E7%9A%84-Retryable/</loc>
+    
+    <lastmod>2019-07-25T17:24:21.579Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/05/28/Spring%E4%B8%AD%E7%9A%84-Async/</loc>
     
-    <lastmod>2019-05-28T15:16:04.549Z</lastmod>
+    <lastmod>2019-07-25T16:18:28.160Z</lastmod>
     
   </url>
   
