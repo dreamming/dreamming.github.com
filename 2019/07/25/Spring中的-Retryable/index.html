@@ -119,7 +119,7 @@
 <meta property="og:site_name" content="8lovelife&#39;s life">
 <meta property="og:description" content="WHAT@Retryable由spring-retry模块提供，在方法或类上添加@Retryable注解可以实现方法调用失败的重试。可以指定失败重试的次数、fallback方法 @Retryable设置重试的次数、指定需要重试的异常123456789101112131415161718@Target(&amp;#123; ElementType.METHOD, ElementType.TYPE &amp;#125">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-25T17:32:53.808Z">
+<meta property="og:updated_time" content="2019-07-26T02:41:10.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring中的@Retryable">
 <meta name="twitter:description" content="WHAT@Retryable由spring-retry模块提供，在方法或类上添加@Retryable注解可以实现方法调用失败的重试。可以指定失败重试的次数、fallback方法 @Retryable设置重试的次数、指定需要重试的异常123456789101112131415161718@Target(&amp;#123; ElementType.METHOD, ElementType.TYPE &amp;#125">
@@ -362,7 +362,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-26T01:32:53+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-26T10:41:10+08:00">
                 2019-07-26
               </time>
             
@@ -454,7 +454,7 @@
 <h3 id="BackOffPolicy"><a href="#BackOffPolicy" class="headerlink" title="BackOffPolicy"></a>BackOffPolicy</h3><p>@Backoff</p>
 <ol>
 <li><p>multiplier &gt; 0 and random = false</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">initialInterval = delay</span><br><span class="line">maxInterval = maxDelay &gt; initialInterval ? maxDelay : ExponentialBackOffPolicy.DEFAULT_MAX_INTERVAL(30000毫秒)</span><br><span class="line">        public synchronized long getSleepAndIncrement() &#123;</span><br><span class="line">            long sleep = this.interval;</span><br><span class="line">            if (sleep &gt; maxInterval) &#123;</span><br><span class="line">                sleep = maxInterval;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                this.interval = getNextInterval();</span><br><span class="line">            &#125;</span><br><span class="line">            return sleep;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">initialInterval = delay</span><br><span class="line">maxInterval = maxDelay &gt; initialInterval ? maxDelay : ExponentialBackOffPolicy.DEFAULT_MAX_INTERVAL(30000毫秒)</span><br><span class="line">        public synchronized long getSleepAndIncrement() &#123;</span><br><span class="line">            long sleep = this.interval;</span><br><span class="line">            if (sleep &gt; maxInterval) &#123;</span><br><span class="line">                sleep = maxInterval;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                this.interval = getNextInterval();</span><br><span class="line">            &#125;</span><br><span class="line">            return sleep;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"> protected long getNextInterval() &#123;</span><br><span class="line">            return (long) (this.interval * this.multiplier);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>multiplier &gt; 0 and random = true</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public synchronized long getSleepAndIncrement() &#123;</span><br><span class="line">    // 1 中方法</span><br><span class="line">    long next = super.getSleepAndIncrement();</span><br><span class="line">    next = (long) (next * (1 + r.nextFloat() * (getMultiplier() - 1)));</span><br><span class="line">    return next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
