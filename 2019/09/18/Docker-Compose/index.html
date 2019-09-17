@@ -111,20 +111,20 @@
 
 
 
-<meta name="description" content="简单记录下如何构建docker image Docker Build Usage  dcoker build 命令将构建用到的内容发送给docker daemon,依次执行Dockerfile中的命令（每执行一行指令将会提交a new layer），执行成功image构建完成 构建docker image时，应该选择一个属于构建相关的目录（构建镜像所需内容），将会减少不必要的内容到docker">
+<meta name="description" content="WHATDocker Compose是用Python编写的工具，并不包含在Docker Engine安装包中。Docker Compose用于解析YML文件并运行YML中定义的容器服务。Docker Compose命令通过调用Docker API完成多容器的创建启动，使用Docker Compose需要自行安装 Docker Compose VS Docker Stack docker stack">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Dockerfile构建Docker镜像">
-<meta property="og:url" content="http://yoursite.com/2018/03/30/使用Dockerfile构建Docker镜像/index.html">
+<meta property="og:title" content="Docker Compose">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/Docker-Compose/index.html">
 <meta property="og:site_name" content="8lovelife&#39;s life">
-<meta property="og:description" content="简单记录下如何构建docker image Docker Build Usage  dcoker build 命令将构建用到的内容发送给docker daemon,依次执行Dockerfile中的命令（每执行一行指令将会提交a new layer），执行成功image构建完成 构建docker image时，应该选择一个属于构建相关的目录（构建镜像所需内容），将会减少不必要的内容到docker">
+<meta property="og:description" content="WHATDocker Compose是用Python编写的工具，并不包含在Docker Engine安装包中。Docker Compose用于解析YML文件并运行YML中定义的容器服务。Docker Compose命令通过调用Docker API完成多容器的创建启动，使用Docker Compose需要自行安装 Docker Compose VS Docker Stack docker stack">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerBuild.png">
-<meta property="og:updated_time" content="2019-01-13T15:45:28.967Z">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/docker-compose.png">
+<meta property="og:updated_time" content="2019-09-17T19:03:16.770Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Dockerfile构建Docker镜像">
-<meta name="twitter:description" content="简单记录下如何构建docker image Docker Build Usage  dcoker build 命令将构建用到的内容发送给docker daemon,依次执行Dockerfile中的命令（每执行一行指令将会提交a new layer），执行成功image构建完成 构建docker image时，应该选择一个属于构建相关的目录（构建镜像所需内容），将会减少不必要的内容到docker">
-<meta name="twitter:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerBuild.png">
+<meta name="twitter:title" content="Docker Compose">
+<meta name="twitter:description" content="WHATDocker Compose是用Python编写的工具，并不包含在Docker Engine安装包中。Docker Compose用于解析YML文件并运行YML中定义的容器服务。Docker Compose命令通过调用Docker API完成多容器的创建启动，使用Docker Compose需要自行安装 Docker Compose VS Docker Stack docker stack">
+<meta name="twitter:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/docker-compose.png">
 
 
 
@@ -154,13 +154,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/30/使用Dockerfile构建Docker镜像/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/18/Docker-Compose/">
 
 
 
 
 
-  <title>使用Dockerfile构建Docker镜像 | 8lovelife's life</title>
+  <title>Docker Compose | 8lovelife's life</title>
   
 
 
@@ -319,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/使用Dockerfile构建Docker镜像/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/Docker-Compose/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
@@ -336,7 +336,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用Dockerfile构建Docker镜像</h1>
+          <h1 class="post-title" itemprop="name headline">Docker Compose</h1>
         
 
         <div class="post-meta">
@@ -348,8 +348,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T01:13:20+08:00">
-                2018-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T12:49:18+08:00">
+                2019-09-18
               </time>
             
 
@@ -364,8 +364,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:45:28+08:00">
-                2019-01-13
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-18T03:03:16+08:00">
+                2019-09-18
               </time>
             
           </span>
@@ -401,8 +401,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/30/使用Dockerfile构建Docker镜像/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/30/使用Dockerfile构建Docker镜像/" itemprop="commentCount"></span>
+                <a href="/2019/09/18/Docker-Compose/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/Docker-Compose/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -435,81 +435,30 @@
       
 
       
-        <!-- # Build Docker Image -->
-<p>简单记录下如何构建<strong>docker image</strong></p>
-<h1 id="Docker-Build-Usage"><a href="#Docker-Build-Usage" class="headerlink" title="Docker Build Usage"></a>Docker Build Usage</h1><blockquote>
-<ol>
-<li><code>dcoker build</code> 命令将构建用到的内容发送给docker daemon,依次执行Dockerfile中的命令（每执行一行指令将会提交a new layer），执行成功image构建完成</li>
-<li>构建docker image时，应该选择一个属于构建相关的目录（构建镜像所需内容），将会减少不必要的内容到docker daemon的传输从而加速构建</li>
-<li>指定Dockerfile构建，<code>docker build -t 8lovelife/activemq:1.0 -f /home/dmz/temp/Dockerfile .</code></li>
-</ol>
-</blockquote>
-<h1 id="Dockerfile中相关指令"><a href="#Dockerfile中相关指令" class="headerlink" title="Dockerfile中相关指令"></a>Dockerfile中相关指令</h1><h2 id="RUN"><a href="#RUN" class="headerlink" title="RUN"></a>RUN</h2><blockquote>
-<p><code>RUN</code>用于在当前镜像之上a new layer执行所需命令，执行后结果将被提交并可被后续指令使用</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>SHELLFORM:<code>RUN &lt;COMMAND&gt;</code>,linux 中默认以<code>/bin/sh -c</code> 执行，windows默认为<code>cmd /s /c</code></li>
-<li>EXECFORM:<code>RUN [&quot;executable&quot;,&quot;param1&quot;,&quot;parma2&quot;]</code>,这种形式并不会执行命令shell。如<code>RUN [&quot;echo&quot;,&quot;$DMZ&quot;]</code>并不会输出解析后的变量DMZ，而<code>RUN [&quot;sh&quot;,&quot;-c&quot;,&quot;echo $DMZ&quot;]</code>可以解析变量DMZ（最终镜像中的系统变量）</li>
-<li>EXECFORM将以JSON Array形式解析，所以参数需要双引号且相关符号需要转译如反斜杠，如：<code>RUN [&quot;C:\\windows\\system32&quot;]</code></li>
+        <h1 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h1><p>Docker Compose是用Python编写的工具，并不包含在Docker Engine安装包中。Docker Compose用于解析YML文件并运行YML中定义的容器服务。Docker Compose命令通过调用Docker API完成多容器的创建启动，使用Docker Compose需要自行安装</p>
+<h2 id="Docker-Compose-VS-Docker-Stack"><a href="#Docker-Compose-VS-Docker-Stack" class="headerlink" title="Docker Compose VS Docker Stack"></a>Docker Compose VS Docker Stack</h2><ul>
+<li>docker stack 包含在 swarm mode中，swarm mode 已经被集成到Docker Engine中，由GO语言编写。docker compose 需要自行安装，由Python编写</li>
+<li>docker stack 只支持 <strong>version &gt;= 3</strong> 的YML定义且部分命令无法生效如  <strong>build</strong>。docker compose 对YML的不同version处理都没有问题</li>
+<li>docker stack 可以将服务分发到不同的主机上，docker compose 只能将服务分发到同一台主机上</li>
 </ul>
-</blockquote>
-<h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2><blockquote>
-<p><code>CMD</code>用于容器执行的默认行为(同样能够使容器以可执行的形式运行)，非必须存在。若在Dockerfile出现多次，只有最后一次会有效</p>
-</blockquote>
-<blockquote>
+<h1 id="WHY"><a href="#WHY" class="headerlink" title="WHY"></a>WHY</h1><p>为什么要使用Docker Compose ? </p>
+<h2 id="服务发布"><a href="#服务发布" class="headerlink" title="服务发布"></a>服务发布</h2><p>以下是需要容器化的服务</p>
 <ul>
-<li><code>CMD [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;]</code> EXECFORM</li>
-<li><code>CMD [&quot;params1&quot;,&quot;param2&quot;]</code> , 作为ENTRYPOINT的默认参数</li>
-<li><code>CMD command param1 param2</code> SHELLFORM</li>
+<li>product-service 商品服务</li>
+<li>shopping-service 商店服务，两套界面</li>
+<li>redis-service 数据缓存</li>
+<li>front-balance 商店服务负载</li>
 </ul>
-</blockquote>
- <a id="more"></a>
-<h2 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h2><blockquote>
-<p> <code>ENTRYPOINT</code>能够使容器以可执行的形式运行，只有最后出现的<code>ENTRYPOINT</code>才会有效。使用<code>docker run --entrypoint</code>可以指定覆盖</p>
-</blockquote>
-<blockquote>
-<ul>
-<li><code>ENTRYPOINT [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;]</code> EXECFORM</li>
-<li><code>ENTRYPOINT command param1 param2</code> SHELLFORM,将不会使用CMD中的参数。这会成为/bin/sh -c的子命令，可执行命令不再是容器中的PID=1,这将导致容器无法无法接收Unix signals并且无法听从<code>docker stop &lt;container&gt;</code> SIGTERM，当stop 容器超时后，SIGKILL会被发出强制停止容器。使用 <code>exec</code>能够解决问题。</li>
-</ul>
-</blockquote>
-<h2 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h2><blockquote>
-<p><code>SHELL</code>用于更改SHELLFORM中默认使用的shell，如windows使用powershell,<code>SHELL [&quot;powershell&quot;, &quot;-command&quot;]</code>,多次SHELL指令将会覆盖之前的SHELL指令</p>
-</blockquote>
-<h2 id="CMD-／-ENTRYPOINT"><a href="#CMD-／-ENTRYPOINT" class="headerlink" title="CMD ／ ENTRYPOINT"></a>CMD ／ ENTRYPOINT</h2><p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/DockerBuild.png" alt="这里写图片描述"></p>
-<h1 id="构建activemq-image"><a href="#构建activemq-image" class="headerlink" title="构建activemq image"></a>构建activemq image</h1><blockquote>
-<ul>
-<li><strong>Dockerfile</strong>：</li>
-</ul>
-</blockquote>
-<blockquote>
-<pre><code>`FROM openjdk:8-jre-alpine`     #Base Image OpenJDK8
-`ENV ACTIVEMQ_VERSION 5.14.5`      #环境变量
-`ENV ACTIVEMQ apache-activemq-$ACTIVEMQ_VERSION`
-`ENV ACTIVEMQ_TCP=61616 ACTIVEMQ_AMQP=5672 ACTIVEMQ_STOMP=61613 ACTIVEMQ_MQTT=1883 ACTIVEMQ_WS=61614 ACTIVEMQ_UI=8161`
-`ENV ACTIVEMQ_HOME /opt/activemq`
-`RUN set -x &amp;&amp; \`      #设置脚本执行跟踪
-`mkdir -p /opt &amp;&amp; \  `      #建立目录/opt
- `apk --update add --virtual build-dependencies curl &amp;&amp; \`     #添加curl命令到虚拟构建依赖组build-dependencies
- `curl -s -S https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz | tar xvz -C /opt &amp;&amp; \`         #下载activemq并解压到指定目录
- `ln -s /opt/$ACTIVEMQ $ACTIVEMQ_HOME &amp;&amp; \`      #建立软连接
- `addgroup -S activemq &amp;&amp; adduser -S -H -G activemq -h $ACTIVEMQ_HOME activemq &amp;&amp; \`       #添加用户&amp;用户组
- `chown -R activemq:activemq /opt/$ACTIVEMQ &amp;&amp; \    
- chown -h activemq:activemq $ACTIVEMQ_HOME &amp;&amp; \
- apk del build-dependencies &amp;&amp; \`       #删除虚拟构建依赖组
- `rm -rf /var/cache/apk/*`       #删除install缓存，缩小image size ,反斜杠换行（同一条命令执行减少结果提交，减少image layer）  
- `USER activemq`     #用户切换（之后命令所属用户
- `WORKDIR $ACTIVEMQ_HOME`
- `EXPOSE $ACTIVEMQ_TCP $ACTIVEMQ_AMQP $ACTIVEMQ_STOMP $ACTIVEMQ_MQTT $ACTIVEMQ_WS $ACTIVEMQ_UI` #暴露端口号
- `CMD [&quot;/bin/sh&quot;, &quot;-c&quot;, &quot;bin/activemq console&quot;]`     #容器启动后执行命令
-</code></pre></blockquote>
-<blockquote>
-<ul>
-<li>构建<br><code>docker build -t 8lovelife/activemq:1.0 .</code></li>
-</ul>
-</blockquote>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.docker.com/engine/reference/builder/#dockerignore-file" target="_blank" rel="noopener">Docker v17.6</a><br><a href="https://store.docker.com/community/images/rmohr/activemq" target="_blank" rel="noopener">activemq Dockerfile来源</a></p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/docker-compose.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">BEFORE COMPOSE :</span><br><span class="line"></span><br><span class="line">docker run -itd --name redis-service --network=backend -p 16379:6379 redis</span><br><span class="line">docker run -itd --name product-service --network=backend -p 15000:5000 8lovelife/product:latest</span><br><span class="line">docker network connect frontend product-service</span><br><span class="line">docker run -itd --name shopping-service-blue --network=frontend -p 28080:80 8lovelife/shopping:blue</span><br><span class="line">docker run -itd --name shopping-service-red --network=frontend -p 18080:80 8lovelife/shopping:red</span><br><span class="line">docker run -itd --name front-balance --network=frontend -p 80:80 8lovelife/frontbalance:latest</span><br><span class="line"></span><br><span class="line">AFTER COMPOSE :</span><br><span class="line"></span><br><span class="line">docker-compose -f docker-compose-product.yml up -d</span><br></pre></td></tr></table></figure>
+<h1 id="HOW"><a href="#HOW" class="headerlink" title="HOW"></a>HOW</h1><p>如何使用Docker Compose ?<br><a id="more"></a></p>
+<h2 id="服务拆分"><a href="#服务拆分" class="headerlink" title="服务拆分"></a>服务拆分</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">SHOPPING Dockerfile:</span><br><span class="line"></span><br><span class="line">FROM node:11.1.0-alpine as build</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY package*.json /app/</span><br><span class="line">RUN npm install</span><br><span class="line">COPY ./ /app/</span><br><span class="line">RUN npm run build</span><br><span class="line"></span><br><span class="line">FROM nginx:1.17.3-alpine</span><br><span class="line">COPY --from=build /app/build /usr/share/nginx/html</span><br><span class="line">COPY --from=build /app/nginx.conf /etc/nginx/nginx.conf</span><br><span class="line">EXPOSE 80</span><br><span class="line">CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PRODUCT Dockerfile:</span><br><span class="line"></span><br><span class="line">FROM maven:3-jdk-8 as build</span><br><span class="line">RUN mkdir -p /build</span><br><span class="line">WORKDIR /build</span><br><span class="line">COPY pom.xml /build</span><br><span class="line">RUN mvn -B dependency:resolve dependency:resolve-plugins</span><br><span class="line">COPY src /build/src</span><br><span class="line">RUN mvn package -Dmaven.test.skip=true</span><br><span class="line"></span><br><span class="line">FROM openjdk:8-jdk-alpine as runtime</span><br><span class="line">EXPOSE 5000</span><br><span class="line">ENV APP_HOME /app</span><br><span class="line">RUN mkdir $APP_HOME</span><br><span class="line">WORKDIR $APP_HOME</span><br><span class="line">COPY --from=build /build/target/*.jar app.jar</span><br><span class="line">ENTRYPOINT [ &quot;sh&quot;, &quot;-c&quot;, &quot;java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar app.jar&quot; ]</span><br><span class="line"></span><br><span class="line">。。。</span><br></pre></td></tr></table></figure>
+<h2 id="YML定义"><a href="#YML定义" class="headerlink" title="YML定义"></a>YML定义</h2><p>本文事例使用的docker-compose-product.yml文件内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services: </span><br><span class="line"></span><br><span class="line">  product-service:</span><br><span class="line">    image: &quot;8lovelife/product:latest&quot;</span><br><span class="line">    ports: </span><br><span class="line">      - &quot;15000:5000&quot;</span><br><span class="line">    networks: </span><br><span class="line">      - frontend</span><br><span class="line">      - backend</span><br><span class="line">    environment: </span><br><span class="line">      - REDIS_HOST=redis-service</span><br><span class="line">      - REDIS_PORT=6379</span><br><span class="line">  </span><br><span class="line">  shopping-service-red:</span><br><span class="line">    image: &quot;8lovelife/shopping:red&quot;</span><br><span class="line">    ports: </span><br><span class="line">      - &quot;18080:80&quot;</span><br><span class="line">    networks: </span><br><span class="line">      - frontend</span><br><span class="line"></span><br><span class="line">  shopping-service-blue:</span><br><span class="line">    image: &quot;8lovelife/shopping:blue&quot;</span><br><span class="line">    ports: </span><br><span class="line">      - &quot;28080:80&quot;</span><br><span class="line">    networks: </span><br><span class="line">      - frontend</span><br><span class="line"></span><br><span class="line">  redis-service:</span><br><span class="line">    image: &quot;8lovelife/redis:products&quot;</span><br><span class="line">    ports: </span><br><span class="line">      - &quot;16379:6379&quot;</span><br><span class="line">    volumes: </span><br><span class="line">      - redis_data:/data</span><br><span class="line">    networks: </span><br><span class="line">      - &quot;backend&quot;</span><br><span class="line">  </span><br><span class="line">  front-balance:</span><br><span class="line">    image: &quot;8lovelife/frontbalance:latest&quot;</span><br><span class="line">    ports: </span><br><span class="line">      - &quot;80:80&quot;</span><br><span class="line">    networks: </span><br><span class="line">      - &quot;frontend&quot;</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  frontend: &#123;&#125;</span><br><span class="line">  backend: &#123;&#125;</span><br><span class="line"></span><br><span class="line">volumes: </span><br><span class="line">  redis_data: &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="构建或拉取镜像"><a href="#构建或拉取镜像" class="headerlink" title="构建或拉取镜像"></a>构建或拉取镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 绝对路径</span><br><span class="line">build: .</span><br><span class="line"></span><br><span class="line"># 相对路径</span><br><span class="line">build: ../path/to/app/</span><br><span class="line"></span><br><span class="line"># Git仓库</span><br><span class="line">build: https://url.git</span><br><span class="line"></span><br><span class="line"># 指定分支的Git仓库 </span><br><span class="line">build: https://url.git#develop</span><br><span class="line"></span><br><span class="line"># 含access_token的Git仓库链接</span><br><span class="line">build: https://&lt;ACCESS_TOKEN&gt;:@github.com/demo.git</span><br></pre></td></tr></table></figure>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">product-service:</span><br><span class="line">  image: &quot;8lovelife/product:latest&quot;</span><br><span class="line">  environment: </span><br><span class="line">    - REDIS_HOST=redis-service</span><br><span class="line">    - REDIS_PORT=6379</span><br></pre></td></tr></table></figure>
+<h3 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">product-service:</span><br><span class="line">  image: &quot;8lovelife/product:latest&quot;</span><br><span class="line">  ports: </span><br><span class="line">    - &quot;15000:5000&quot;</span><br><span class="line">  networks: </span><br><span class="line">    - frontend</span><br><span class="line">    - backend</span><br><span class="line">    </span><br><span class="line">networks:</span><br><span class="line">  frontend: &#123;&#125;</span><br><span class="line">  backend: &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置数据卷"><a href="#配置数据卷" class="headerlink" title="配置数据卷"></a>配置数据卷</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">redis-service:</span><br><span class="line">  image: &quot;redis:latest&quot;</span><br><span class="line">  ports: </span><br><span class="line">    - &quot;16379:6379&quot;</span><br><span class="line">  volumes: </span><br><span class="line">    - redis_data:/data</span><br><span class="line">  networks: </span><br><span class="line">    - &quot;backend&quot;</span><br><span class="line">    </span><br><span class="line">volumes: </span><br><span class="line">  redis_data: &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="构建运行"><a href="#构建运行" class="headerlink" title="构建运行"></a>构建运行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f docker-compose-product.yml up -d</span><br><span class="line"></span><br><span class="line">docker-compose --help compose命令帮助</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -540,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/30/Docker快速构建开发测试环境/" rel="next" title="Docker快速构建开发测试环境">
-                <i class="fa fa-chevron-left"></i> Docker快速构建开发测试环境
+              <a href="/2019/07/25/Spring中的-Retryable/" rel="next" title="Spring中的@Retryable">
+                <i class="fa fa-chevron-left"></i> Spring中的@Retryable
               </a>
             
           </div>
@@ -549,10 +498,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/30/Docker容器间的通信/" rel="prev" title="Docker容器间的通信">
-                Docker容器间的通信 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -689,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Build-Usage"><span class="nav-number">1.</span> <span class="nav-text">Docker Build Usage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dockerfile中相关指令"><span class="nav-number">2.</span> <span class="nav-text">Dockerfile中相关指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RUN"><span class="nav-number">2.1.</span> <span class="nav-text">RUN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD"><span class="nav-number">2.2.</span> <span class="nav-text">CMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENTRYPOINT"><span class="nav-number">2.3.</span> <span class="nav-text">ENTRYPOINT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SHELL"><span class="nav-number">2.4.</span> <span class="nav-text">SHELL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD-／-ENTRYPOINT"><span class="nav-number">2.5.</span> <span class="nav-text">CMD ／ ENTRYPOINT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建activemq-image"><span class="nav-number">3.</span> <span class="nav-text">构建activemq image</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WHAT"><span class="nav-number">1.</span> <span class="nav-text">WHAT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Compose-VS-Docker-Stack"><span class="nav-number">1.1.</span> <span class="nav-text">Docker Compose VS Docker Stack</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WHY"><span class="nav-number">2.</span> <span class="nav-text">WHY</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务发布"><span class="nav-number">2.1.</span> <span class="nav-text">服务发布</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HOW"><span class="nav-number">3.</span> <span class="nav-text">HOW</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务拆分"><span class="nav-number">3.1.</span> <span class="nav-text">服务拆分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YML定义"><span class="nav-number">3.2.</span> <span class="nav-text">YML定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建或拉取镜像"><span class="nav-number">3.2.1.</span> <span class="nav-text">构建或拉取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量"><span class="nav-number">3.2.2.</span> <span class="nav-text">配置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置网络"><span class="nav-number">3.2.3.</span> <span class="nav-text">配置网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置数据卷"><span class="nav-number">3.2.4.</span> <span class="nav-text">配置数据卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建运行"><span class="nav-number">3.2.5.</span> <span class="nav-text">构建运行</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
