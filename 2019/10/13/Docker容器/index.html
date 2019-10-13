@@ -119,16 +119,17 @@
 <meta property="og:site_name" content="8lovelife&#39;s life">
 <meta property="og:description" content="容器是什么简单来说，容器通过利用操作系统的一些底层技术（Namespace、UnionFS、Cgroup等）来运行一些进程。Docker封装了这些底层技术（Container format），方便用户去使用 容器的好处 可移植性/快速部署: 不需要关心不同的运行环境，容器运行所需的库都是打包好的一个整体 应用打包灵活高效: 由于image的分层共享设计，需要更换某一层的内容变得高效灵活 提升资源利">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/vmvscontainer.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/docker_architecture.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/Default%20Bridge.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/userdefined%20bridge.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/overlay%20network.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/Ingress%20network.png">
-<meta property="og:updated_time" content="2019-10-13T14:14:23.224Z">
+<meta property="og:updated_time" content="2019-10-13T15:16:22.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker容器">
 <meta name="twitter:description" content="容器是什么简单来说，容器通过利用操作系统的一些底层技术（Namespace、UnionFS、Cgroup等）来运行一些进程。Docker封装了这些底层技术（Container format），方便用户去使用 容器的好处 可移植性/快速部署: 不需要关心不同的运行环境，容器运行所需的库都是打包好的一个整体 应用打包灵活高效: 由于image的分层共享设计，需要更换某一层的内容变得高效灵活 提升资源利">
-<meta name="twitter:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/docker_architecture.png">
+<meta name="twitter:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/vmvscontainer.png">
 
 
 
@@ -368,7 +369,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-13T22:14:23+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-13T23:16:22+08:00">
                 2019-10-13
               </time>
             
@@ -445,6 +446,8 @@
 <li>应用打包灵活高效: 由于image的分层共享设计，需要更换某一层的内容变得高效灵活</li>
 <li>提升资源利用率（相比VM）: 共享底层的操作系统，管理程序没有额外的开销</li>
 </ul>
+<h1 id="VM-VS-Container"><a href="#VM-VS-Container" class="headerlink" title="VM VS Container"></a>VM VS Container</h1><p>虚拟机与容器的不同</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/vmvscontainer.png" alt="image"></p>
 <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><p>概述</p>
 <p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/Docker/docker_architecture.png" alt="image"></p>
 <h2 id="Image-Volume"><a href="#Image-Volume" class="headerlink" title="Image / Volume"></a>Image / Volume</h2><p><a href="https://whathowhy.com/2018/03/30/Docker%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" target="_blank" rel="noopener">Docker容器中的数据管理</a></p>
@@ -640,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#容器是什么"><span class="nav-number">1.</span> <span class="nav-text">容器是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器的好处"><span class="nav-number">2.</span> <span class="nav-text">容器的好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">3.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-Volume"><span class="nav-number">3.1.</span> <span class="nav-text">Image / Volume</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network"><span class="nav-number">3.2.</span> <span class="nav-text">Network</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#容器是什么"><span class="nav-number">1.</span> <span class="nav-text">容器是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器的好处"><span class="nav-number">2.</span> <span class="nav-text">容器的好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VM-VS-Container"><span class="nav-number">3.</span> <span class="nav-text">VM VS Container</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">4.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-Volume"><span class="nav-number">4.1.</span> <span class="nav-text">Image / Volume</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network"><span class="nav-number">4.2.</span> <span class="nav-text">Network</span></a></li></ol></li></ol></div>
             
 
           </div>

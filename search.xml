@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Docker容器]]></title>
     <url>%2F2019%2F10%2F13%2FDocker%E5%AE%B9%E5%99%A8%2F</url>
-    <content type="text"><![CDATA[容器是什么简单来说，容器通过利用操作系统的一些底层技术（Namespace、UnionFS、Cgroup等）来运行一些进程。Docker封装了这些底层技术（Container format），方便用户去使用 容器的好处 可移植性/快速部署: 不需要关心不同的运行环境，容器运行所需的库都是打包好的一个整体 应用打包灵活高效: 由于image的分层共享设计，需要更换某一层的内容变得高效灵活 提升资源利用率（相比VM）: 共享底层的操作系统，管理程序没有额外的开销 Docker概述 Image / VolumeDocker容器中的数据管理 Network Default Bridge User Defined Bridge Overlay Network Ingress Network Docker容器间的通信]]></content>
+    <content type="text"><![CDATA[容器是什么简单来说，容器通过利用操作系统的一些底层技术（Namespace、UnionFS、Cgroup等）来运行一些进程。Docker封装了这些底层技术（Container format），方便用户去使用 容器的好处 可移植性/快速部署: 不需要关心不同的运行环境，容器运行所需的库都是打包好的一个整体 应用打包灵活高效: 由于image的分层共享设计，需要更换某一层的内容变得高效灵活 提升资源利用率（相比VM）: 共享底层的操作系统，管理程序没有额外的开销 VM VS Container虚拟机与容器的不同 Docker概述 Image / VolumeDocker容器中的数据管理 Network Default Bridge User Defined Bridge Overlay Network Ingress Network Docker容器间的通信]]></content>
       <categories>
         <category>Docker</category>
       </categories>
@@ -201,8 +201,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -213,8 +213,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -225,8 +225,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -249,8 +249,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -261,8 +261,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -273,8 +273,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
