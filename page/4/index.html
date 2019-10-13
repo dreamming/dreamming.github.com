@@ -316,6 +316,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/Docker快速构建开发测试环境/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/avatar_what.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8lovelife's life">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/30/Docker快速构建开发测试环境/" itemprop="url">Docker快速构建开发测试环境</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T01:08:39+08:00">
+                2018-03-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-13T23:33:45+08:00">
+                2019-01-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/30/Docker快速构建开发测试环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/30/Docker快速构建开发测试环境/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <!-- # 使用Docker快速构建开发调试环境 -->
+<p>简单记录下我在开发过程中,如何快速构建调试环境</p>
+<h1 id="RedisService"><a href="#RedisService" class="headerlink" title="RedisService"></a>RedisService</h1><blockquote>
+<ul>
+<li>下载Redis image<br><code>docker pull redis</code></li>
+<li>启动Redis<br><code>docker run --restart=always -d -ti --name redisService 
+-v /home/core/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf 
+-v /home/core/redis/data:/data -p 16379:6379 redis 
+redis-server /usr/local/etc/redis/redis.conf</code></li>
+<li>登录Redis<br><code>docker exec -it redisService redis-cli --raw -a redis</code></li>
+</ul>
+</blockquote>
+<hr>
+<h1 id="MysqlService"><a href="#MysqlService" class="headerlink" title="MysqlService"></a>MysqlService</h1><blockquote>
+<ul>
+<li>下载Mysql image<br><code>docker pull mysql</code></li>
+<li>启动Mysql<br><code>docker run --restart=always -it --name mysqlService 
+-v /home/core/mysql/data/:/var/lib/mysql
+-v /home/core/mysql/conf.d:/etc/mysql/conf.d
+-p 13306:3306 -e MYSQL\_ROOT\_PASSWORD=12345 -d mysql</code></li>
+</ul>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/Docker快速构建开发测试环境/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/Docker-Plugin/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -513,7 +702,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

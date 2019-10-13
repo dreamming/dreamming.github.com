@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Docker容器]]></title>
+    <url>%2F2019%2F10%2F13%2FDocker%E5%AE%B9%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[容器是什么简单来说，容器通过利用操作系统的一些底层技术（Namespace、UnionFS、Cgroup等）来运行一些进程。Docker封装了这些底层技术（Container format），方便用户去使用 容器的好处 可移植性/快速部署: 不需要关心不同的运行环境，容器运行所需的库都是打包好的一个整体 应用打包灵活高效: 由于image的分层共享设计，需要更换某一层的内容变得高效灵活 提升资源利用率（相比VM）: 共享底层的操作系统，管理程序没有额外的开销 Docker概述 Image / VolumeDocker容器中的数据管理 Network Default Bridge User Defined Bridge Overlay Network Ingress Network Docker容器间的通信]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Docker Compose]]></title>
     <url>%2F2019%2F09%2F18%2FDocker-Compose%2F</url>
     <content type="text"><![CDATA[WHATDocker Compose是用Python编写的工具，并不包含在Docker Engine安装包中。Docker Compose用于解析YML文件并运行YML中定义的容器服务。Docker Compose命令通过调用Docker API完成多容器的创建启动，使用Docker Compose需要自行安装 Docker Compose VS Docker Stack docker stack 包含在 swarm mode中，swarm mode 已经被集成到Docker Engine中，由GO语言编写。docker compose 需要自行安装，由Python编写 docker stack 只支持 version &gt;= 3 的YML定义且部分命令无法生效如 build。docker compose 对YML的不同version处理都没有问题 docker stack 可以将服务分发到不同的主机上，docker compose 只能将服务分发到同一台主机上 WHY为什么要使用Docker Compose ? 服务发布以下是需要容器化的服务 product-service 商品服务 shopping-service 商店服务，两套界面 redis-service 数据缓存 front-balance 商店服务负载 123456789101112BEFORE COMPOSE :docker run -itd --name redis-service --network=backend -p 16379:6379 redisdocker run -itd --name product-service --network=backend -p 15000:5000 8lovelife/product:latestdocker network connect frontend product-servicedocker run -itd --name shopping-service-blue --network=frontend -p 28080:80 8lovelife/shopping:bluedocker run -itd --name shopping-service-red --network=frontend -p 18080:80 8lovelife/shopping:reddocker run -itd --name front-balance --network=frontend -p 80:80 8lovelife/frontbalance:latestAFTER COMPOSE :docker-compose -f docker-compose-product.yml up -d HOW如何使用Docker Compose ? 服务拆分1234567891011121314151617181920212223242526272829303132333435SHOPPING Dockerfile:FROM node:11.1.0-alpine as buildWORKDIR /appCOPY package*.json /app/RUN npm installCOPY ./ /app/RUN npm run buildFROM nginx:1.17.3-alpineCOPY --from=build /app/build /usr/share/nginx/htmlCOPY --from=build /app/nginx.conf /etc/nginx/nginx.confEXPOSE 80CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]PRODUCT Dockerfile:FROM maven:3-jdk-8 as buildRUN mkdir -p /buildWORKDIR /buildCOPY pom.xml /buildRUN mvn -B dependency:resolve dependency:resolve-pluginsCOPY src /build/srcRUN mvn package -Dmaven.test.skip=trueFROM openjdk:8-jdk-alpine as runtimeEXPOSE 5000ENV APP_HOME /appRUN mkdir $APP_HOMEWORKDIR $APP_HOMECOPY --from=build /build/target/*.jar app.jarENTRYPOINT [ &quot;sh&quot;, &quot;-c&quot;, &quot;java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar app.jar&quot; ]。。。 YML定义本文事例使用的docker-compose-product.yml文件内容如下123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051version: &quot;3&quot;services: product-service: image: &quot;8lovelife/product:latest&quot; ports: - &quot;15000:5000&quot; networks: - frontend - backend environment: - REDIS_HOST=redis-service - REDIS_PORT=6379 shopping-service-red: image: &quot;8lovelife/shopping:red&quot; ports: - &quot;18080:80&quot; networks: - frontend shopping-service-blue: image: &quot;8lovelife/shopping:blue&quot; ports: - &quot;28080:80&quot; networks: - frontend redis-service: image: &quot;8lovelife/redis:products&quot; ports: - &quot;16379:6379&quot; volumes: - redis_data:/data networks: - &quot;backend&quot; front-balance: image: &quot;8lovelife/frontbalance:latest&quot; ports: - &quot;80:80&quot; networks: - &quot;frontend&quot;networks: frontend: &#123;&#125; backend: &#123;&#125;volumes: redis_data: &#123;&#125; 构建或拉取镜像1234567891011121314# 绝对路径build: .# 相对路径build: ../path/to/app/# Git仓库build: https://url.git# 指定分支的Git仓库 build: https://url.git#develop# 含access_token的Git仓库链接build: https://&lt;ACCESS_TOKEN&gt;:@github.com/demo.git 配置环境变量12345product-service: image: &quot;8lovelife/product:latest&quot; environment: - REDIS_HOST=redis-service - REDIS_PORT=6379 配置网络1234567891011product-service: image: &quot;8lovelife/product:latest&quot; ports: - &quot;15000:5000&quot; networks: - frontend - backend networks: frontend: &#123;&#125; backend: &#123;&#125; 配置数据卷1234567891011redis-service: image: &quot;redis:latest&quot; ports: - &quot;16379:6379&quot; volumes: - redis_data:/data networks: - &quot;backend&quot; volumes: redis_data: &#123;&#125; 构建运行123docker-compose -f docker-compose-product.yml up -ddocker-compose --help compose命令帮助]]></content>
@@ -190,8 +201,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -202,8 +213,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -214,8 +225,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -238,8 +249,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -250,8 +261,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -262,8 +273,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
