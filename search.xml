@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用RestTemplate]]></title>
+    <url>%2F2019%2F11%2F01%2F%E4%BD%BF%E7%94%A8RestTemplate%2F</url>
+    <content type="text"><![CDATA[记录如何使用Spring中的RestTemplate(with apache.httpcomponents)发起 REST API请求 REQUIREMENTS12345678910&lt;dependency&gt; &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt; &lt;artifactId&gt;httpclient&lt;/artifactId&gt; &lt;version&gt;4.5.6&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;&lt;/dependency&gt; SETTING UPHttpConfigProperties1234567891011121314151617181920212223242526272829303132@Component@Datapublic class HttpConfigProperties &#123; private Integer maxTotalConnections = 200; private Integer maxPerRoute = 100; /** * 等待连接建立的超时时间 5秒 */ private Integer connectTimeout = 5000; /** * 等待数据传输的超时时间 15秒 */ private Integer socketTimeout = 15000; /** * 等待请求连接池的超时时间 5秒 */ private Integer connectionRequestTimeout = 5000; /** * 允许连接idle的时间 10秒 */ private Integer keeAliveTimeMillis = 10000; /** * idle最大时间 */ private Integer closeIdleConnectionWaitTimeSecs = 20;&#125; HttpClientPoolingConfig123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081@Configuration@EnableScheduling@Slf4jpublic class HttpClientPoolingConfig &#123; @Resource private HttpConfigProperties properties; @Bean(name = &quot;poolingConnectionManager&quot;) public PoolingHttpClientConnectionManager poolingConnectionManager() &#123; try &#123; LayeredConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(SSLContext.getDefault()); Registry&lt;ConnectionSocketFactory&gt; socketFactoryRegistry = RegistryBuilder.&lt;ConnectionSocketFactory&gt;create() .register(&quot;https&quot;, sslsf) .register(&quot;http&quot;, new PlainConnectionSocketFactory()) .build(); PoolingHttpClientConnectionManager poolingConnectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry); poolingConnectionManager.setMaxTotal(properties.getMaxTotalConnections()); poolingConnectionManager.setDefaultMaxPerRoute(properties.getMaxPerRoute()); return poolingConnectionManager; &#125; catch (Exception e) &#123; log.error(&quot;Pooling Connection Manager Initialisation failure because of &quot; + e.getMessage(), e); throw new RuntimeException(); &#125; &#125; @Bean(name = &quot;connectionKeepAliveStrategy&quot;) public ConnectionKeepAliveStrategy connectionKeepAliveStrategy() &#123; return (response, context) -&gt; &#123; HeaderElementIterator it = new BasicHeaderElementIterator (response.headerIterator(HTTP.CONN_KEEP_ALIVE)); while (it.hasNext()) &#123; HeaderElement he = it.nextElement(); String param = he.getName(); String value = he.getValue(); if (value != null &amp;&amp; param.equalsIgnoreCase(&quot;timeout&quot;)) &#123; return Long.parseLong(value) * 1000; &#125; &#125; return properties.getKeeAliveTimeMillis(); &#125;; &#125; @Bean(name = &quot;httpClient&quot;) public CloseableHttpClient httpClient(@Qualifier(value = &quot;connectionKeepAliveStrategy&quot;) ConnectionKeepAliveStrategy connectionKeepAliveStrategy) &#123; RequestConfig requestConfig = RequestConfig.custom() .setConnectionRequestTimeout(properties.getConnectionRequestTimeout()) .setConnectTimeout(properties.getConnectTimeout()) .setSocketTimeout(properties.getSocketTimeout()).build(); return HttpClients.custom() .setDefaultRequestConfig(requestConfig) .setConnectionManager(poolingConnectionManager()) .setKeepAliveStrategy(connectionKeepAliveStrategy) .build(); &#125; @Bean public Runnable idleConnectionMonitor(@Qualifier(value = &quot;poolingConnectionManager&quot;) PoolingHttpClientConnectionManager poolingConnectionManager) &#123; return new Runnable() &#123; @Override @Scheduled(fixedDelay = 10000, initialDelay = 1000) public void run() &#123; try &#123; if (poolingConnectionManager != null) &#123; log.info(&quot;run IdleConnectionMonitor - Closing expired and idle connections...&quot;); poolingConnectionManager.closeExpiredConnections(); poolingConnectionManager.closeIdleConnections(properties.getCloseIdleConnectionWaitTimeSecs(), TimeUnit.SECONDS); &#125; else &#123; log.info(&quot;run IdleConnectionMonitor - Http Client Connection manager is not initialised&quot;); &#125; &#125; catch (Exception e) &#123; log.error(&quot;run IdleConnectionMonitor - Exception occurred. msg=&#123;&#125;, e=&#123;&#125;&quot;, e.getMessage(), e); &#125; &#125; &#125;; &#125;&#125; RestTemplateConfig1234567891011121314151617181920@Configuration@Slf4jpublic class RestTemplateConfig &#123; @Bean public RestTemplate restTemplate(@Qualifier(value = &quot;httpClient&quot;) CloseableHttpClient httpClient) &#123; HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(httpClient); RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory); List&lt;ClientHttpRequestInterceptor&gt; interceptors = restTemplate.getInterceptors(); if (CollectionUtils.isEmpty(interceptors)) &#123; interceptors = new ArrayList&lt;&gt;(); &#125; interceptors.add(new RestTemplateLogInterceptor()); restTemplate.setInterceptors(interceptors); restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName(&quot;UTF-8&quot;))); return restTemplate; &#125;&#125; RestTemplateLogInterceptor123456789101112@Slf4jpublic class RestTemplateLogInterceptor implements ClientHttpRequestInterceptor &#123; @Override public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException &#123; ClientHttpResponse response = execution.execute(request, body); if (response.getStatusCode() != HttpStatus.OK) &#123; log.error(&quot;RESTful api error, request is &#123;&#125; ,response is &#123;&#125;&quot;, request.getURI(), response.getStatusCode()); &#125; return response; &#125;&#125; DEMO]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Docker容器]]></title>
     <url>%2F2019%2F10%2F13%2FDocker%E5%AE%B9%E5%99%A8%2F</url>
     <content type="text"><![CDATA[容器是什么简单来说，容器通过利用操作系统的一些底层技术（Namespace、UnionFS、Cgroup等）来运行一些进程。Docker封装了这些底层技术（Container format），方便用户去使用 容器的好处 可移植性/快速部署: 不需要关心不同的运行环境，容器运行所需的库都是打包好的一个整体 应用打包灵活高效: 由于image的分层共享设计，需要更换某一层的内容变得高效灵活 提升资源利用率（相比VM）: 共享底层的操作系统，管理程序没有额外的开销 VM VS Container虚拟机与容器的不同 Docker概述 Image / VolumeDocker容器中的数据管理 Network Default Bridge User Defined Bridge Overlay Network Ingress Network Docker容器间的通信]]></content>
@@ -201,8 +213,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -213,8 +225,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -225,8 +237,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -249,8 +261,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -261,8 +273,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -273,8 +285,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>JVM</tag>
         <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
