@@ -111,18 +111,29 @@
 
 
 
-<meta name="description" content="WHAT@Retryable由spring-retry模块提供，在方法或类上添加@Retryable注解可以实现方法调用失败的重试。可以指定失败重试的次数、fallback方法 @Retryable设置重试的次数、指定需要重试的异常123456789101112131415161718@Target(&amp;#123; ElementType.METHOD, ElementType.TYPE &amp;#125">
+<meta name="description" content="圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的 容器中Bean的生命周期下图为Spring容器中Bean的生命周期  容器中Bean的创建过程下图是Spring容器创建一个Bean大致的过程  MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition下图是 CommonAnnotationB">
 <meta name="keywords" content="Java,Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring中的@Retryable">
-<meta property="og:url" content="http://yoursite.com/2019/07/25/Spring中的-Retryable/index.html">
+<meta property="og:title" content="Spring容器中Bean的生命周期">
+<meta property="og:url" content="http://yoursite.com/2019/12/26/Spring容器中Bean的生命周期/index.html">
 <meta property="og:site_name" content="8lovelife&#39;s life">
-<meta property="og:description" content="WHAT@Retryable由spring-retry模块提供，在方法或类上添加@Retryable注解可以实现方法调用失败的重试。可以指定失败重试的次数、fallback方法 @Retryable设置重试的次数、指定需要重试的异常123456789101112131415161718@Target(&amp;#123; ElementType.METHOD, ElementType.TYPE &amp;#125">
+<meta property="og:description" content="圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的 容器中Bean的生命周期下图为Spring容器中Bean的生命周期  容器中Bean的创建过程下图是Spring容器创建一个Bean大致的过程  MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition下图是 CommonAnnotationB">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-26T02:41:10.137Z">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanLifeCycle.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanCreating.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/postProcessMergedBeanDefinition.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/postProcessProperties.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/postProcessBeforeInitialization.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/invokeAwareMethods.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/invokeInitMethods.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/registerDisposableBeanIfNecessary.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanDestory.png">
+<meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/postProcessBeforeDestruction.png">
+<meta property="og:updated_time" content="2019-12-25T18:34:00.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring中的@Retryable">
-<meta name="twitter:description" content="WHAT@Retryable由spring-retry模块提供，在方法或类上添加@Retryable注解可以实现方法调用失败的重试。可以指定失败重试的次数、fallback方法 @Retryable设置重试的次数、指定需要重试的异常123456789101112131415161718@Target(&amp;#123; ElementType.METHOD, ElementType.TYPE &amp;#125">
+<meta name="twitter:title" content="Spring容器中Bean的生命周期">
+<meta name="twitter:description" content="圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的 容器中Bean的生命周期下图为Spring容器中Bean的生命周期  容器中Bean的创建过程下图是Spring容器创建一个Bean大致的过程  MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition下图是 CommonAnnotationB">
+<meta name="twitter:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanLifeCycle.png">
 
 
 
@@ -152,13 +163,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/25/Spring中的-Retryable/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/26/Spring容器中Bean的生命周期/">
 
 
 
 
 
-  <title>Spring中的@Retryable | 8lovelife's life</title>
+  <title>Spring容器中Bean的生命周期 | 8lovelife's life</title>
   
 
 
@@ -317,7 +328,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/25/Spring中的-Retryable/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/Spring容器中Bean的生命周期/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
@@ -334,7 +345,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring中的@Retryable</h1>
+          <h1 class="post-title" itemprop="name headline">Spring容器中Bean的生命周期</h1>
         
 
         <div class="post-meta">
@@ -346,8 +357,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T22:52:35+08:00">
-                2019-07-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-26T01:28:47+08:00">
+                2019-12-26
               </time>
             
 
@@ -362,8 +373,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-26T10:41:10+08:00">
-                2019-07-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-26T02:34:00+08:00">
+                2019-12-26
               </time>
             
           </span>
@@ -399,8 +410,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/25/Spring中的-Retryable/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/25/Spring中的-Retryable/" itemprop="commentCount"></span>
+                <a href="/2019/12/26/Spring容器中Bean的生命周期/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/26/Spring容器中Bean的生命周期/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -433,45 +444,68 @@
       
 
       
-        <h1 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h1><p>@Retryable由spring-retry模块提供，在方法或类上添加@Retryable注解可以实现方法调用失败的重试。可以指定失败重试的次数、fallback方法</p>
-<h2 id="Retryable"><a href="#Retryable" class="headerlink" title="@Retryable"></a>@Retryable</h2><p>设置重试的次数、指定需要重试的异常<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123; ElementType.METHOD, ElementType.TYPE &#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">public @interface Retryable &#123;</span><br><span class="line">    // 指定拦截方法</span><br><span class="line">    String interceptor() default &quot;&quot;;</span><br><span class="line">    // 指定需要重试异常，若未指定异常则重试异常为 Exception.class</span><br><span class="line">    Class&lt;? extends Throwable&gt;[] value() default &#123;&#125;;</span><br><span class="line">    // 最大尝试次数（包含第一次</span><br><span class="line">    int maxAttempts() default 3;</span><br><span class="line">        Class&lt;? extends Throwable&gt;[] include() default &#123;&#125;;</span><br><span class="line">    Class&lt;? extends Throwable&gt;[] exclude() default &#123;&#125;;</span><br><span class="line">    String label() default &quot;&quot;;</span><br><span class="line">    boolean stateful() default false;</span><br><span class="line">    String maxAttemptsExpression() default &quot;&quot;;</span><br><span class="line">    Backoff backoff() default @Backoff();</span><br><span class="line">    String exceptionExpression() default &quot;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Backoff"><a href="#Backoff" class="headerlink" title="@Backoff"></a>@Backoff</h2><p>设置重试的时间间隔，不同值的组合会确定不同的计算间隔方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Target(ElementType.TYPE)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Import(RetryConfiguration.class)</span><br><span class="line">@Documented</span><br><span class="line">public @interface Backoff &#123;</span><br><span class="line">    long value() default 1000;</span><br><span class="line">    // 若delay=0未配置，则delay=value</span><br><span class="line">    long delay() default 0;</span><br><span class="line">    long maxDelay() default 0;</span><br><span class="line">    double multiplier() default 0;</span><br><span class="line">    String delayExpression() default &quot;&quot;;</span><br><span class="line">    String maxDelayExpression() default &quot;&quot;;</span><br><span class="line">    String multiplierExpression() default &quot;&quot;;</span><br><span class="line">    boolean random() default false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Recover"><a href="#Recover" class="headerlink" title="@Recover"></a>@Recover</h2><p>重试失败后会进入@Recover注解的方法</p>
-<h1 id="WHY"><a href="#WHY" class="headerlink" title="WHY"></a>WHY</h1><p>在项目中假设调用的外部服务发生网络异常、服务器故障、死机状况，在这些情况下通常会重试几次调用，假如最终还是失败则会返回特定的内容。如果可能在后续的尝试中会成功，则有重试的必要。你可能会写一段循环代码然后计数来实现重试功能，@Retryable提供了更便捷的方式来实现错误重试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">BEFORE:</span><br><span class="line">    int retries = 0;</span><br><span class="line">    long wait = 1;</span><br><span class="line">            while (retries &lt; maxRetries) &#123;</span><br><span class="line">        TimeUnit.SECONDS.sleep(wait);</span><br><span class="line">        // 处理任务</span><br><span class="line">        wait *= 2;</span><br><span class="line">        ++retries;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">AFTER:</span><br><span class="line">    @Retryable(maxAttempts = 3, backoff = @Backoff(delay = 1000,multiplier = 1.5,maxDelay = 3000))</span><br><span class="line">    String retryForError();</span><br><span class="line">    @Recover</span><br><span class="line">    String recoverResponse(Exception e);</span><br></pre></td></tr></table></figure>
-<h1 id="HOW"><a href="#HOW" class="headerlink" title="HOW"></a>HOW</h1><p>@Retryable如何使用？怎么实现的？</p>
-<ul>
-<li>Requirements<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.retry&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-retry&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;$&#123;version&#125;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;$&#123;version&#125;&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<a id="more"></a>
-<h2 id="事例"><a href="#事例" class="headerlink" title="事例"></a>事例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public interface RetryService &#123;</span><br><span class="line"></span><br><span class="line">    @Retryable(maxAttempts = 3,</span><br><span class="line">               backoff = @Backoff(delay = 1000,multiplier = 1.5,maxDelay = 3000),</span><br><span class="line">               value = ArithmeticException.class)</span><br><span class="line">    String retryForError();</span><br><span class="line"></span><br><span class="line">    @Recover</span><br><span class="line">    String recoverResponse(ArithmeticException e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class RetryServiceImpl implements RetryService &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String retryForError() &#123;</span><br><span class="line">        System.out.println(&quot;retryForError&quot;);</span><br><span class="line">        int a = 10 / 0;</span><br><span class="line">        return &quot;Success&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String recoverResponse(ArithmeticException e) &#123;</span><br><span class="line">        return &quot;RecoverResponse Success&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class RetryController &#123;</span><br><span class="line"></span><br><span class="line">    @Resource</span><br><span class="line">    private RetryService retryService;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;/retry&quot;)</span><br><span class="line">    public String retryService() &#123;</span><br><span class="line">        return retryService.retryForError();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>AOP</p>
+        <p>圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的</p>
+<h1 id="容器中Bean的生命周期"><a href="#容器中Bean的生命周期" class="headerlink" title="容器中Bean的生命周期"></a>容器中Bean的生命周期</h1><p>下图为Spring容器中Bean的生命周期</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanLifeCycle.png" alt="image"></p>
+<h1 id="容器中Bean的创建过程"><a href="#容器中Bean的创建过程" class="headerlink" title="容器中Bean的创建过程"></a>容器中Bean的创建过程</h1><p>下图是Spring容器创建一个Bean大致的过程</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanCreating.png" alt="image"></p>
+<h2 id="MergedBeanDefinitionPostProcessor-postProcessMergedBeanDefinition"><a href="#MergedBeanDefinitionPostProcessor-postProcessMergedBeanDefinition" class="headerlink" title="MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition"></a>MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition</h2><p>下图是 CommonAnnotationBeanPostProcessor / AutowiredAnnotationBeanPostProcessor 在此刻做的事情</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/postProcessMergedBeanDefinition.png" alt="image"></p>
+<h3 id="CommonAnnotationBeanPostProcessor-postProcessMergedBeanDefinition"><a href="#CommonAnnotationBeanPostProcessor-postProcessMergedBeanDefinition" class="headerlink" title="CommonAnnotationBeanPostProcessor#postProcessMergedBeanDefinition"></a>CommonAnnotationBeanPostProcessor#postProcessMergedBeanDefinition</h3><ol>
+<li>将@PostConstruct方法缓存至lifecycleMetadataCache（LifecycleMetadata的initMethods）</li>
+<li>将@PreDestroy方法缓存至lifecycleMetadataCache （LifecycleMetadata的destroyMethods）</li>
+<li>将@Resouorce、@WebServiceRef、@EJB 修饰的字段或方法缓存至injectionMetadataCache（ResourceElement/WebServiceRefElement/EjbRefElement）</li>
+</ol>
+<h3 id="AutowiredAnnotationBeanPostProcessor-postProcessMergedBeanDefinition"><a href="#AutowiredAnnotationBeanPostProcessor-postProcessMergedBeanDefinition" class="headerlink" title="AutowiredAnnotationBeanPostProcessor#postProcessMergedBeanDefinition"></a>AutowiredAnnotationBeanPostProcessor#postProcessMergedBeanDefinition</h3><blockquote>
+<p>将@Autowired、@Value、@javax.inject.Inject  修饰的字段或方法缓存至 injectionMetadataCache（AutowiredFieldElement/AutowiredMethodElement）</p>
+</blockquote>
+<h2 id="InstantiationAwareBeanPostProcessor-postProcessProperties"><a href="#InstantiationAwareBeanPostProcessor-postProcessProperties" class="headerlink" title="InstantiationAwareBeanPostProcessor#postProcessProperties"></a>InstantiationAwareBeanPostProcessor#postProcessProperties</h2><p>下图是 CommonAnnotationBeanPostProcessor / AutowiredAnnotationBeanPostProcessor 在此刻做的事情</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/postProcessProperties.png" alt="image"></p>
+<h3 id="CommonAnnotationBeanPostProcessor-postProcessProperties"><a href="#CommonAnnotationBeanPostProcessor-postProcessProperties" class="headerlink" title="CommonAnnotationBeanPostProcessor#postProcessProperties"></a>CommonAnnotationBeanPostProcessor#postProcessProperties</h3><blockquote>
+<p>获取injectionMetadataCache中的InjectedElement（ResourceElement/WebServiceRefElement/EjbRefElement ）<br>并进行解析注入</p>
+</blockquote>
+<h3 id="AutowiredAnnotationBeanPostProcessor-postProcessProperties"><a href="#AutowiredAnnotationBeanPostProcessor-postProcessProperties" class="headerlink" title="AutowiredAnnotationBeanPostProcessor#postProcessProperties"></a>AutowiredAnnotationBeanPostProcessor#postProcessProperties</h3><blockquote>
+<p>获取injectionMetadataCache中的InjectedElement（AutowiredFieldElement/AutowiredMethodElement）<br>并进行解析注入</p>
+</blockquote>
+<h2 id="BeanPostProcessor-postProcessBeforeInitialization"><a href="#BeanPostProcessor-postProcessBeforeInitialization" class="headerlink" title="BeanPostProcessor#postProcessBeforeInitialization"></a>BeanPostProcessor#postProcessBeforeInitialization</h2><p>下图是 CommonAnnotationBeanPostProcessor 在此刻做的事情</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/postProcessBeforeInitialization.png" alt="iamge"></p>
+<blockquote>
+<p>@PostConstruct方法此刻被调用</p>
+</blockquote>
+<h2 id="AbstractAutowireCapableBeanFactory-invokeAwareMethods"><a href="#AbstractAutowireCapableBeanFactory-invokeAwareMethods" class="headerlink" title="AbstractAutowireCapableBeanFactory#invokeAwareMethods"></a>AbstractAutowireCapableBeanFactory#invokeAwareMethods</h2><p>做的事情如图</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/invokeAwareMethods.png" alt="iamge"></p>
 <ol>
-<li>RetryConfiguration 创建pointcut（Retryable注解）, 创建Advice（AnnotationAwareRetryOperationsInterceptor）</li>
-<li>AnnotationAwareRetryOperationsInterceptor 委托给默认的 RetryOperationsInterceptor</li>
+<li>BeanNameAware.setBeanName</li>
+<li>BeanClassLoaderAware.setBeanClassLoader</li>
+<li>BeanFactoryAware.setBeanFactory</li>
 </ol>
-<h3 id="BackOffPolicy"><a href="#BackOffPolicy" class="headerlink" title="BackOffPolicy"></a>BackOffPolicy</h3><p>@Backoff</p>
+<h2 id="AbstractAutowireCapableBeanFactory-invokeInitMethods"><a href="#AbstractAutowireCapableBeanFactory-invokeInitMethods" class="headerlink" title="AbstractAutowireCapableBeanFactory#invokeInitMethods"></a>AbstractAutowireCapableBeanFactory#invokeInitMethods</h2><p>做的事情如图</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/invokeInitMethods.png" alt="iamge"></p>
 <ol>
-<li><p>multiplier &gt; 0 and random = false</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">initialInterval = delay</span><br><span class="line">maxInterval = maxDelay &gt; initialInterval ? maxDelay : ExponentialBackOffPolicy.DEFAULT_MAX_INTERVAL(30000毫秒)</span><br><span class="line">        public synchronized long getSleepAndIncrement() &#123;</span><br><span class="line">            long sleep = this.interval;</span><br><span class="line">            if (sleep &gt; maxInterval) &#123;</span><br><span class="line">                sleep = maxInterval;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                this.interval = getNextInterval();</span><br><span class="line">            &#125;</span><br><span class="line">            return sleep;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"> protected long getNextInterval() &#123;</span><br><span class="line">            return (long) (this.interval * this.multiplier);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>multiplier &gt; 0 and random = true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public synchronized long getSleepAndIncrement() &#123;</span><br><span class="line">    // 1 中方法</span><br><span class="line">    long next = super.getSleepAndIncrement();</span><br><span class="line">    next = (long) (next * (1 + r.nextFloat() * (getMultiplier() - 1)));</span><br><span class="line">    return next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>maxDelay &gt; initialInterval</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">long delta = maxDelay==initialInterval ? 0 : random.nextInt((int) (maxDelay - minBackOffPeriod));</span><br><span class="line">sleeper.sleep(minBackOffPeriod + delta );</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其他</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sleeper.sleep(delay);</span><br></pre></td></tr></table></figure>
-</li>
+<li>执行InitializingBean.afterPropertiesSet方法</li>
+<li>执行invokeCustomInitMethod，即执行init-method</li>
 </ol>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ol>
-<li>@Recover只对同类中的@Retryable生效</li>
-<li>多个@Recover方法，同一种异常参数。相当于讲这些方法（Method）放在Set中，取出的第一个@Recover方法将会是fallback方法</li>
-<li>多个@Recover方法，不同种异常参数。若@Recover方法参数距离@Retryable方法抛出的异常最近（根据重试的最后一次抛出的异常作为查找依据）则此@Recover方法将会是fallback方法。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RecoverAnnotationRecoveryHandler.findClosestMatch</span><br></pre></td></tr></table></figure></li>
+<h2 id="BeanPostProcessor-postProcessAfterInitialization"><a href="#BeanPostProcessor-postProcessAfterInitialization" class="headerlink" title="BeanPostProcessor#postProcessAfterInitialization"></a>BeanPostProcessor#postProcessAfterInitialization</h2><p><a href="https://whathowhy.com/2019/05/28/Spring%E4%B8%AD%E7%9A%84-Async/" target="_blank" rel="noopener">Spring中的@Async</a></p>
+<h2 id="AbstractBeanFactory-registerDisposableBeanIfNecessary"><a href="#AbstractBeanFactory-registerDisposableBeanIfNecessary" class="headerlink" title="AbstractBeanFactory#registerDisposableBeanIfNecessary"></a>AbstractBeanFactory#registerDisposableBeanIfNecessary</h2><p>做的事情如图</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/registerDisposableBeanIfNecessary.png" alt="image"></p>
+<ol>
+<li>DisposableBean类型的Bean（DisposableBeanAdapter）被放至  DefaultSingletonBeanRegistry的disposableBeans中</li>
+<li>过滤 DestructionAwareBeanPostProcessor 至 DisposableBeanAdapter的beanPostProcessors</li>
 </ol>
-
+<h1 id="容器中Bean的销毁过程"><a href="#容器中Bean的销毁过程" class="headerlink" title="容器中Bean的销毁过程"></a>容器中Bean的销毁过程</h1><p>下图是Spring容器中的Bean销毁过程</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanDestory.png" alt="image"></p>
+<h2 id="AbstractApplicationContext-doClose"><a href="#AbstractApplicationContext-doClose" class="headerlink" title="AbstractApplicationContext#doClose"></a>AbstractApplicationContext#doClose</h2><blockquote>
+<p>程序正常退出后，系统会调用此方法</p>
+</blockquote>
+<h2 id="DestructionAwareBeanPostProcessor-postProcessBeforeDestruction"><a href="#DestructionAwareBeanPostProcessor-postProcessBeforeDestruction" class="headerlink" title="DestructionAwareBeanPostProcessor#postProcessBeforeDestruction"></a>DestructionAwareBeanPostProcessor#postProcessBeforeDestruction</h2><p>下图是CommonAnnotationBeanPostProcessor在此刻做的事情</p>
+<p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/postProcessBeforeDestruction.png" alt="iamge"></p>
+<blockquote>
+<p>执行invokeDestroyMethods，即执行@PreDestroy方法</p>
+</blockquote>
+<h2 id="DisposableBeanAdapter-invokeCustomDestroyMethod"><a href="#DisposableBeanAdapter-invokeCustomDestroyMethod" class="headerlink" title="DisposableBeanAdapter#invokeCustomDestroyMethod"></a>DisposableBeanAdapter#invokeCustomDestroyMethod</h2><blockquote>
+<p>执行invokeCustomDestroyMethod，即执行destroy-method方法</p>
+</blockquote>
+<h1 id="事例"><a href="#事例" class="headerlink" title="事例"></a>事例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class BeanPropertyResource &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;BeanPropertyResource Instantiation&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class BeanPropertyAutowired &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;BeanPropertyAutowired Instantiation&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class BeanLifeCycle implements InitializingBean, DisposableBean, BeanNameAware, BeanFactoryAware, BeanClassLoaderAware &#123;</span><br><span class="line"></span><br><span class="line">    @Resource</span><br><span class="line">    private BeanPropertyResource beanPropertyResource;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private BeanPropertyAutowired beanPropertyAutowired;</span><br><span class="line"></span><br><span class="line">    public BeanLifeCycle() &#123;</span><br><span class="line">        System.out.println(&quot;BeanLifeCycle&quot;);</span><br><span class="line">        System.out.println(&quot;without beanPropertyResource: &quot; + beanPropertyResource);</span><br><span class="line">        System.out.println(&quot;without beanPropertyAutowired: &quot; + beanPropertyAutowired);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @PostConstruct</span><br><span class="line">    public void postConstructMethod() &#123;</span><br><span class="line">        System.out.println(&quot;with beanPropertyResource: &quot; + beanPropertyResource);</span><br><span class="line">        System.out.println(&quot;with beanPropertyAutowired: &quot; + beanPropertyAutowired);</span><br><span class="line">        System.out.println(&quot;postConstructMethod&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void initMethod() &#123;</span><br><span class="line">        System.out.println(&quot;init-method initMethod&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void afterPropertiesSet() &#123;</span><br><span class="line">        System.out.println(&quot;InitializingBean afterPropertiesSet&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @PreDestroy</span><br><span class="line">    public void preDestroyMethod() &#123;</span><br><span class="line">        System.out.println(&quot;preDestroyMethod&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void destroy() &#123;</span><br><span class="line">        System.out.println(&quot;DisposableBean destroy&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void destroyMethod() &#123;</span><br><span class="line">        System.out.println(&quot;destroy-method destroyMethod&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setBeanClassLoader(ClassLoader classLoader) &#123;</span><br><span class="line">        System.out.println(&quot;BeanClassLoaderAware&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setBeanFactory(BeanFactory beanFactory) throws BeansException &#123;</span><br><span class="line">        System.out.println(&quot;BeanFactoryAware&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setBeanName(String name) &#123;</span><br><span class="line">        System.out.println(&quot;BeanNameAware&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">XML中配置</span><br><span class="line"></span><br><span class="line">&lt;bean class=&quot;cn.oyo.trade.starter.BeanLifeCycle&quot; init-method=&quot;initMethod&quot; destroy-method=&quot;destroyMethod&quot; /&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -503,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/28/Spring中的-Async/" rel="next" title="Spring中的@Async">
-                <i class="fa fa-chevron-left"></i> Spring中的@Async
+              <a href="/2019/11/01/使用RestTemplate/" rel="next" title="使用RestTemplate">
+                <i class="fa fa-chevron-left"></i> 使用RestTemplate
               </a>
             
           </div>
@@ -512,10 +546,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/18/Docker-Compose/" rel="prev" title="Docker Compose">
-                Docker Compose <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -652,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WHAT"><span class="nav-number">1.</span> <span class="nav-text">WHAT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Retryable"><span class="nav-number">1.1.</span> <span class="nav-text">@Retryable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backoff"><span class="nav-number">1.2.</span> <span class="nav-text">@Backoff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recover"><span class="nav-number">1.3.</span> <span class="nav-text">@Recover</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WHY"><span class="nav-number">2.</span> <span class="nav-text">WHY</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HOW"><span class="nav-number">3.</span> <span class="nav-text">HOW</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事例"><span class="nav-number">3.1.</span> <span class="nav-text">事例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">3.2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BackOffPolicy"><span class="nav-number">3.2.1.</span> <span class="nav-text">BackOffPolicy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意点"><span class="nav-number">3.2.2.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#容器中Bean的生命周期"><span class="nav-number">1.</span> <span class="nav-text">容器中Bean的生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器中Bean的创建过程"><span class="nav-number">2.</span> <span class="nav-text">容器中Bean的创建过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MergedBeanDefinitionPostProcessor-postProcessMergedBeanDefinition"><span class="nav-number">2.1.</span> <span class="nav-text">MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CommonAnnotationBeanPostProcessor-postProcessMergedBeanDefinition"><span class="nav-number">2.1.1.</span> <span class="nav-text">CommonAnnotationBeanPostProcessor#postProcessMergedBeanDefinition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutowiredAnnotationBeanPostProcessor-postProcessMergedBeanDefinition"><span class="nav-number">2.1.2.</span> <span class="nav-text">AutowiredAnnotationBeanPostProcessor#postProcessMergedBeanDefinition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InstantiationAwareBeanPostProcessor-postProcessProperties"><span class="nav-number">2.2.</span> <span class="nav-text">InstantiationAwareBeanPostProcessor#postProcessProperties</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CommonAnnotationBeanPostProcessor-postProcessProperties"><span class="nav-number">2.2.1.</span> <span class="nav-text">CommonAnnotationBeanPostProcessor#postProcessProperties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AutowiredAnnotationBeanPostProcessor-postProcessProperties"><span class="nav-number">2.2.2.</span> <span class="nav-text">AutowiredAnnotationBeanPostProcessor#postProcessProperties</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BeanPostProcessor-postProcessBeforeInitialization"><span class="nav-number">2.3.</span> <span class="nav-text">BeanPostProcessor#postProcessBeforeInitialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AbstractAutowireCapableBeanFactory-invokeAwareMethods"><span class="nav-number">2.4.</span> <span class="nav-text">AbstractAutowireCapableBeanFactory#invokeAwareMethods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AbstractAutowireCapableBeanFactory-invokeInitMethods"><span class="nav-number">2.5.</span> <span class="nav-text">AbstractAutowireCapableBeanFactory#invokeInitMethods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BeanPostProcessor-postProcessAfterInitialization"><span class="nav-number">2.6.</span> <span class="nav-text">BeanPostProcessor#postProcessAfterInitialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AbstractBeanFactory-registerDisposableBeanIfNecessary"><span class="nav-number">2.7.</span> <span class="nav-text">AbstractBeanFactory#registerDisposableBeanIfNecessary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器中Bean的销毁过程"><span class="nav-number">3.</span> <span class="nav-text">容器中Bean的销毁过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AbstractApplicationContext-doClose"><span class="nav-number">3.1.</span> <span class="nav-text">AbstractApplicationContext#doClose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DestructionAwareBeanPostProcessor-postProcessBeforeDestruction"><span class="nav-number">3.2.</span> <span class="nav-text">DestructionAwareBeanPostProcessor#postProcessBeforeDestruction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DisposableBeanAdapter-invokeCustomDestroyMethod"><span class="nav-number">3.3.</span> <span class="nav-text">DisposableBeanAdapter#invokeCustomDestroyMethod</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事例"><span class="nav-number">4.</span> <span class="nav-text">事例</span></a></li></ol></div>
             
 
           </div>

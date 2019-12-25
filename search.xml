@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Spring容器中Bean的生命周期]]></title>
+    <url>%2F2019%2F12%2F26%2FSpring%E5%AE%B9%E5%99%A8%E4%B8%ADBean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%2F</url>
+    <content type="text"><![CDATA[圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的 容器中Bean的生命周期下图为Spring容器中Bean的生命周期 容器中Bean的创建过程下图是Spring容器创建一个Bean大致的过程 MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition下图是 CommonAnnotationBeanPostProcessor / AutowiredAnnotationBeanPostProcessor 在此刻做的事情 CommonAnnotationBeanPostProcessor#postProcessMergedBeanDefinition 将@PostConstruct方法缓存至lifecycleMetadataCache（LifecycleMetadata的initMethods） 将@PreDestroy方法缓存至lifecycleMetadataCache （LifecycleMetadata的destroyMethods） 将@Resouorce、@WebServiceRef、@EJB 修饰的字段或方法缓存至injectionMetadataCache（ResourceElement/WebServiceRefElement/EjbRefElement） AutowiredAnnotationBeanPostProcessor#postProcessMergedBeanDefinition 将@Autowired、@Value、@javax.inject.Inject 修饰的字段或方法缓存至 injectionMetadataCache（AutowiredFieldElement/AutowiredMethodElement） InstantiationAwareBeanPostProcessor#postProcessProperties下图是 CommonAnnotationBeanPostProcessor / AutowiredAnnotationBeanPostProcessor 在此刻做的事情 CommonAnnotationBeanPostProcessor#postProcessProperties 获取injectionMetadataCache中的InjectedElement（ResourceElement/WebServiceRefElement/EjbRefElement ）并进行解析注入 AutowiredAnnotationBeanPostProcessor#postProcessProperties 获取injectionMetadataCache中的InjectedElement（AutowiredFieldElement/AutowiredMethodElement）并进行解析注入 BeanPostProcessor#postProcessBeforeInitialization下图是 CommonAnnotationBeanPostProcessor 在此刻做的事情 @PostConstruct方法此刻被调用 AbstractAutowireCapableBeanFactory#invokeAwareMethods做的事情如图 BeanNameAware.setBeanName BeanClassLoaderAware.setBeanClassLoader BeanFactoryAware.setBeanFactory AbstractAutowireCapableBeanFactory#invokeInitMethods做的事情如图 执行InitializingBean.afterPropertiesSet方法 执行invokeCustomInitMethod，即执行init-method BeanPostProcessor#postProcessAfterInitializationSpring中的@Async AbstractBeanFactory#registerDisposableBeanIfNecessary做的事情如图 DisposableBean类型的Bean（DisposableBeanAdapter）被放至 DefaultSingletonBeanRegistry的disposableBeans中 过滤 DestructionAwareBeanPostProcessor 至 DisposableBeanAdapter的beanPostProcessors 容器中Bean的销毁过程下图是Spring容器中的Bean销毁过程 AbstractApplicationContext#doClose 程序正常退出后，系统会调用此方法 DestructionAwareBeanPostProcessor#postProcessBeforeDestruction下图是CommonAnnotationBeanPostProcessor在此刻做的事情 执行invokeDestroyMethods，即执行@PreDestroy方法 DisposableBeanAdapter#invokeCustomDestroyMethod 执行invokeCustomDestroyMethod，即执行destroy-method方法 事例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586@Servicepublic class BeanPropertyResource &#123; @Override public String toString() &#123; return &quot;BeanPropertyResource Instantiation&quot;; &#125;&#125;@Servicepublic class BeanPropertyAutowired &#123; @Override public String toString() &#123; return &quot;BeanPropertyAutowired Instantiation&quot;; &#125;&#125;public class BeanLifeCycle implements InitializingBean, DisposableBean, BeanNameAware, BeanFactoryAware, BeanClassLoaderAware &#123; @Resource private BeanPropertyResource beanPropertyResource; @Autowired private BeanPropertyAutowired beanPropertyAutowired; public BeanLifeCycle() &#123; System.out.println(&quot;BeanLifeCycle&quot;); System.out.println(&quot;without beanPropertyResource: &quot; + beanPropertyResource); System.out.println(&quot;without beanPropertyAutowired: &quot; + beanPropertyAutowired); &#125; @PostConstruct public void postConstructMethod() &#123; System.out.println(&quot;with beanPropertyResource: &quot; + beanPropertyResource); System.out.println(&quot;with beanPropertyAutowired: &quot; + beanPropertyAutowired); System.out.println(&quot;postConstructMethod&quot;); &#125; public void initMethod() &#123; System.out.println(&quot;init-method initMethod&quot;); &#125; @Override public void afterPropertiesSet() &#123; System.out.println(&quot;InitializingBean afterPropertiesSet&quot;); &#125; @PreDestroy public void preDestroyMethod() &#123; System.out.println(&quot;preDestroyMethod&quot;); &#125; @Override public void destroy() &#123; System.out.println(&quot;DisposableBean destroy&quot;); &#125; public void destroyMethod() &#123; System.out.println(&quot;destroy-method destroyMethod&quot;); &#125; @Override public void setBeanClassLoader(ClassLoader classLoader) &#123; System.out.println(&quot;BeanClassLoaderAware&quot;); &#125; @Override public void setBeanFactory(BeanFactory beanFactory) throws BeansException &#123; System.out.println(&quot;BeanFactoryAware&quot;); &#125; @Override public void setBeanName(String name) &#123; System.out.println(&quot;BeanNameAware&quot;); &#125;&#125;XML中配置&lt;bean class=&quot;cn.oyo.trade.starter.BeanLifeCycle&quot; init-method=&quot;initMethod&quot; destroy-method=&quot;destroyMethod&quot; /&gt;]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用RestTemplate]]></title>
     <url>%2F2019%2F11%2F01%2F%E4%BD%BF%E7%94%A8RestTemplate%2F</url>
     <content type="text"><![CDATA[记录如何使用Spring中的RestTemplate(with apache.httpcomponents)发起 REST API请求 REQUIREMENTS12345678910&lt;dependency&gt; &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt; &lt;artifactId&gt;httpclient&lt;/artifactId&gt; &lt;version&gt;4.5.6&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;&lt;/dependency&gt; SETTING UPHttpConfigProperties1234567891011121314151617181920212223242526272829303132@Component@Datapublic class HttpConfigProperties &#123; private Integer maxTotalConnections = 200; private Integer maxPerRoute = 100; /** * 等待连接建立的超时时间 5秒 */ private Integer connectTimeout = 5000; /** * 等待数据传输的超时时间 15秒 */ private Integer socketTimeout = 15000; /** * 等待请求连接池的超时时间 5秒 */ private Integer connectionRequestTimeout = 5000; /** * 允许连接idle的时间 10秒 */ private Integer keeAliveTimeMillis = 10000; /** * idle最大时间 */ private Integer closeIdleConnectionWaitTimeSecs = 20;&#125; HttpClientPoolingConfig123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081@Configuration@EnableScheduling@Slf4jpublic class HttpClientPoolingConfig &#123; @Resource private HttpConfigProperties properties; @Bean(name = &quot;poolingConnectionManager&quot;) public PoolingHttpClientConnectionManager poolingConnectionManager() &#123; try &#123; LayeredConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(SSLContext.getDefault()); Registry&lt;ConnectionSocketFactory&gt; socketFactoryRegistry = RegistryBuilder.&lt;ConnectionSocketFactory&gt;create() .register(&quot;https&quot;, sslsf) .register(&quot;http&quot;, new PlainConnectionSocketFactory()) .build(); PoolingHttpClientConnectionManager poolingConnectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry); poolingConnectionManager.setMaxTotal(properties.getMaxTotalConnections()); poolingConnectionManager.setDefaultMaxPerRoute(properties.getMaxPerRoute()); return poolingConnectionManager; &#125; catch (Exception e) &#123; log.error(&quot;Pooling Connection Manager Initialisation failure because of &quot; + e.getMessage(), e); throw new RuntimeException(); &#125; &#125; @Bean(name = &quot;connectionKeepAliveStrategy&quot;) public ConnectionKeepAliveStrategy connectionKeepAliveStrategy() &#123; return (response, context) -&gt; &#123; HeaderElementIterator it = new BasicHeaderElementIterator (response.headerIterator(HTTP.CONN_KEEP_ALIVE)); while (it.hasNext()) &#123; HeaderElement he = it.nextElement(); String param = he.getName(); String value = he.getValue(); if (value != null &amp;&amp; param.equalsIgnoreCase(&quot;timeout&quot;)) &#123; return Long.parseLong(value) * 1000; &#125; &#125; return properties.getKeeAliveTimeMillis(); &#125;; &#125; @Bean(name = &quot;httpClient&quot;) public CloseableHttpClient httpClient(@Qualifier(value = &quot;connectionKeepAliveStrategy&quot;) ConnectionKeepAliveStrategy connectionKeepAliveStrategy) &#123; RequestConfig requestConfig = RequestConfig.custom() .setConnectionRequestTimeout(properties.getConnectionRequestTimeout()) .setConnectTimeout(properties.getConnectTimeout()) .setSocketTimeout(properties.getSocketTimeout()).build(); return HttpClients.custom() .setDefaultRequestConfig(requestConfig) .setConnectionManager(poolingConnectionManager()) .setKeepAliveStrategy(connectionKeepAliveStrategy) .build(); &#125; @Bean public Runnable idleConnectionMonitor(@Qualifier(value = &quot;poolingConnectionManager&quot;) PoolingHttpClientConnectionManager poolingConnectionManager) &#123; return new Runnable() &#123; @Override @Scheduled(fixedDelay = 10000, initialDelay = 1000) public void run() &#123; try &#123; if (poolingConnectionManager != null) &#123; log.info(&quot;run IdleConnectionMonitor - Closing expired and idle connections...&quot;); poolingConnectionManager.closeExpiredConnections(); poolingConnectionManager.closeIdleConnections(properties.getCloseIdleConnectionWaitTimeSecs(), TimeUnit.SECONDS); &#125; else &#123; log.info(&quot;run IdleConnectionMonitor - Http Client Connection manager is not initialised&quot;); &#125; &#125; catch (Exception e) &#123; log.error(&quot;run IdleConnectionMonitor - Exception occurred. msg=&#123;&#125;, e=&#123;&#125;&quot;, e.getMessage(), e); &#125; &#125; &#125;; &#125;&#125; RestTemplateConfig1234567891011121314151617181920@Configuration@Slf4jpublic class RestTemplateConfig &#123; @Bean public RestTemplate restTemplate(@Qualifier(value = &quot;httpClient&quot;) CloseableHttpClient httpClient) &#123; HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(httpClient); RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory); List&lt;ClientHttpRequestInterceptor&gt; interceptors = restTemplate.getInterceptors(); if (CollectionUtils.isEmpty(interceptors)) &#123; interceptors = new ArrayList&lt;&gt;(); &#125; interceptors.add(new RestTemplateLogInterceptor()); restTemplate.setInterceptors(interceptors); restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName(&quot;UTF-8&quot;))); return restTemplate; &#125;&#125; RestTemplateLogInterceptor123456789101112@Slf4jpublic class RestTemplateLogInterceptor implements ClientHttpRequestInterceptor &#123; @Override public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException &#123; ClientHttpResponse response = execution.execute(request, body); if (response.getStatusCode() != HttpStatus.OK) &#123; log.error(&quot;RESTful api error, request is &#123;&#125; ,response is &#123;&#125;&quot;, request.getURI(), response.getStatusCode()); &#125; return response; &#125;&#125; DEMO]]></content>
@@ -213,8 +225,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -225,8 +237,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -237,8 +249,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -261,8 +273,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -273,8 +285,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -285,8 +297,8 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>JVM</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
