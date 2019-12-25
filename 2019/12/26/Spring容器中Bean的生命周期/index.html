@@ -111,13 +111,13 @@
 
 
 
-<meta name="description" content="圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的 容器中Bean的生命周期下图为Spring容器中Bean的生命周期  容器中Bean的创建过程下图是Spring容器创建一个Bean大致的过程  MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition下图是 CommonAnnotationB">
+<meta name="description" content="圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的 容器中Bean的生命周期下图为Spring容器中Bean的生命周期  容器中Bean的创建过程下图是Spring容器创建一个Bean大致的过程">
 <meta name="keywords" content="Java,Spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring容器中Bean的生命周期">
 <meta property="og:url" content="http://yoursite.com/2019/12/26/Spring容器中Bean的生命周期/index.html">
 <meta property="og:site_name" content="8lovelife&#39;s life">
-<meta property="og:description" content="圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的 容器中Bean的生命周期下图为Spring容器中Bean的生命周期  容器中Bean的创建过程下图是Spring容器创建一个Bean大致的过程  MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition下图是 CommonAnnotationB">
+<meta property="og:description" content="圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的 容器中Bean的生命周期下图为Spring容器中Bean的生命周期  容器中Bean的创建过程下图是Spring容器创建一个Bean大致的过程">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanLifeCycle.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanCreating.png">
@@ -129,10 +129,10 @@
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/registerDisposableBeanIfNecessary.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanDestory.png">
 <meta property="og:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/postProcessBeforeDestruction.png">
-<meta property="og:updated_time" content="2019-12-25T18:34:00.210Z">
+<meta property="og:updated_time" content="2019-12-25T18:39:07.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring容器中Bean的生命周期">
-<meta name="twitter:description" content="圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的 容器中Bean的生命周期下图为Spring容器中Bean的生命周期  容器中Bean的创建过程下图是Spring容器创建一个Bean大致的过程  MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition下图是 CommonAnnotationB">
+<meta name="twitter:description" content="圣诞节在家整理了一下Spring容器中的Bean到底是怎么诞生的，又是如何毁灭的 容器中Bean的生命周期下图为Spring容器中Bean的生命周期  容器中Bean的创建过程下图是Spring容器创建一个Bean大致的过程">
 <meta name="twitter:image" content="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanLifeCycle.png">
 
 
@@ -373,7 +373,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-26T02:34:00+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-26T02:39:07+08:00">
                 2019-12-26
               </time>
             
@@ -449,6 +449,7 @@
 <p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanLifeCycle.png" alt="image"></p>
 <h1 id="容器中Bean的创建过程"><a href="#容器中Bean的创建过程" class="headerlink" title="容器中Bean的创建过程"></a>容器中Bean的创建过程</h1><p>下图是Spring容器创建一个Bean大致的过程</p>
 <p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/SpringBeanCreating.png" alt="image"></p>
+<a id="more"></a>
 <h2 id="MergedBeanDefinitionPostProcessor-postProcessMergedBeanDefinition"><a href="#MergedBeanDefinitionPostProcessor-postProcessMergedBeanDefinition" class="headerlink" title="MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition"></a>MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition</h2><p>下图是 CommonAnnotationBeanPostProcessor / AutowiredAnnotationBeanPostProcessor 在此刻做的事情</p>
 <p><img src="https://8lovelife-1256398294.cos.ap-shanghai.myqcloud.com/SpringBeanLifeCycle/postProcessMergedBeanDefinition.png" alt="image"></p>
 <h3 id="CommonAnnotationBeanPostProcessor-postProcessMergedBeanDefinition"><a href="#CommonAnnotationBeanPostProcessor-postProcessMergedBeanDefinition" class="headerlink" title="CommonAnnotationBeanPostProcessor#postProcessMergedBeanDefinition"></a>CommonAnnotationBeanPostProcessor#postProcessMergedBeanDefinition</h3><ol>
